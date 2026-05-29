@@ -1,5 +1,6 @@
 import AboutSection from './app/components/AboutSection';
 import ContactForm from './app/components/ContactForm';
+import Footer from './app/components/Footer';
 import GallerySection from './app/components/GallerySection';
 import HeroSection from './app/components/HeroSection';
 import Navbar from './app/components/Navbar';
@@ -16,6 +17,7 @@ function App() {
       <AboutSection />
       <GallerySection />
       <ContactForm />
+      <Footer />
     </div>
   );
 }
