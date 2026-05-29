@@ -1,5 +1,6 @@
 import AboutSection from './app/components/AboutSection';
 import ContactForm from './app/components/ContactForm';
+import CtaSection from './app/components/CtaSection';
 import FloatingWhatsApp from './app/components/FloatingWhatsApp';
 import Footer from './app/components/Footer';
 import GallerySection from './app/components/GallerySection';
@@ -18,6 +19,7 @@ function App() {
         </div>
         <AboutSection />
         <GallerySection />
+        <CtaSection />
         <ContactForm />
       </main>
       <Footer />
