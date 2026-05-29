@@ -3,6 +3,7 @@ export interface FormState {
   email: string;
   phone: string;
   eventDate: string;
+  guestCount: string;
   barType: 'clasica' | 'premium';
 }
 
