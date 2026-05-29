@@ -1,4 +1,5 @@
 import AboutSection from './app/components/AboutSection';
+import GallerySection from './app/components/GallerySection';
 import HeroSection from './app/components/HeroSection';
 import Navbar from './app/components/Navbar';
 import ServicesTray from './app/components/ServicesTray';
@@ -12,6 +13,7 @@ function App() {
         <ServicesTray />
       </main>
       <AboutSection />
+      <GallerySection />
     </div>
   );
 }
