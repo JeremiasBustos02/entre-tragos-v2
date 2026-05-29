@@ -1,16 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ChevronRight, Leaf, Menu, X } from 'lucide-react';
 
-type NavLink = {
-  label: string;
-  href: string;
-};
-
-const NAV_LINKS: NavLink[] = [
-  { label: 'Inicio', href: '#inicio' },
-  { label: 'Servicios', href: '#servicios' },
-  { label: 'Galería', href: '#galeria' },
-];
+import { NAV_LINKS } from '../../types/navigation';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,16 +24,20 @@ export default function Navbar() {
     <header className="relative flex justify-center pt-4 sm:pt-6 px-3 sm:px-4">
       <div className="relative w-full max-w-[760px]">
         <nav className="bg-white/90 backdrop-blur-md rounded-full shadow-sm border border-neutral-200 px-4 py-2 w-full flex justify-between items-center">
-          <a href="#inicio" aria-label="Entre Tragos - Inicio">
+          <a
+            href="#inicio"
+            aria-label="Entre Tragos - Inicio"
+            className="focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:outline-none rounded-full"
+          >
             <Leaf className="w-7 h-7 sm:w-8 sm:h-8 text-[#2D5A27]" />
           </a>
 
-          <div className="hidden md:flex gap-6 text-[14px] text-neutral-700">
+          <div className="hidden md:flex gap-6 text-sm text-neutral-700">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="hover:text-[#2D5A27] transition-colors"
+                className="hover:text-[#2D5A27] transition-colors focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:outline-none rounded-md"
               >
                 {link.label}
               </a>
@@ -52,14 +47,14 @@ export default function Navbar() {
           <div className="flex items-center gap-2">
             <a
               href="#cotizar"
-              className="hidden md:inline-flex items-center gap-1.5 bg-[#2D5A27] text-white rounded-full px-4 py-2 text-[14px] font-medium hover:bg-[#244a1f] transition-colors"
+              className="hidden md:inline-flex items-center gap-1.5 bg-[#2D5A27] text-white rounded-full px-4 py-2 text-sm font-medium hover:bg-[#244a1f] transition-colors focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:outline-none"
             >
               Cotizar Evento
               <ChevronRight className="w-4 h-4" />
             </a>
 
             <button
-              className="md:hidden p-1 cursor-pointer"
+              className="md:hidden p-2.5 cursor-pointer focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:outline-none rounded-md"
               onClick={toggleMenu}
               aria-expanded={isMenuOpen}
               aria-controls="mobile-menu"
@@ -86,7 +81,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   role="menuitem"
-                  className="text-neutral-700 text-[14px] px-3 py-2.5 rounded-lg hover:bg-neutral-100 transition-colors"
+                  className="text-neutral-700 text-sm px-3 py-2.5 rounded-lg hover:bg-neutral-100 transition-colors focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:outline-none"
                   onClick={closeMenu}
                 >
                   {link.label}
@@ -96,7 +91,7 @@ export default function Navbar() {
               <a
                 href="#cotizar"
                 role="menuitem"
-                className="flex items-center justify-center gap-1.5 bg-[#2D5A27] text-white rounded-full px-4 py-2.5 text-[14px] font-medium hover:bg-[#244a1f] transition-colors"
+                className="flex items-center justify-center gap-1.5 bg-[#2D5A27] text-white rounded-full px-4 py-2.5 text-sm font-medium hover:bg-[#244a1f] transition-colors focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:outline-none"
                 onClick={closeMenu}
               >
                 Cotizar Evento
