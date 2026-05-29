@@ -1,5 +1,6 @@
 import { useState, type ChangeEvent, type FormEvent } from 'react';
-import { CheckCircle2, Loader2, MessageCircle } from 'lucide-react';
+import { CheckCircle2, Loader2 } from 'lucide-react';
+import { WhatsAppIcon } from './icons/WhatsAppIcon';
 
 import { BAR_TYPES } from '../types/contact';
 import type { FormState } from '../types/contact';
@@ -132,7 +133,7 @@ export default function ContactForm() {
             onClick={handleWhatsAppOpen}
             className="w-full sm:w-auto bg-[#25D366] text-[#1A1A1A] rounded-full px-8 py-4 inline-flex items-center justify-center gap-2 text-base font-medium hover:bg-[#1fb855] transition-colors focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:outline-none"
           >
-            <MessageCircle className="w-5 h-5" aria-hidden="true" />
+            <WhatsAppIcon className="w-5 h-5" aria-hidden="true" />
             Hablemos por WhatsApp ahora
           </button>
         </div>
