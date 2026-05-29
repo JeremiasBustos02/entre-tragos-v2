@@ -11,9 +11,10 @@ const SERVICES: ServiceCardProps[] = [
   },
   {
     title: 'Premium',
-    description: 'Experiencia completa con mixología de autor y barra de autor.',
+    description: 'Mixología de autor con ingredientes botánicos de temporada.',
     price: 'Desde $15,000',
     iconType: 'wine',
+    tag: 'Más Elegido',
   },
   {
     title: 'Sin Alcohol',
@@ -25,7 +26,10 @@ const SERVICES: ServiceCardProps[] = [
 
 export default function ServicesTray() {
   return (
-    <section className="bg-[#F4F1EB] rounded-3xl p-4 sm:p-6 w-full max-w-[880px] mx-auto shadow-xl relative z-20 mt-[-4rem]">
+    <section id="servicios" className="bg-[#F4F1EB] rounded-3xl p-4 sm:p-6 w-full max-w-[880px] mx-auto shadow-xl relative z-20 mt-[-4rem] scroll-mt-24" aria-labelledby="servicios-heading">
+      <h2 id="servicios-heading" className="text-center text-3xl sm:text-4xl font-serif text-[#1A1A1A] mb-6 sm:mb-8">
+        Nuestros Servicios
+      </h2>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {SERVICES.map((service) => (
           <ServiceCard key={service.iconType} {...service} />

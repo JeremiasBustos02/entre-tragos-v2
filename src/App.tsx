@@ -1,5 +1,9 @@
 import AboutSection from './app/components/AboutSection';
+import CocktailShowcase from './app/components/CocktailShowcase';
 import ContactForm from './app/components/ContactForm';
+import CtaSection from './app/components/CtaSection';
+import FaqSection from './app/components/FaqSection';
+import FloatingWhatsApp from './app/components/FloatingWhatsApp';
 import Footer from './app/components/Footer';
 import GallerySection from './app/components/GallerySection';
 import HeroSection from './app/components/HeroSection';
@@ -8,18 +12,22 @@ import ServicesTray from './app/components/ServicesTray';
 
 function App() {
   return (
-    <div className="min-h-screen w-full bg-[#FDFBF7] p-3 sm:p-4 font-sans">
+    <div className="relative min-h-screen w-full bg-[#FDFBF7] p-3 sm:p-4 font-sans">
       <Navbar />
       <main>
         <HeroSection />
         <div className="flex justify-center px-3 sm:px-4 pb-12 sm:pb-16">
           <ServicesTray />
         </div>
+        <CocktailShowcase />
         <AboutSection />
         <GallerySection />
+        <CtaSection />
+        <FaqSection />
         <ContactForm />
       </main>
       <Footer />
+      <FloatingWhatsApp />
     </div>
   );
 }

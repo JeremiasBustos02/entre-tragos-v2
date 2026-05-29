@@ -21,15 +21,15 @@ export default function Navbar() {
   }, [isMenuOpen]);
 
   return (
-    <header className="relative flex justify-center pt-4 sm:pt-6 px-3 sm:px-4">
-      <div className="relative w-full max-w-[760px]">
-        <nav className="bg-white/90 backdrop-blur-md rounded-full shadow-sm border border-neutral-200 px-4 py-2 w-full flex justify-between items-center">
+    <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[calc(100vw-2rem)] max-w-[760px]">
+      <nav className="bg-white/90 backdrop-blur-md rounded-full shadow-sm border border-neutral-200 px-4 py-2 w-full flex justify-between items-center">
           <a
             href="#inicio"
             aria-label="Entre Tragos - Inicio"
-            className="focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:outline-none rounded-full"
+            className="focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:outline-none rounded-full flex flex-row items-center gap-2 text-sm font-medium text-[#1A1A1A]"
           >
             <Leaf className="w-7 h-7 sm:w-8 sm:h-8 text-[#2D5A27]" />
+            <p className="font-medium font-bold">EntreTragos</p>
           </a>
 
           <div className="hidden md:flex gap-6 text-sm text-neutral-700">
@@ -46,11 +46,10 @@ export default function Navbar() {
 
           <div className="flex items-center gap-2">
             <a
-              href="#cotizar"
+              href="#contact"
               className="hidden md:inline-flex items-center gap-1.5 bg-[#2D5A27] text-white rounded-full px-4 py-2 text-sm font-medium hover:bg-[#244a1f] transition-colors focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:outline-none"
             >
               Cotizar Evento
-              <ChevronRight className="w-4 h-4" />
             </a>
 
             <button
@@ -89,7 +88,7 @@ export default function Navbar() {
               ))}
               <hr className="border-neutral-200 my-1" />
               <a
-                href="#cotizar"
+                href="#contact"
                 role="menuitem"
                 className="flex items-center justify-center gap-1.5 bg-[#2D5A27] text-white rounded-full px-4 py-2.5 text-sm font-medium hover:bg-[#244a1f] transition-colors focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:outline-none"
                 onClick={closeMenu}
@@ -100,7 +99,6 @@ export default function Navbar() {
             </div>
           </div>
         )}
-      </div>
     </header>
   );
 }

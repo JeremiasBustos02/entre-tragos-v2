@@ -5,4 +5,5 @@ export interface ServiceCardProps {
   description: string;
   price: string;
   iconType: IconType;
+  tag?: string;
 }

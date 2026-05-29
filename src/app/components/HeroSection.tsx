@@ -3,8 +3,8 @@ import { ChevronRight } from 'lucide-react';
 export default function HeroSection() {
   return (
     <section
-      className="relative w-full h-[calc(100vh-32px)] overflow-hidden bg-[#EAE7E0] rounded-3xl"
-      aria-labelledby="hero-heading"
+      id="inicio"
+      className="relative w-full min-h-screen flex flex-col items-center justify-center pb-16"
     >
       <div
         className="absolute inset-0 w-full h-full object-cover pointer-events-none bg-gradient-to-br from-[#8B5A2B]/20 via-[#EAE7E0] to-[#2D5A27]/10"
@@ -14,7 +14,7 @@ export default function HeroSection() {
 
       <div className="absolute inset-0 bg-[#FDFBF7]/60 z-0" />
 
-      <div className="relative z-10 flex flex-col items-center pt-16 text-center px-4">
+      <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 h-full">
         <div className="inline-flex items-center gap-2 bg-white rounded-full px-4 py-1.5 shadow-sm text-[13px] text-neutral-700">
           <span className="w-2 h-2 rounded-full bg-[#2D5A27]" aria-hidden="true" />
           Coctelería Premium
@@ -37,7 +37,7 @@ export default function HeroSection() {
         </p>
 
         <a
-          href="#cotizar"
+          href="#contact"
           className="mt-8 inline-flex items-center gap-1.5 bg-[#8B5A2B] text-white rounded-full px-6 py-2.5 text-sm font-medium hover:bg-[#744a22] transition-colors focus-visible:ring-2 focus-visible:ring-[#8B5A2B] focus-visible:outline-none"
         >
           Cotiza tu evento
