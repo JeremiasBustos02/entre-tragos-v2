@@ -12,7 +12,7 @@ const FEATURES: Feature[] = [
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-24 px-4 bg-[#FDFBF7]">
+    <section id="about" className="py-24 px-4 bg-[#FDFBF7]" aria-labelledby="about-heading">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto items-center">
         <div className="relative w-full h-[500px]">
           <div
@@ -33,7 +33,7 @@ export default function AboutSection() {
             Nuestra Esencia
           </p>
 
-          <h2 className="text-4xl lg:text-5xl font-serif text-[#1A1A1A] leading-[1.15]">
+          <h2 id="about-heading" className="text-4xl lg:text-5xl font-serif text-[#1A1A1A] leading-[1.15]">
             Barras de diseño en madera natural
           </h2>
 

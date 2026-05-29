@@ -6,6 +6,9 @@ import type { FormState } from '../types/contact';
 
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
 
+const INPUT_CLASSES =
+  'bg-[#F4F1EB] rounded-2xl px-4 py-3 w-full focus:ring-2 focus:ring-[#2D5A27]/50 focus:outline-none text-sm text-[#1A1A1A]';
+
 const INITIAL_FORM_STATE: FormState = {
   name: '',
   email: '',
@@ -99,7 +102,7 @@ export default function ContactForm() {
           <button
             type="button"
             onClick={handleReset}
-            className="bg-[#2D5A27] text-white rounded-full px-8 py-3 text-[15px] font-medium hover:bg-[#244a1f] transition-colors"
+            className="bg-[#2D5A27] text-white rounded-full px-8 py-3 text-sm font-medium hover:bg-[#244a1f] transition-colors"
           >
             Enviar otra solicitud
           </button>
@@ -113,7 +116,7 @@ export default function ContactForm() {
       <div className="bg-white rounded-3xl shadow-xl p-6 sm:p-10">
         <form onSubmit={handleSubmit} noValidate aria-busy={isSubmitting}>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <label className="flex flex-col gap-1.5 text-[14px] font-medium text-neutral-700">
+            <label className="flex flex-col gap-1.5 text-sm font-medium text-neutral-700">
               Nombre
               <input
                 type="text"
@@ -121,11 +124,11 @@ export default function ContactForm() {
                 value={formData.name}
                 onChange={handleInputChange}
                 required
-                className="bg-[#F4F1EB] rounded-xl px-4 py-3 w-full focus:ring-2 focus:ring-[#2D5A27]/50 focus:outline-none text-[14px] text-[#1A1A1A]"
+                className={INPUT_CLASSES}
               />
             </label>
 
-            <label className="flex flex-col gap-1.5 text-[14px] font-medium text-neutral-700">
+            <label className="flex flex-col gap-1.5 text-sm font-medium text-neutral-700">
               Correo Electrónico
               <input
                 type="email"
@@ -133,11 +136,11 @@ export default function ContactForm() {
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                className="bg-[#F4F1EB] rounded-xl px-4 py-3 w-full focus:ring-2 focus:ring-[#2D5A27]/50 focus:outline-none text-[14px] text-[#1A1A1A]"
+                className={INPUT_CLASSES}
               />
             </label>
 
-            <label className="flex flex-col gap-1.5 text-[14px] font-medium text-neutral-700">
+            <label className="flex flex-col gap-1.5 text-sm font-medium text-neutral-700">
               Teléfono
               <input
                 type="tel"
@@ -145,11 +148,11 @@ export default function ContactForm() {
                 value={formData.phone}
                 onChange={handleInputChange}
                 required
-                className="bg-[#F4F1EB] rounded-xl px-4 py-3 w-full focus:ring-2 focus:ring-[#2D5A27]/50 focus:outline-none text-[14px] text-[#1A1A1A]"
+                className={INPUT_CLASSES}
               />
             </label>
 
-            <label className="flex flex-col gap-1.5 text-[14px] font-medium text-neutral-700">
+            <label className="flex flex-col gap-1.5 text-sm font-medium text-neutral-700">
               Fecha del Evento
               <input
                 type="date"
@@ -157,17 +160,17 @@ export default function ContactForm() {
                 value={formData.eventDate}
                 onChange={handleInputChange}
                 required
-                className="bg-[#F4F1EB] rounded-xl px-4 py-3 w-full focus:ring-2 focus:ring-[#2D5A27]/50 focus:outline-none text-[14px] text-[#1A1A1A]"
+                className={INPUT_CLASSES}
               />
             </label>
 
-            <label className="flex flex-col gap-1.5 text-[14px] font-medium text-neutral-700">
+            <label className="flex flex-col gap-1.5 text-sm font-medium text-neutral-700">
               Tipo de Barra
               <select
                 name="barType"
                 value={formData.barType}
                 onChange={handleInputChange}
-                className="bg-[#F4F1EB] rounded-xl px-4 py-3 w-full focus:ring-2 focus:ring-[#2D5A27]/50 focus:outline-none text-[14px] text-[#1A1A1A] appearance-none cursor-pointer"
+                className={`${INPUT_CLASSES} appearance-none cursor-pointer`}
               >
                 {BAR_TYPES.map((bar) => (
                   <option key={bar.value} value={bar.value}>
@@ -177,7 +180,7 @@ export default function ContactForm() {
               </select>
             </label>
 
-            <label className="flex flex-col gap-1.5 text-[14px] font-medium text-neutral-700">
+            <label className="flex flex-col gap-1.5 text-sm font-medium text-neutral-700">
               Cantidad de Invitados
               <input
                 type="number"
@@ -186,12 +189,12 @@ export default function ContactForm() {
                 onChange={handleInputChange}
                 required
                 min="1"
-                className="bg-[#F4F1EB] rounded-xl px-4 py-3 w-full focus:ring-2 focus:ring-[#2D5A27]/50 focus:outline-none text-[14px] text-[#1A1A1A]"
+                className={INPUT_CLASSES}
               />
             </label>
 
             {submitError && (
-              <p className="col-span-1 sm:col-span-2 text-red-600 text-[14px]">
+              <p className="col-span-1 sm:col-span-2 text-red-600 text-sm">
                 {submitError}
               </p>
             )}
@@ -200,7 +203,7 @@ export default function ContactForm() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="flex-1 bg-[#2D5A27] text-white rounded-xl py-4 flex items-center justify-center gap-2 text-[15px] font-medium hover:bg-[#244a1f] transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+                className="flex-1 bg-[#2D5A27] text-white rounded-full py-4 flex items-center justify-center gap-2 text-sm font-medium hover:bg-[#244a1f] transition-colors disabled:opacity-70 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:outline-none"
               >
                 {isSubmitting ? (
                   <>
@@ -218,7 +221,7 @@ export default function ContactForm() {
               <button
                 type="button"
                 onClick={handleWhatsAppOpen}
-                className="flex-1 bg-[#25D366] text-white rounded-xl py-4 flex items-center justify-center gap-2 text-[15px] font-medium hover:bg-[#1fb855] transition-colors"
+                className="flex-1 bg-[#25D366] text-[#1A1A1A] rounded-full py-4 flex items-center justify-center gap-2 text-sm font-medium hover:bg-[#1fb855] transition-colors focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:outline-none"
               >
                 <MessageCircle className="w-5 h-5" aria-hidden="true" />
                 Consultar por WhatsApp

@@ -36,9 +36,9 @@ const GALLERY_ITEMS: GalleryItem[] = [
 
 export default function GallerySection() {
   return (
-    <section id="gallery" className="py-16 px-4 bg-[#EAE7E0]">
+    <section id="gallery" className="py-16 px-4 bg-[#EAE7E0]" aria-labelledby="gallery-heading">
       <div className="text-center mb-10">
-        <h2 className="text-4xl font-serif text-[#1A1A1A]">
+        <h2 id="gallery-heading" className="text-4xl font-serif text-[#1A1A1A]">
           Galería de Eventos
         </h2>
       </div>
@@ -61,7 +61,7 @@ export default function GallerySection() {
 
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-            <div className="absolute bottom-4 left-4 text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <div className="absolute bottom-4 left-4 text-white text-sm font-medium opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500">
               {item.label}
             </div>
           </div>

@@ -1,9 +1,6 @@
 import { Leaf } from 'lucide-react';
 
-type NavLink = {
-  label: string;
-  href: string;
-};
+import { NAV_LINKS } from '../../types/navigation';
 
 type ContactInfo = {
   label: string;
@@ -48,12 +45,6 @@ const SOCIAL_LINKS: SocialLink[] = [
   { label: 'Facebook', href: 'https://facebook.com', icon: FacebookIcon },
 ];
 
-const NAV_LINKS: NavLink[] = [
-  { label: 'Inicio', href: '#inicio' },
-  { label: 'Servicios', href: '#servicios' },
-  { label: 'Galería', href: '#galeria' },
-];
-
 const CONTACT_INFO: ContactInfo[] = [
   {
     label: 'Correo',
@@ -96,7 +87,7 @@ export default function Footer() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="text-sm text-neutral-400 hover:text-white transition-colors"
+                  className="block py-1 text-sm text-neutral-400 hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:outline-none rounded-md"
                 >
                   {link.label}
                 </a>
@@ -143,7 +134,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="text-neutral-400 hover:text-white transition-colors"
+                  className="p-2 text-neutral-400 hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:outline-none rounded-md"
                 >
                   <Icon className="w-5 h-5" aria-hidden="true" />
                 </a>
@@ -153,7 +144,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto border-t border-neutral-800 pt-8 text-xs text-neutral-500 text-center">
+      <div className="max-w-6xl mx-auto border-t border-neutral-800 pt-8 text-xs text-neutral-400 text-center">
         &copy; {new Date().getFullYear()} Entre Tragos. Todos los derechos
         reservados.
       </div>
