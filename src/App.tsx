@@ -1,4 +1,5 @@
 import AboutSection from './app/components/AboutSection';
+import ContactForm from './app/components/ContactForm';
 import GallerySection from './app/components/GallerySection';
 import HeroSection from './app/components/HeroSection';
 import Navbar from './app/components/Navbar';
@@ -14,6 +15,7 @@ function App() {
       </main>
       <AboutSection />
       <GallerySection />
+      <ContactForm />
     </div>
   );
 }
