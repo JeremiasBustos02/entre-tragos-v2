@@ -39,36 +39,59 @@ export default function FaqSection() {
   return (
     <section
       id="faq"
-      className="py-20  sm:py-14 scroll-mt-24 rounded-3xl"
+      className="py-16 sm:py-20 scroll-mt-24 rounded-3xl"
       aria-labelledby="faq-heading"
     >
-      <div className="max-w-3xl mx-auto px-4 ">
-        <h2
-          id="faq-heading"
-          className="text-center text-3xl sm:text-4xl font-serif text-[#1A1A1A] mb-10"
-        >
-          Preguntas Frecuentes
-        </h2>
+      <div className="max-w-3xl mx-auto px-4">
+        <div className="text-center mb-10">
+          <span className="text-xs sm:text-sm font-medium text-[#8B5A2B] uppercase tracking-[0.2em]">
+            FAQ
+          </span>
+          <h2
+            id="faq-heading"
+            className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#1A1A1A] mt-2 leading-tight"
+          >
+            Preguntas Frecuentes
+          </h2>
+        </div>
 
-        <div className="divide-y divide-neutral-200">
+        <div className="flex flex-col gap-3">
           {FAQ_DATA.map((item, index) => {
             const isOpen = openIndex === index;
             const contentId = `faq-answer-${index}`;
 
             return (
-              <div key={index} className="py-1">
+              <div
+                key={index}
+                className={`rounded-2xl border transition-all duration-200 ${
+                  isOpen
+                    ? 'bg-[#FDFBF7] border-[#2D5A27]/20 shadow-sm'
+                    : 'bg-white border-neutral-200 hover:border-neutral-300'
+                }`}
+              >
                 <button
                   type="button"
                   onClick={() => toggle(index)}
                   aria-expanded={isOpen}
                   aria-controls={contentId}
-                  className="cursor-pointer w-full flex items-center justify-between gap-4 py-4 text-left text-base font-medium text-[#1A1A1A] hover:bg-[#FDFBF7] -mx-4 px-4 rounded-lg transition-colors focus-visible:ring-2 focus-visible:ring-[#2D5A27]/50 focus-visible:outline-none"
+                  className="cursor-pointer w-full flex items-center justify-between gap-4 py-5 px-5 sm:px-6 text-left transition-colors focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:outline-none"
                 >
-                  <span>{item.question}</span>
-                  <ChevronDown
-                    className={`w-5 h-5 text-neutral-400 shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
-                    aria-hidden="true"
-                  />
+                  <span
+                    className={`text-base sm:text-lg font-medium transition-colors duration-200 ${
+                      isOpen ? 'text-[#2D5A27]' : 'text-[#1A1A1A]'
+                    }`}
+                  >
+                    {item.question}
+                  </span>
+                  <div
+                    className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
+                      isOpen
+                        ? 'bg-[#2D5A27]/10 rotate-180'
+                        : 'bg-neutral-100'
+                    }`}
+                  >
+                    <ChevronDown className="w-4 h-4 text-[#2D5A27]" />
+                  </div>
                 </button>
 
                 <div
@@ -79,7 +102,7 @@ export default function FaqSection() {
                   style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
                 >
                   <div className="overflow-hidden min-h-0">
-                    <p className="pb-4 text-sm text-neutral-600 leading-relaxed">
+                    <p className="px-5 sm:px-6 pb-5 text-sm sm:text-[15px] text-neutral-500 leading-relaxed">
                       {item.answer}
                     </p>
                   </div>
@@ -93,7 +116,7 @@ export default function FaqSection() {
           ¿No encuentras lo que buscas?{' '}
           <a
             href="#contact"
-            className="text-[#2D5A27] font-medium hover:underline"
+            className="text-[#2D5A27] font-medium hover:underline focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:outline-none rounded-md"
           >
             Contáctanos
           </a>

@@ -58,7 +58,7 @@ const CONTACT_INFO: ContactInfo[] = [
   },
   {
     label: 'Ubicación',
-    value: 'Ciudad de México, MX',
+    value: 'Mar del plata, Argentina',
   },
 ];
 
@@ -146,7 +146,7 @@ export default function Footer() {
 
       <div className="max-w-6xl mx-auto border-t border-neutral-800 pt-8 text-xs text-neutral-400 text-center">
         &copy; {new Date().getFullYear()} Entre Tragos. Todos los derechos
-        reservados.
+        reservados | Diseñado por <a href="https://buveg.com.ar" target="_blank" rel="noopener noreferrer" className="text-[#2D5A27] hover:underline">buveg.com.ar</a>
       </div>
     </footer>
   );

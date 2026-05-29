@@ -76,7 +76,7 @@ export default function CustomSelect({
           tabIndex={0}
           onClick={toggle}
           onKeyDown={handleKeyDown}
-          className="bg-white border border-neutral-200 rounded-2xl px-4 py-3.5 w-full text-sm text-[#1A1A1A] flex items-center justify-between cursor-pointer focus:ring-2 focus:ring-[#2D5A27]/20 focus:border-[#2D5A27] focus:outline-none transition-colors"
+          className="bg-white border border-neutral-200 rounded-xl px-4 py-3 w-full text-sm text-[#1A1A1A] flex items-center justify-between cursor-pointer focus:ring-2 focus:ring-[#2D5A27]/30 focus:border-[#2D5A27] focus:outline-none transition-all duration-200"
         >
           <span className={value ? '' : 'text-neutral-400'}>{selectedLabel || 'Seleccionar'}</span>
           <ChevronDown

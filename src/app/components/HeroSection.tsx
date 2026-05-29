@@ -7,7 +7,7 @@ export default function HeroSection() {
       className="relative w-full min-h-screen flex flex-col items-center justify-center pb-16"
     >
       <div
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none bg-gradient-to-br from-[#8B5A2B]/20 via-[#EAE7E0] to-[#2D5A27]/10"
+        className="rounded-3xl absolute inset-0 w-full h-full object-cover pointer-events-none bg-gradient-to-br from-[#8B5A2B]/20 via-[#EAE7E0] to-[#2D5A27]/10"
         role="img"
         aria-label="Ambiente de barra de coctelería con madera y botánicos"
       />
