@@ -16,22 +16,24 @@ export default function ServiceCard({ title, description, price, iconType, tag }
     <article className="group relative bg-white rounded-2xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.04)] border border-neutral-100/80 flex flex-col transition-all duration-300 ease-out hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:-translate-y-1 focus-within:ring-2 focus-within:ring-[#2D5A27] focus-within:ring-offset-2">
       <div className="h-1.5 w-full bg-gradient-to-r from-[#2D5A27] via-[#3d7a34] to-[#8B5A2B]" aria-hidden="true" />
 
-      <div className="flex flex-col gap-3 p-5 sm:p-6 flex-1">
-        {tag && (
-          <span className="self-start bg-[#8B5A2B] text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
-            {tag}
-          </span>
-        )}
+      {tag && (
+        <span className="absolute top-4 right-4 bg-[#8B5A2B] text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm z-10">
+          {tag}
+        </span>
+      )}
 
-        <div className="w-12 h-12 rounded-xl bg-[#2D5A27]/8 flex items-center justify-center transition-colors duration-300 group-hover:bg-[#2D5A27]/12">
-          <IconComponent className="w-6 h-6 text-[#2D5A27]" aria-hidden="true" />
+      <div className="grid grid-rows-[auto_1fr_auto] flex-1 p-5 sm:p-6">
+        <div className="flex flex-col gap-3">
+          <div className="w-12 h-12 rounded-xl bg-[#2D5A27]/8 flex items-center justify-center transition-colors duration-300 group-hover:bg-[#2D5A27]/12">
+            <IconComponent className="w-6 h-6 text-[#2D5A27]" aria-hidden="true" />
+          </div>
+
+          <h3 className="text-lg sm:text-xl font-semibold text-[#1A1A1A] leading-snug">{title}</h3>
+
+          <p className="text-sm sm:text-[15px] text-neutral-500 leading-relaxed">{description}</p>
         </div>
 
-        <h3 className="text-lg sm:text-xl font-semibold text-[#1A1A1A] leading-snug">{title}</h3>
-
-        <p className="text-sm sm:text-[15px] text-neutral-500 leading-relaxed">{description}</p>
-
-        <div className="mt-auto pt-4 flex items-center justify-between border-t border-neutral-100">
+        <div className="pt-4 flex items-center justify-between border-t border-neutral-100">
           <p className="text-base sm:text-lg font-bold text-[#2D5A27]">{price}</p>
           <a
             href="#contact"
