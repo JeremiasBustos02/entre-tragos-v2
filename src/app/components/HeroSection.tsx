@@ -37,7 +37,7 @@ export default function HeroSection() {
         </p>
 
         <a
-          href="#cotizar"
+          href="#contact"
           className="mt-8 inline-flex items-center gap-1.5 bg-[#8B5A2B] text-white rounded-full px-6 py-2.5 text-sm font-medium hover:bg-[#744a22] transition-colors focus-visible:ring-2 focus-visible:ring-[#8B5A2B] focus-visible:outline-none"
         >
           Cotiza tu evento

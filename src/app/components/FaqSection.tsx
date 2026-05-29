@@ -92,7 +92,7 @@ export default function FaqSection() {
         <p className="text-center text-neutral-500 text-sm mt-10">
           ¿No encuentras lo que buscas?{' '}
           <a
-            href="#cotizar"
+            href="#contact"
             className="text-[#2D5A27] font-medium hover:underline"
           >
             Contáctanos

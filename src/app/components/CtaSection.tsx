@@ -25,7 +25,7 @@ export default function CtaSection() {
         </p>
 
         <a
-          href="#cotizar"
+          href="#contact"
           className="mt-2 inline-flex items-center gap-2 bg-white text-[#2D5A27] rounded-full px-8 py-4 text-base font-semibold hover:bg-neutral-100 transition-colors shadow-xl focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none"
         >
           Cotiza Ahora

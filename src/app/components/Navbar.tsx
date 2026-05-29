@@ -45,7 +45,7 @@ export default function Navbar() {
 
           <div className="flex items-center gap-2">
             <a
-              href="#cotizar"
+              href="#contact"
               className="hidden md:inline-flex items-center gap-1.5 bg-[#2D5A27] text-white rounded-full px-4 py-2 text-sm font-medium hover:bg-[#244a1f] transition-colors focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:outline-none"
             >
               Cotizar Evento
@@ -88,7 +88,7 @@ export default function Navbar() {
               ))}
               <hr className="border-neutral-200 my-1" />
               <a
-                href="#cotizar"
+                href="#contact"
                 role="menuitem"
                 className="flex items-center justify-center gap-1.5 bg-[#2D5A27] text-white rounded-full px-4 py-2.5 text-sm font-medium hover:bg-[#244a1f] transition-colors focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:outline-none"
                 onClick={closeMenu}

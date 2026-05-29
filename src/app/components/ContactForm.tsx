@@ -8,7 +8,7 @@ import CustomSelect from './CustomSelect';
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
 
 const INPUT_CLASSES =
-  'bg-[#F4F1EB] rounded-2xl px-4 py-3 w-full focus:ring-2 focus:ring-[#2D5A27]/50 focus:outline-none text-sm text-[#1A1A1A]';
+  'bg-white border border-neutral-200 rounded-2xl px-4 py-3.5 w-full text-sm text-[#1A1A1A] focus:ring-2 focus:ring-[#2D5A27]/20 focus:border-[#2D5A27] focus:outline-none transition-colors';
 
 const INITIAL_FORM_STATE: FormState = {
   name: '',
@@ -87,10 +87,10 @@ export default function ContactForm() {
   if (isSuccess) {
     return (
       <section
-        id="cotizar"
-        className="py-24 bg-[#FDFBF7] max-w-4xl mx-auto px-4 scroll-mt-24"
+        id="contact"
+        className="py-20 bg-[#FDFBF7] max-w-4xl mx-auto px-4 scroll-mt-24"
       >
-        <div className="bg-white rounded-3xl shadow-xl p-6 sm:p-10 text-center">
+        <div className="bg-white rounded-3xl shadow-sm border border-neutral-100 p-6 sm:p-10 text-center">
           <CheckCircle2
             className="w-14 h-14 text-[#2D5A27] mx-auto mb-5"
             aria-hidden="true"
@@ -115,44 +115,34 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="cotizar" className="py-24 bg-[#FDFBF7] max-w-4xl mx-auto px-4 scroll-mt-24" aria-labelledby="cotizar-heading">
-      <div className="bg-white rounded-3xl shadow-xl p-6 sm:p-10">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-          {/* LEFT COLUMN: Text + WhatsApp */}
-          <div className="flex flex-col justify-between gap-8">
-            <div>
-              <h2
-                id="cotizar-heading"
-                className="text-3xl sm:text-4xl font-serif text-[#1A1A1A] leading-[1.15]"
-              >
-                Hagamos algo increíble
-              </h2>
-              <p className="text-neutral-600 mt-4 leading-relaxed">
-                Cuéntanos sobre tu evento y recibe una propuesta personalizada
-                en minutos.
-              </p>
-            </div>
-
-            <div>
-              <p className="text-sm text-neutral-500 mb-3">
-                ¿Prefieres hablar ahora?
-              </p>
-              <button
-                type="button"
-                onClick={handleWhatsAppOpen}
-                className="w-full bg-[#25D366] text-[#1A1A1A] rounded-full py-4 flex items-center justify-center gap-2 text-base font-medium hover:bg-[#1fb855] transition-colors focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:outline-none"
-              >
-                <MessageCircle className="w-5 h-5" aria-hidden="true" />
-                Consultar por WhatsApp
-              </button>
-            </div>
+    <section id="contact" className="py-20 px-4 bg-[#FDFBF7] scroll-mt-24">
+      <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        {/* LEFT COLUMN: Copy + WhatsApp */}
+        <div className="lg:col-span-5 lg:top-8 flex flex-col gap-6">
+          <div>
+            <h2 className="text-4xl font-serif text-[#1A1A1A] leading-tight">
+              Hagamos algo increíble en tu evento.
+            </h2>
+            <p className="mt-4 text-neutral-600 leading-relaxed">
+              Cotiza al instante por correo o resuelve tus dudas directamente por WhatsApp.
+            </p>
           </div>
+          <button
+            type="button"
+            onClick={handleWhatsAppOpen}
+            className="w-full sm:w-auto bg-[#25D366] text-[#1A1A1A] rounded-full px-8 py-4 inline-flex items-center justify-center gap-2 text-base font-medium hover:bg-[#1fb855] transition-colors focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:outline-none"
+          >
+            <MessageCircle className="w-5 h-5" aria-hidden="true" />
+            Hablemos por WhatsApp ahora
+          </button>
+        </div>
 
-          {/* RIGHT COLUMN: Form */}
+        {/* RIGHT COLUMN: Compact Form */}
+        <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-neutral-100">
           <form onSubmit={handleSubmit} noValidate aria-busy={isSubmitting}>
-            <div className="flex flex-col gap-5">
-              <label className="flex flex-col gap-1.5 text-sm font-medium text-neutral-700">
-                Nombre
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <label className="flex flex-col gap-1.5 text-sm font-medium text-neutral-700 sm:col-span-2">
+                Nombre Completo
                 <input
                   type="text"
                   name="name"
@@ -199,14 +189,6 @@ export default function ContactForm() {
                 />
               </label>
 
-              <CustomSelect
-                options={BAR_TYPES}
-                value={formData.barType}
-                onChange={handleBarTypeChange}
-                label="Tipo de Barra"
-                name="barType"
-              />
-
               <label className="flex flex-col gap-1.5 text-sm font-medium text-neutral-700">
                 Cantidad de Invitados
                 <input
@@ -220,14 +202,24 @@ export default function ContactForm() {
                 />
               </label>
 
+              <div className="sm:col-span-2">
+                <CustomSelect
+                  options={BAR_TYPES}
+                  value={formData.barType}
+                  onChange={handleBarTypeChange}
+                  label="Tipo de Barra"
+                  name="barType"
+                />
+              </div>
+
               {submitError && (
-                <p className="text-red-600 text-sm">{submitError}</p>
+                <p className="sm:col-span-2 text-red-600 text-sm">{submitError}</p>
               )}
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-[#2D5A27] text-white rounded-full py-4 flex items-center justify-center gap-2 text-sm font-medium hover:bg-[#244a1f] transition-colors disabled:opacity-70 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:outline-none"
+                className="sm:col-span-2 w-full bg-[#2D5A27] text-white rounded-full py-4 flex items-center justify-center gap-2 text-sm font-medium hover:bg-[#244a1f] transition-colors disabled:opacity-70 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:outline-none"
               >
                 {isSubmitting ? (
                   <>

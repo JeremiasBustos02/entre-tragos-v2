@@ -76,11 +76,11 @@ export default function CustomSelect({
           tabIndex={0}
           onClick={toggle}
           onKeyDown={handleKeyDown}
-          className="bg-[#F4F1EB] rounded-2xl px-4 py-3 w-full text-sm text-[#1A1A1A] flex items-center justify-between cursor-pointer focus-visible:ring-2 focus-visible:ring-[#2D5A27]/50 focus-visible:outline-none"
+          className="bg-white border border-neutral-200 rounded-2xl px-4 py-3.5 w-full text-sm text-[#1A1A1A] flex items-center justify-between cursor-pointer focus:ring-2 focus:ring-[#2D5A27]/20 focus:border-[#2D5A27] focus:outline-none transition-colors"
         >
           <span className={value ? '' : 'text-neutral-400'}>{selectedLabel || 'Seleccionar'}</span>
           <ChevronDown
-            className={`w-4 h-4 text-neutral-500 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+             className={`w-4 h-4 text-neutral-500 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
             aria-hidden="true"
           />
         </div>
@@ -89,7 +89,7 @@ export default function CustomSelect({
           <ul
             id={`${name}-listbox`}
             role="listbox"
-            className="absolute top-full mt-1 left-0 right-0 bg-white rounded-2xl shadow-lg border border-neutral-200 py-1 z-10 overflow-hidden"
+            className="absolute z-30 mt-2 w-full bg-white border border-neutral-100 rounded-2xl shadow-lg overflow-hidden"
           >
             {options.map((opt) => (
               <li
@@ -98,10 +98,10 @@ export default function CustomSelect({
                 aria-selected={opt.value === value}
                 onClick={() => selectOption(opt.value)}
                 onKeyDown={() => {}}
-                className={`px-4 py-2.5 text-sm cursor-pointer transition-colors ${
+                className={`px-4 py-3 text-sm cursor-pointer transition-colors ${
                   opt.value === value
-                    ? 'text-[#2D5A27] font-semibold bg-[#F4F1EB]'
-                    : 'text-[#1A1A1A] hover:bg-[#F4F1EB]'
+                    ? 'text-[#2D5A27] font-semibold bg-[#2D5A27]/5'
+                    : 'text-[#1A1A1A] hover:bg-neutral-50'
                 }`}
               >
                 {opt.label}
