@@ -39,10 +39,10 @@ export default function FaqSection() {
   return (
     <section
       id="faq"
-      className="py-20 sm:py-24 bg-white scroll-mt-24 rounded-3xl"
+      className="py-20  sm:py-14 scroll-mt-24 rounded-3xl"
       aria-labelledby="faq-heading"
     >
-      <div className="max-w-3xl mx-auto px-4">
+      <div className="max-w-3xl mx-auto px-4 ">
         <h2
           id="faq-heading"
           className="text-center text-3xl sm:text-4xl font-serif text-[#1A1A1A] mb-10"
@@ -50,7 +50,7 @@ export default function FaqSection() {
           Preguntas Frecuentes
         </h2>
 
-        <div className="divide-y divide-neutral-100">
+        <div className="divide-y divide-neutral-200">
           {FAQ_DATA.map((item, index) => {
             const isOpen = openIndex === index;
             const contentId = `faq-answer-${index}`;
@@ -62,7 +62,7 @@ export default function FaqSection() {
                   onClick={() => toggle(index)}
                   aria-expanded={isOpen}
                   aria-controls={contentId}
-                  className="w-full flex items-center justify-between gap-4 py-4 text-left text-base font-medium text-[#1A1A1A] hover:bg-[#FDFBF7] -mx-4 px-4 rounded-lg transition-colors focus-visible:ring-2 focus-visible:ring-[#2D5A27]/50 focus-visible:outline-none"
+                  className="cursor-pointer w-full flex items-center justify-between gap-4 py-4 text-left text-base font-medium text-[#1A1A1A] hover:bg-[#FDFBF7] -mx-4 px-4 rounded-lg transition-colors focus-visible:ring-2 focus-visible:ring-[#2D5A27]/50 focus-visible:outline-none"
                 >
                   <span>{item.question}</span>
                   <ChevronDown

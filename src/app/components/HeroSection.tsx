@@ -4,7 +4,7 @@ export default function HeroSection() {
   return (
     <section
       id="inicio"
-      className="relative w-full min-h-screen overflow-hidden bg-[#EAE7E0] rounded-3xl flex flex-col items-center justify-center scroll-mt-24"
+      className="relative w-full min-h-screen flex flex-col items-center justify-center pb-16"
     >
       <div
         className="absolute inset-0 w-full h-full object-cover pointer-events-none bg-gradient-to-br from-[#8B5A2B]/20 via-[#EAE7E0] to-[#2D5A27]/10"

@@ -1,4 +1,5 @@
 import AboutSection from './app/components/AboutSection';
+import CocktailShowcase from './app/components/CocktailShowcase';
 import ContactForm from './app/components/ContactForm';
 import CtaSection from './app/components/CtaSection';
 import FaqSection from './app/components/FaqSection';
@@ -18,6 +19,7 @@ function App() {
         <div className="flex justify-center px-3 sm:px-4 pb-12 sm:pb-16">
           <ServicesTray />
         </div>
+        <CocktailShowcase />
         <AboutSection />
         <GallerySection />
         <CtaSection />

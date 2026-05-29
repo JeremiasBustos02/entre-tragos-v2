@@ -116,7 +116,7 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="contact" className="py-20 px-4 bg-[#FDFBF7] scroll-mt-24">
+    <section id="contact" className="py-10 px-4 bg-[#FDFBF7] scroll-mt-24">
       <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         {/* LEFT COLUMN: Copy + WhatsApp */}
         <div className="lg:col-span-5 lg:top-8 flex flex-col gap-6">
@@ -131,7 +131,7 @@ export default function ContactForm() {
           <button
             type="button"
             onClick={handleWhatsAppOpen}
-            className="w-full sm:w-auto bg-[#25D366] text-[#1A1A1A] rounded-full px-8 py-4 inline-flex items-center justify-center gap-2 text-base font-medium hover:bg-[#1fb855] transition-colors focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:outline-none"
+            className="cursor-pointer w-full sm:w-auto bg-[#25D366] text-white rounded-full px-8 py-4 inline-flex items-center justify-center gap-2 text-base font-medium hover:bg-[#1fb855] transition-colors focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:outline-none"
           >
             <WhatsAppIcon className="w-5 h-5" aria-hidden="true" />
             Hablemos por WhatsApp ahora
@@ -220,7 +220,7 @@ export default function ContactForm() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="sm:col-span-2 w-full bg-[#2D5A27] text-white rounded-full py-4 flex items-center justify-center gap-2 text-sm font-medium hover:bg-[#244a1f] transition-colors disabled:opacity-70 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:outline-none"
+                className="cursor-pointer sm:col-span-2 w-full bg-[#2D5A27] text-white rounded-full py-4 flex items-center justify-center gap-2 text-sm font-medium hover:bg-[#244a1f] transition-colors disabled:opacity-70 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:outline-none"
               >
                 {isSubmitting ? (
                   <>

@@ -15,7 +15,7 @@ export default function ServiceCard({ title, description, price, iconType, tag }
   return (
     <article className="bg-white rounded-2xl p-5 shadow-sm border border-neutral-100 flex flex-col gap-3 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 cursor-default">
       {tag && (
-        <span className="self-start bg-[#8B5A2B]/10 text-[#8B5A2B] text-[11px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full">
+        <span className="self-end bg-[#8B5A2B]/10 text-[#8B5A2B] text-[11px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full">
           {tag}
         </span>
       )}
