@@ -11,9 +11,9 @@ import ServicesTray from './app/components/ServicesTray';
 
 function App() {
   return (
-    <div className="min-h-screen w-full bg-[#FDFBF7] p-3 sm:p-4 font-sans">
+    <div className="relative min-h-screen w-full bg-[#FDFBF7] p-3 sm:p-4 font-sans">
       <Navbar />
-      <main className="pt-20">
+      <main>
         <HeroSection />
         <div className="flex justify-center px-3 sm:px-4 pb-12 sm:pb-16">
           <ServicesTray />

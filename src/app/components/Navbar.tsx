@@ -21,9 +21,8 @@ export default function Navbar() {
   }, [isMenuOpen]);
 
   return (
-    <header className="fixed top-2 left-4 right-4 z-50 flex justify-center">
-      <div className="w-full max-w-[760px]">
-        <nav className="bg-white/90 backdrop-blur-md rounded-full shadow-sm border border-neutral-200 px-4 py-2 w-full flex justify-between items-center">
+    <header className="fixed absolute top-6 left-1/2 -translate-x-1/2 z-50 w-[calc(100vw-2rem)] max-w-[760px]">
+      <nav className="bg-white/90 backdrop-blur-md rounded-full shadow-sm border border-neutral-200 px-4 py-2 w-full flex justify-between items-center">
           <a
             href="#inicio"
             aria-label="Entre Tragos - Inicio"
@@ -100,7 +99,6 @@ export default function Navbar() {
             </div>
           </div>
         )}
-      </div>
     </header>
   );
 }

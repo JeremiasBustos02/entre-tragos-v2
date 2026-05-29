@@ -4,8 +4,7 @@ export default function HeroSection() {
   return (
     <section
       id="inicio"
-      className="relative w-full h-[calc(100vh-80px)] overflow-hidden bg-[#EAE7E0] rounded-3xl flex flex-col items-center justify-center scroll-mt-24"
-      aria-labelledby="hero-heading"
+      className="relative w-full min-h-screen overflow-hidden bg-[#EAE7E0] rounded-3xl flex flex-col items-center justify-center scroll-mt-24"
     >
       <div
         className="absolute inset-0 w-full h-full object-cover pointer-events-none bg-gradient-to-br from-[#8B5A2B]/20 via-[#EAE7E0] to-[#2D5A27]/10"
@@ -15,7 +14,7 @@ export default function HeroSection() {
 
       <div className="absolute inset-0 bg-[#FDFBF7]/60 z-0" />
 
-      <div className="relative z-10 flex flex-col items-center text-center px-4">
+      <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 h-full">
         <div className="inline-flex items-center gap-2 bg-white rounded-full px-4 py-1.5 shadow-sm text-[13px] text-neutral-700">
           <span className="w-2 h-2 rounded-full bg-[#2D5A27]" aria-hidden="true" />
           Coctelería Premium
