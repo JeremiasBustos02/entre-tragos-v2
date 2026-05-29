@@ -25,7 +25,7 @@ const SERVICES: ServiceCardProps[] = [
 
 export default function ServicesTray() {
   return (
-    <section className="bg-[#F4F1EB] rounded-3xl p-4 sm:p-6 w-full max-w-[880px] mx-auto shadow-xl relative z-20 mt-[-4rem]">
+    <section id="servicios" className="bg-[#F4F1EB] rounded-3xl p-4 sm:p-6 w-full max-w-[880px] mx-auto shadow-xl relative z-20 mt-[-4rem] scroll-mt-24">
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {SERVICES.map((service) => (
           <ServiceCard key={service.iconType} {...service} />

@@ -84,8 +84,8 @@ export default function ContactForm() {
   if (isSuccess) {
     return (
       <section
-        id="contacto"
-        className="py-24 bg-[#FDFBF7] max-w-4xl mx-auto px-4"
+        id="cotizar"
+        className="py-24 bg-[#FDFBF7] max-w-4xl mx-auto px-4 scroll-mt-24"
       >
         <div className="bg-white rounded-3xl shadow-xl p-6 sm:p-10 text-center">
           <CheckCircle2
@@ -112,7 +112,7 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="contacto" className="py-24 bg-[#FDFBF7] max-w-4xl mx-auto px-4">
+    <section id="cotizar" className="py-24 bg-[#FDFBF7] max-w-4xl mx-auto px-4 scroll-mt-24">
       <div className="bg-white rounded-3xl shadow-xl p-6 sm:p-10">
         <form onSubmit={handleSubmit} noValidate aria-busy={isSubmitting}>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

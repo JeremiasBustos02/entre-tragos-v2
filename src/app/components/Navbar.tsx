@@ -21,8 +21,8 @@ export default function Navbar() {
   }, [isMenuOpen]);
 
   return (
-    <header className="relative flex justify-center pt-4 sm:pt-6 px-3 sm:px-4">
-      <div className="relative w-full max-w-[760px]">
+    <header className="fixed top-2 left-4 right-4 z-50 flex justify-center">
+      <div className="w-full max-w-[760px]">
         <nav className="bg-white/90 backdrop-blur-md rounded-full shadow-sm border border-neutral-200 px-4 py-2 w-full flex justify-between items-center">
           <a
             href="#inicio"
