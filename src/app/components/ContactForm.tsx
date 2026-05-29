@@ -3,6 +3,7 @@ import { CheckCircle2, Loader2, MessageCircle } from 'lucide-react';
 
 import { BAR_TYPES } from '../types/contact';
 import type { FormState } from '../types/contact';
+import CustomSelect from './CustomSelect';
 
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
 
@@ -24,11 +25,13 @@ export default function ContactForm() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const handleInputChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
-  ) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleBarTypeChange = (value: string) => {
+    setFormData((prev) => ({ ...prev, barType: value as FormState['barType'] }));
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -112,98 +115,119 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="cotizar" className="py-24 bg-[#FDFBF7] max-w-4xl mx-auto px-4 scroll-mt-24">
+    <section id="cotizar" className="py-24 bg-[#FDFBF7] max-w-4xl mx-auto px-4 scroll-mt-24" aria-labelledby="cotizar-heading">
       <div className="bg-white rounded-3xl shadow-xl p-6 sm:p-10">
-        <form onSubmit={handleSubmit} noValidate aria-busy={isSubmitting}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <label className="flex flex-col gap-1.5 text-sm font-medium text-neutral-700">
-              Nombre
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                required
-                className={INPUT_CLASSES}
-              />
-            </label>
-
-            <label className="flex flex-col gap-1.5 text-sm font-medium text-neutral-700">
-              Correo Electrónico
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                required
-                className={INPUT_CLASSES}
-              />
-            </label>
-
-            <label className="flex flex-col gap-1.5 text-sm font-medium text-neutral-700">
-              Teléfono
-              <input
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleInputChange}
-                required
-                className={INPUT_CLASSES}
-              />
-            </label>
-
-            <label className="flex flex-col gap-1.5 text-sm font-medium text-neutral-700">
-              Fecha del Evento
-              <input
-                type="date"
-                name="eventDate"
-                value={formData.eventDate}
-                onChange={handleInputChange}
-                required
-                className={INPUT_CLASSES}
-              />
-            </label>
-
-            <label className="flex flex-col gap-1.5 text-sm font-medium text-neutral-700">
-              Tipo de Barra
-              <select
-                name="barType"
-                value={formData.barType}
-                onChange={handleInputChange}
-                className={`${INPUT_CLASSES} appearance-none cursor-pointer`}
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+          {/* LEFT COLUMN: Text + WhatsApp */}
+          <div className="flex flex-col justify-between gap-8">
+            <div>
+              <h2
+                id="cotizar-heading"
+                className="text-3xl sm:text-4xl font-serif text-[#1A1A1A] leading-[1.15]"
               >
-                {BAR_TYPES.map((bar) => (
-                  <option key={bar.value} value={bar.value}>
-                    {bar.label}
-                  </option>
-                ))}
-              </select>
-            </label>
-
-            <label className="flex flex-col gap-1.5 text-sm font-medium text-neutral-700">
-              Cantidad de Invitados
-              <input
-                type="number"
-                name="guestCount"
-                value={formData.guestCount}
-                onChange={handleInputChange}
-                required
-                min="1"
-                className={INPUT_CLASSES}
-              />
-            </label>
-
-            {submitError && (
-              <p className="col-span-1 sm:col-span-2 text-red-600 text-sm">
-                {submitError}
+                Hagamos algo increíble
+              </h2>
+              <p className="text-neutral-600 mt-4 leading-relaxed">
+                Cuéntanos sobre tu evento y recibe una propuesta personalizada
+                en minutos.
               </p>
-            )}
+            </div>
 
-            <div className="col-span-1 sm:col-span-2 flex flex-col sm:flex-row gap-3">
+            <div>
+              <p className="text-sm text-neutral-500 mb-3">
+                ¿Prefieres hablar ahora?
+              </p>
+              <button
+                type="button"
+                onClick={handleWhatsAppOpen}
+                className="w-full bg-[#25D366] text-[#1A1A1A] rounded-full py-4 flex items-center justify-center gap-2 text-base font-medium hover:bg-[#1fb855] transition-colors focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:outline-none"
+              >
+                <MessageCircle className="w-5 h-5" aria-hidden="true" />
+                Consultar por WhatsApp
+              </button>
+            </div>
+          </div>
+
+          {/* RIGHT COLUMN: Form */}
+          <form onSubmit={handleSubmit} noValidate aria-busy={isSubmitting}>
+            <div className="flex flex-col gap-5">
+              <label className="flex flex-col gap-1.5 text-sm font-medium text-neutral-700">
+                Nombre
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                  className={INPUT_CLASSES}
+                />
+              </label>
+
+              <label className="flex flex-col gap-1.5 text-sm font-medium text-neutral-700">
+                Correo Electrónico
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                  className={INPUT_CLASSES}
+                />
+              </label>
+
+              <label className="flex flex-col gap-1.5 text-sm font-medium text-neutral-700">
+                Teléfono
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  required
+                  className={INPUT_CLASSES}
+                />
+              </label>
+
+              <label className="flex flex-col gap-1.5 text-sm font-medium text-neutral-700">
+                Fecha del Evento
+                <input
+                  type="date"
+                  name="eventDate"
+                  value={formData.eventDate}
+                  onChange={handleInputChange}
+                  required
+                  className={INPUT_CLASSES}
+                />
+              </label>
+
+              <CustomSelect
+                options={BAR_TYPES}
+                value={formData.barType}
+                onChange={handleBarTypeChange}
+                label="Tipo de Barra"
+                name="barType"
+              />
+
+              <label className="flex flex-col gap-1.5 text-sm font-medium text-neutral-700">
+                Cantidad de Invitados
+                <input
+                  type="number"
+                  name="guestCount"
+                  value={formData.guestCount}
+                  onChange={handleInputChange}
+                  required
+                  min="1"
+                  className={INPUT_CLASSES}
+                />
+              </label>
+
+              {submitError && (
+                <p className="text-red-600 text-sm">{submitError}</p>
+              )}
+
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="flex-1 bg-[#2D5A27] text-white rounded-full py-4 flex items-center justify-center gap-2 text-sm font-medium hover:bg-[#244a1f] transition-colors disabled:opacity-70 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:outline-none"
+                className="w-full bg-[#2D5A27] text-white rounded-full py-4 flex items-center justify-center gap-2 text-sm font-medium hover:bg-[#244a1f] transition-colors disabled:opacity-70 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:outline-none"
               >
                 {isSubmitting ? (
                   <>
@@ -217,18 +241,9 @@ export default function ContactForm() {
                   'Enviar Cotización'
                 )}
               </button>
-
-              <button
-                type="button"
-                onClick={handleWhatsAppOpen}
-                className="flex-1 bg-[#25D366] text-[#1A1A1A] rounded-full py-4 flex items-center justify-center gap-2 text-sm font-medium hover:bg-[#1fb855] transition-colors focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:outline-none"
-              >
-                <MessageCircle className="w-5 h-5" aria-hidden="true" />
-                Consultar por WhatsApp
-              </button>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </section>
   );
