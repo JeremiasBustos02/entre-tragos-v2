@@ -131,7 +131,7 @@ export default function ContactForm() {
           <button
             type="button"
             onClick={handleReset}
-            className="bg-[#2D5A27] text-white rounded-full px-8 py-3 text-sm font-medium hover:bg-[#244a1f] transition-colors"
+            className="bg-[#2D5A27] text-white rounded-full px-8 py-3 text-sm font-medium shadow-[0_4px_14px_rgba(45,90,39,0.2)] transition-all duration-300 ease-in-out hover:bg-[#244a1f] hover:shadow-[0_8px_24px_rgba(45,90,39,0.3)] hover:scale-[1.02] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:outline-none"
           >
             Enviar otra solicitud
           </button>
@@ -158,7 +158,7 @@ export default function ContactForm() {
           </div>
 
           <div className="flex flex-col gap-5">
-            <a href="mailto:hola@entrefragos.com" className="group flex items-start gap-4">
+            <a href="mailto:hola@entrefragos.com" className="group flex items-start gap-4 rounded-xl px-2 py-2 -mx-2 transition-all duration-200 hover:bg-[#2D5A27]/5 focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:outline-none">
               <div className="w-10 h-10 rounded-xl bg-[#2D5A27]/8 flex items-center justify-center shrink-0 transition-colors group-hover:bg-[#2D5A27]/12">
                 <Mail className="w-5 h-5 text-[#2D5A27]" aria-hidden="true" />
               </div>
@@ -168,7 +168,7 @@ export default function ContactForm() {
               </div>
             </a>
 
-            <a href="tel:+521234567890" className="group flex items-start gap-4">
+            <a href="tel:+521234567890" className="group flex items-start gap-4 rounded-xl px-2 py-2 -mx-2 transition-all duration-200 hover:bg-[#2D5A27]/5 focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:outline-none">
               <div className="w-10 h-10 rounded-xl bg-[#2D5A27]/8 flex items-center justify-center shrink-0 transition-colors group-hover:bg-[#2D5A27]/12">
                 <Phone className="w-5 h-5 text-[#2D5A27]" aria-hidden="true" />
               </div>

@@ -134,7 +134,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="p-2 text-neutral-400 hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:outline-none rounded-md"
+                   className="p-2 text-neutral-400 hover:text-white hover:scale-105 active:scale-95 transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1A1A1A] focus-visible:outline-none rounded-md"
                 >
                   <Icon className="w-5 h-5" aria-hidden="true" />
                 </a>
@@ -146,7 +146,7 @@ export default function Footer() {
 
       <div className="max-w-6xl mx-auto border-t border-neutral-800 pt-8 text-xs text-neutral-400 text-center">
         &copy; {new Date().getFullYear()} Entre Tragos. Todos los derechos
-        reservados | Diseñado por <a href="https://buveg.com.ar" target="_blank" rel="noopener noreferrer" className="text-[#2D5A27] hover:underline">buveg.com.ar</a>
+        reservados | Diseñado por <a href="https://buveg.com.ar" target="_blank" rel="noopener noreferrer" className="text-[#2D5A27] hover:underline focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1A1A1A] focus-visible:outline-none rounded-sm transition-all duration-200">buveg.com.ar</a>
       </div>
     </footer>
   );

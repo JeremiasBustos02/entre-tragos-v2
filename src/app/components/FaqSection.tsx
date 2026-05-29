@@ -74,7 +74,7 @@ export default function FaqSection() {
                   onClick={() => toggle(index)}
                   aria-expanded={isOpen}
                   aria-controls={contentId}
-                  className="cursor-pointer w-full flex items-center justify-between gap-4 py-5 px-5 sm:px-6 text-left transition-colors focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:outline-none"
+                  className="cursor-pointer w-full flex items-center justify-between gap-4 py-5 px-5 sm:px-6 text-left transition-all duration-200 hover:bg-[#FDFBF7] focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:outline-none"
                 >
                   <span
                     className={`text-base sm:text-lg font-medium transition-colors duration-200 ${

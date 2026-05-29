@@ -38,7 +38,7 @@ export default function HeroSection() {
 
         <a
           href="#contact"
-          className="mt-8 inline-flex items-center gap-1.5 bg-[#8B5A2B] text-white rounded-full px-6 py-2.5 text-sm font-medium hover:bg-[#744a22] transition-colors focus-visible:ring-2 focus-visible:ring-[#8B5A2B] focus-visible:outline-none"
+          className="mt-8 inline-flex items-center gap-1.5 bg-[#8B5A2B] text-white rounded-full px-6 py-2.5 text-sm font-medium shadow-[0_4px_14px_rgba(139,90,43,0.2)] transition-all duration-300 ease-in-out hover:bg-[#744a22] hover:shadow-[0_8px_24px_rgba(139,90,43,0.3)] hover:scale-[1.02] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#8B5A2B] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FDFBF7] focus-visible:outline-none"
         >
           Cotiza tu evento
           <ChevronRight className="w-4 h-4" />

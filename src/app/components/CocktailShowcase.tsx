@@ -123,10 +123,10 @@ export default function CocktailShowcase() {
             role="tab"
             aria-selected={activeCategory === cat.id}
             onClick={() => setActiveCategory(cat.id)}
-            className={`cursor-pointer px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:outline-none ${
+            className={`cursor-pointer px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-300 ease-in-out active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:outline-none ${
               activeCategory === cat.id
-                ? 'bg-[#2D5A27] text-white shadow-md'
-                : 'bg-white text-neutral-600 hover:bg-neutral-100 border border-neutral-200'
+                ? 'bg-[#2D5A27] text-white shadow-[0_4px_14px_rgba(45,90,39,0.2)]'
+                : 'bg-white text-neutral-600 hover:bg-neutral-100 hover:shadow-sm border border-neutral-200'
             }`}
           >
             {cat.label}
