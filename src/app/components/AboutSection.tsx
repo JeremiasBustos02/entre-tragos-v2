@@ -12,7 +12,7 @@ const FEATURES: Feature[] = [
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-24 px-4 bg-[#FDFBF7] scroll-mt-24" aria-labelledby="about-heading">
+    <section id="about" className="py-24 px-4 bg-[#FDFBF7] scroll-mt-24 rounded-3xl" aria-labelledby="about-heading">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto items-center">
         <div className="relative w-full h-[500px]">
           <div

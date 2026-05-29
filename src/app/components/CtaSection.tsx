@@ -2,7 +2,7 @@ import { ChevronRight } from 'lucide-react';
 
 export default function CtaSection() {
   return (
-    <section className="relative overflow-hidden bg-[#2D5A27] py-20 sm:py-28 px-4">
+    <section className="relative overflow-hidden bg-[#2D5A27] py-20 sm:py-12 rounded-3xl">
       <div
         className="absolute inset-0 opacity-[0.07]"
         style={{

@@ -117,7 +117,7 @@ export default function ContactForm() {
   return (
     <section id="cotizar" className="py-24 bg-[#FDFBF7] max-w-4xl mx-auto px-4 scroll-mt-24" aria-labelledby="cotizar-heading">
       <div className="bg-white rounded-3xl shadow-xl p-6 sm:p-10">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           {/* LEFT COLUMN: Text + WhatsApp */}
           <div className="flex flex-col justify-between gap-8">
             <div>

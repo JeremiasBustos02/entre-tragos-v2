@@ -39,7 +39,7 @@ export default function FaqSection() {
   return (
     <section
       id="faq"
-      className="py-20 sm:py-24 bg-white scroll-mt-24"
+      className="py-20 sm:py-24 bg-white scroll-mt-24 rounded-3xl"
       aria-labelledby="faq-heading"
     >
       <div className="max-w-3xl mx-auto px-4">
