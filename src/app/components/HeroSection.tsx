@@ -44,7 +44,7 @@ export default function HeroSection() {
 
         {/* Contenido */}
         <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 py-24 sm:py-32 h-full max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 shadow-[0_2px_12px_rgba(0,0,0,0.15)] border border-white/20 text-[13px] text-white/90">
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 shadow-[0_2px_12px_rgba(0,0,0,0.15)] border border-white/20 text-[13px] text-[#FEFEFE]">
             <span className="w-2 h-2 rounded-full bg-white animate-pulse" aria-hidden="true" />
             Coctelería Premium
           </div>
@@ -68,16 +68,14 @@ export default function HeroSection() {
           <div className="flex flex-col sm:flex-row items-center gap-4 mt-10">
             <a
               href="#contact"
-              className="group inline-flex items-center gap-2 bg-white text-[#4B4E32] rounded-full px-8 py-4 text-base font-semibold shadow-md transition-shadow duration-300 hover:shadow-lg hover:scale-[1.03] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#4B4E32] focus-visible:outline-none"
-            >
+              className="group inline-flex items-center gap-2 bg-white text-[#4B4E32] rounded-full px-8 py-4 text-base font-semibold shadow-md transition-all duration-300 hover:bg-[#4B4E32] hover:text-white hover:shadow-lg hover:scale-[1.03] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#4B4E32] focus-visible:outline-none"            >
               Cotizá Gratis
               <ChevronRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
 
             <a
               href="#servicios"
-              className="inline-flex items-center gap-2 border-2 border-white/30 text-white rounded-full px-8 py-4 text-base font-medium transition-all duration-300 ease-out hover:border-white/60 hover:bg-white/10 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#4B4E32] focus-visible:outline-none"
-            >
+              className="inline-flex items-center gap-2 border-2 border-white/30 text-white rounded-full px-8 py-4 text-base font-medium transition-all duration-300 ease-out hover:border-white hover:bg-white/20 hover:scale-[1.03] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#4B4E32] focus-visible:outline-none backdrop-blur-sm">
               Ver servicios
             </a>
           </div>

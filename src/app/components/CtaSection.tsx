@@ -57,14 +57,14 @@ export default function CtaSection() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-2">
           <a
             href="#contact"
-            className="group inline-flex items-center gap-2 bg-white text-[#4B4E32] rounded-full px-8 py-4 text-base font-semibold shadow-md transition-shadow duration-300 hover:shadow-lg hover:scale-[1.03] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#4B4E32] focus-visible:outline-none"
+              className="group inline-flex items-center gap-2 bg-white text-[#4B4E32] rounded-full px-8 py-4 text-base font-semibold shadow-md transition-all duration-300 hover:shadow-lg hover:scale-[1.03] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#4B4E32] focus-visible:outline-none"
           >
             Cotizá Gratis
           </a>
 
           <a
             href="#gallery"
-            className="inline-flex items-center gap-2 border-2 border-white/30 text-white rounded-full px-8 py-4 text-base font-medium backdrop-blur-sm transition-all duration-300 ease-out hover:border-white/60 hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#4B4E32] focus-visible:outline-none active:scale-[0.98]"
+              className="inline-flex items-center gap-2 border-2 border-white/30 text-white rounded-full px-8 py-4 text-base font-medium transition-all duration-300 ease-out hover:border-white hover:bg-white/20 hover:scale-[1.03] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#4B4E32] focus-visible:outline-none backdrop-blur-sm"
           >
             Mirá ejemplos
           </a>

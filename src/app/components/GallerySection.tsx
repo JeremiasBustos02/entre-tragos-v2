@@ -37,13 +37,15 @@ const GALLERY_ITEMS: GalleryItem[] = [
 export default function GallerySection() {
   return (
     <section id="galeria" className="py-16 px-4 bg-[#F9F7F4] scroll-mt-24 rounded-3xl" aria-labelledby="gallery-heading">
-      <div className="text-center mb-10">
-        <span className="text-xs sm:text-sm font-medium text-[#4B4139] uppercase tracking-[0.2em]">
+      
+      <div className="text-left mb-10 max-w-6xl mx-auto px-2">
+        <span className="text-xs sm:text-sm font-medium text-[#4B4139] uppercase tracking-[0.2em] block">
           Trabajos
         </span>
-        <h2 id="gallery-heading" className="text-5xl font-serif font-bold leading-tight mt-2 text-[#4B4139]">
+        <h2 id="gallery-heading" className="text-4xl sm:text-5xl font-serif font-bold leading-tight mt-2 text-[#4B4139]">
           Galería de Eventos
         </h2>
+        <span className="text-neutral-700 text-[15px] leading-relaxed">Momentos, detalles y la dedicación detrás de cada barra.</span>
       </div>
 
       <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
