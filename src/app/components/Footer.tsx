@@ -64,90 +64,95 @@ const CONTACT_INFO: ContactInfo[] = [
 
 export default function Footer() {
   return (
-    <footer
-      className="bg-[#4B4139] text-white pt-16 pb-8 px-12 rounded-t-3xl mt-2 relative z-20 "
-      role="contentinfo"
-    >
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8 mb-12">
-        <div className="flex flex-col gap-4">
-          <Leaf className="w-8 h-8 text-[#FEFEFE]" aria-hidden="true" />
-          <h3 className="text-lg font-semibold">Entre Tragos</h3>
-          <p className="text-sm text-[#FEFEFE] leading-relaxed">
-            Coctelería premium para eventos. Barras móviles de diseño con
-            ingredientes botánicos y bartenders profesionales.
-          </p>
-        </div>
+    // Agregamos este contenedor externo con md:p-4 para darle el margen flotante en desktop
+    <div className="w-full md:p-4 mt-2">
+      <footer
+        // Cambiamos rounded-t-3xl a rounded-none en mobile y md:rounded-3xl en desktop.
+        // El padding lateral pasa de px-12 rígido a px-6 en mobile y md:px-12 en desktop.
+        className="bg-[#4B4139] text-white pt-16 pb-8 px-6 md:px-12 rounded-none md:rounded-3xl relative z-20"
+        role="contentinfo"
+      >
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8 mb-12">
+          <div className="flex flex-col gap-4">
+            <Leaf className="w-8 h-8 text-[#FEFEFE]" aria-hidden="true" />
+            <h3 className="text-lg font-semibold">Entre Tragos</h3>
+            <p className="text-sm text-[#FEFEFE] leading-relaxed">
+              Coctelería premium para eventos. Barras móviles de diseño con
+              ingredientes botánicos y bartenders profesionales.
+            </p>
+          </div>
 
-        <div className="flex flex-col gap-4">
-          <h3 className="text-sm font-semibold text-[#FEFEFE] uppercase tracking-wider">
-            Navegación
-          </h3>
-          <ul className="flex flex-col gap-3">
-            {NAV_LINKS.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="block py-1 text-sm text-[#FEFEFE] hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-[#4B4E32] focus-visible:outline-none rounded-md"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="flex flex-col gap-4">
-          <h3 className="text-sm font-semibold text-[#FEFEFE] uppercase tracking-wider">
-            Contacto
-          </h3>
-          <ul className="flex flex-col gap-3">
-            {CONTACT_INFO.map((item) => (
-              <li key={item.label}>
-                {item.href ? (
+          <div className="flex flex-col gap-4">
+            <h3 className="text-sm font-semibold text-[#FEFEFE] uppercase tracking-wider">
+              Navegación
+            </h3>
+            <ul className="flex flex-col gap-3">
+              {NAV_LINKS.map((link) => (
+                <li key={link.href}>
                   <a
-                    href={item.href}
-                    className="text-sm text-[#FEFEFE] hover:text-white transition-colors"
+                    href={link.href}
+                    className="block py-1 text-sm text-[#FEFEFE] hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-[#4B4E32] focus-visible:outline-none rounded-md"
                   >
-                    {item.value}
+                    {link.label}
                   </a>
-                ) : (
-                  <span className="text-sm text-[#FEFEFE]">
-                    {item.value}
-                  </span>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        <div className="flex flex-col gap-4">
-          <h3 className="text-sm font-semibold text-[#FEFEFE] uppercase tracking-wider">
-            Síguenos
-          </h3>
-          <div className="flex gap-4">
-            {SOCIAL_LINKS.map((social) => {
-              const Icon = social.icon;
-              return (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.label}
-                   className=" p-2 text-[#FEFEFE] hover:text-white hover:scale-105 active:scale-95 transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#4B4E32] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1E120E] focus-visible:outline-none rounded-md"
-                >
-                  <Icon className="w-5 h-5" aria-hidden="true" />
-                </a>
-              );
-            })}
+          <div className="flex flex-col gap-4">
+            <h3 className="text-sm font-semibold text-[#FEFEFE] uppercase tracking-wider">
+              Contacto
+            </h3>
+            <ul className="flex flex-col gap-3">
+              {CONTACT_INFO.map((item) => (
+                <li key={item.label}>
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      className="text-sm text-[#FEFEFE] hover:text-white transition-colors"
+                    >
+                      {item.value}
+                    </a>
+                  ) : (
+                    <span className="text-sm text-[#FEFEFE]">
+                      {item.value}
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            <h3 className="text-sm font-semibold text-[#FEFEFE] uppercase tracking-wider">
+              Síguenos
+            </h3>
+            <div className="flex gap-4">
+              {SOCIAL_LINKS.map((social) => {
+                const Icon = social.icon;
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    className="p-2 text-[#FEFEFE] hover:text-white hover:scale-105 active:scale-95 transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#4B4E32] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1E120E] focus-visible:outline-none rounded-md"
+                  >
+                    <Icon className="w-5 h-5" aria-hidden="true" />
+                  </a>
+                );
+              })}
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="max-w-6xl mx-auto border-t border-neutral-100 pt-8 text-xs text-[#FEFEFE] text-center">
-        &copy; {new Date().getFullYear()} Entre Tragos. Todos los derechos
-        reservados | Diseñado por <a href="https://buveg.com.ar" target="_blank" rel="noopener noreferrer" className="text-[#fefefe] hover:underline focus-visible:ring-2 focus-visible:ring-[#4B4E32] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1E120E] focus-visible:outline-none rounded-sm transition-all duration-200">buveg.com.ar</a>
-      </div>
-    </footer>
+        <div className="max-w-6xl mx-auto border-t border-neutral-100 pt-8 text-xs text-[#FEFEFE] text-center">
+          &copy; {new Date().getFullYear()} Entre Tragos. Todos los derechos
+          reservados | Diseñado por <a href="https://buveg.com.ar" target="_blank" rel="noopener noreferrer" className="text-[#fefefe] hover:underline focus-visible:ring-2 focus-visible:ring-[#4B4E32] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1E120E] focus-visible:outline-none rounded-sm transition-all duration-200">buveg.com.ar</a>
+        </div>
+      </footer>
+    </div>
   );
 }
