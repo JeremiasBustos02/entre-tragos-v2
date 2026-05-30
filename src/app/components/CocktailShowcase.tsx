@@ -113,7 +113,7 @@ export default function CocktailShowcase() {
       </div>
 
       <div
-        className="flex justify-center gap-2 mb-10 px-4 hide-scrollbar"
+        className="flex flex-wrap justify-center gap-2 mb-10 px-4"
         role="tablist"
         aria-label="Filtrar por categoría"
       >
