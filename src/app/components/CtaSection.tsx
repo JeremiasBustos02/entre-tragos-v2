@@ -1,36 +1,74 @@
-import { ChevronRight } from 'lucide-react';
-
 export default function CtaSection() {
   return (
-    <section className="relative overflow-hidden bg-[#2D5A27] py-20 sm:py-12 rounded-3xl">
+    <section className="relative overflow-hidden py-24 sm:py-20 lg:py-28 rounded-3xl">
+      {/* Animated gradient background */}
       <div
-        className="absolute inset-0 opacity-[0.07]"
+        className="absolute inset-0"
         style={{
-          backgroundImage: `
-            linear-gradient(45deg, transparent 48%, rgba(255,255,255,0.12) 50%, transparent 52%),
-            linear-gradient(-45deg, transparent 48%, rgba(255,255,255,0.12) 50%, transparent 52%)
-          `,
-          backgroundSize: '60px 60px',
+          background: 'linear-gradient(135deg, #2D5A27, #4A7A3E, #1F3F1A, #2D5A27)',
+          backgroundSize: '200% 200%',
+          animation: 'gradient-shift 15s ease-in-out infinite',
         }}
         aria-hidden="true"
       />
 
-      <div className="relative z-10 max-w-3xl mx-auto text-center flex flex-col items-center gap-6">
-        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif text-white leading-[1.15]">
-          ¿Listo para hacer tu evento inolvidable?
+      {/* Floating animated blobs */}
+      <div
+        className="absolute w-72 h-72 rounded-full bg-white/[0.05] blur-3xl"
+        style={{
+          top: '10%',
+          left: '10%',
+          animation: 'float-cta 20s ease-in-out infinite',
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="absolute w-56 h-56 rounded-full bg-white/[0.04] blur-3xl"
+        style={{
+          bottom: '15%',
+          right: '15%',
+          animation: 'float-cta 15s ease-in-out infinite reverse',
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="absolute w-40 h-40 rounded-full bg-[#8B5A2B]/[0.06] blur-3xl"
+        style={{
+          top: '50%',
+          left: '50%',
+          animation: 'float-cta 18s ease-in-out infinite 2s',
+        }}
+        aria-hidden="true"
+      />
+
+      <div className="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center gap-5">
+        <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-white/90 text-xs sm:text-sm font-medium tracking-wide uppercase">
+          Reservá tu fecha
+        </span>
+
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-serif font-bold leading-[1.1] tracking-tight mt-2 mb-4 text-white">
+          ¿Listo para hacer tu evento <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/80">inolvidable</span>?
         </h2>
 
-        <p className="text-white/80 text-base sm:text-lg max-w-xl">
-          Cotiza tu barra personalizada y sorprende a tus invitados con una experiencia única.
+        <p className="text-white/70 text-base sm:text-lg max-w-2xl mx-auto">
+          Cotizá tu barra personalizada y sorprendé a tus invitados con una experiencia única.
         </p>
 
-        <a
-          href="#contact"
-          className="mt-2 inline-flex items-center gap-2 bg-white text-[#2D5A27] rounded-full px-8 py-4 text-base font-semibold hover:bg-neutral-100 transition-colors shadow-xl focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none"
-        >
-          Cotiza Ahora
-          <ChevronRight className="w-5 h-5" />
-        </a>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-2">
+          <a
+            href="#contact"
+            className="group inline-flex items-center gap-2 bg-white text-[#2D5A27] rounded-full px-8 py-4 text-base font-semibold shadow-md transition-shadow duration-300 hover:shadow-lg hover:scale-[1.03] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#2D5A27] focus-visible:outline-none"
+          >
+            Cotizá Gratis
+          </a>
+
+          <a
+            href="#gallery"
+            className="inline-flex items-center gap-2 border-2 border-white/30 text-white rounded-full px-8 py-4 text-base font-medium backdrop-blur-sm transition-all duration-300 ease-out hover:border-white/60 hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#2D5A27] focus-visible:outline-none active:scale-[0.98]"
+          >
+            Mirá ejemplos
+          </a>
+        </div>
       </div>
     </section>
   );

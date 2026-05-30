@@ -26,7 +26,7 @@ export default function Navbar() {
           <a
             href="#inicio"
             aria-label="Entre Tragos - Inicio"
-            className="focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:outline-none rounded-full flex flex-row items-center gap-2 text-sm font-medium text-[#1A1A1A]"
+            className="focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:outline-none rounded-full flex flex-row items-center gap-2 text-sm font-medium text-[#1A1A1A] transition-opacity duration-200 hover:opacity-80"
           >
             <Leaf className="w-7 h-7 sm:w-8 sm:h-8 text-[#2D5A27]" />
             <p className="font-medium font-bold">EntreTragos</p>
@@ -37,7 +37,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="hover:text-[#2D5A27] transition-colors focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:outline-none rounded-md"
+                className="hover:text-[#2D5A27] transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:outline-none rounded-md"
               >
                 {link.label}
               </a>
@@ -47,13 +47,13 @@ export default function Navbar() {
           <div className="flex items-center gap-2">
             <a
               href="#contact"
-              className="hidden md:inline-flex items-center gap-1.5 bg-[#2D5A27] text-white rounded-full px-4 py-2 text-sm font-medium hover:bg-[#244a1f] transition-colors focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:outline-none"
+              className="hidden md:inline-flex items-center gap-1.5 bg-[#2D5A27] text-white rounded-full px-4 py-2 text-sm font-medium shadow-[0_2px_6px_rgba(45,90,39,0.2)] transition-all duration-300 ease-in-out hover:bg-[#244a1f] hover:shadow-[0_8px_24px_rgba(45,90,39,0.3)] hover:scale-[1.02] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:outline-none"
             >
               Cotizar Evento
             </a>
 
             <button
-              className="md:hidden p-2.5 cursor-pointer focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:outline-none rounded-md"
+              className="md:hidden p-2.5 cursor-pointer hover:bg-neutral-100 rounded-md transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:outline-none"
               onClick={toggleMenu}
               aria-expanded={isMenuOpen}
               aria-controls="mobile-menu"
@@ -80,7 +80,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   role="menuitem"
-                  className="text-neutral-700 text-sm px-3 py-2.5 rounded-lg hover:bg-neutral-100 transition-colors focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:outline-none"
+                  className="text-neutral-700 text-sm px-3 py-2.5 rounded-lg hover:bg-neutral-100 transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:outline-none"
                   onClick={closeMenu}
                 >
                   {link.label}
@@ -90,7 +90,7 @@ export default function Navbar() {
               <a
                 href="#contact"
                 role="menuitem"
-                className="flex items-center justify-center gap-1.5 bg-[#2D5A27] text-white rounded-full px-4 py-2.5 text-sm font-medium hover:bg-[#244a1f] transition-colors focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:outline-none"
+                className="flex items-center justify-center gap-1.5 bg-[#2D5A27] text-white rounded-full px-4 py-2.5 text-sm font-medium shadow-[0_2px_4px_rgba(45,90,39,0.1)] transition-all duration-300 ease-in-out hover:bg-[#244a1f] hover:shadow-[0_2px_4px_rgba(45,90,39,0.1)] hover:scale-[1.01] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:outline-none"
                 onClick={closeMenu}
               >
                 Cotizar Evento
