@@ -14,7 +14,7 @@ export default function ServiceCard({ title, description, price, iconType, tag }
 
   return (
     <article className="group relative bg-white rounded-2xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.04)] border border-neutral-100/80 flex flex-col transition-all duration-300 ease-out hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:-translate-y-1 focus-within:ring-2 focus-within:ring-[#2D5A27] focus-within:ring-offset-2">
-      <div className="h-1.5 w-full bg-gradient-to-r from-[#2D5A27] via-[#3d7a34] to-[#8B5A2B]" aria-hidden="true" />
+      <div className="h-1.5 w-full bg-gradient-to-r from-[#2D5A27] via-[#2D5A27] to-[#8B5A2B]" aria-hidden="true" />
 
       {tag && (
         <span className="absolute top-4 right-4 bg-[#8B5A2B] text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm z-10">
@@ -37,7 +37,7 @@ export default function ServiceCard({ title, description, price, iconType, tag }
           <p className="text-base sm:text-lg font-bold text-[#2D5A27]">{price}</p>
           <a
             href="#contact"
-            className="inline-flex items-center gap-1 text-sm font-medium text-[#2D5A27] transition-all duration-200 hover:gap-2 hover:text-[#1a3d18] focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:outline-none rounded-md px-2 py-1 -mr-2"
+            className="inline-flex items-center gap-1 text-sm font-medium text-[#2D5A27] transition-all duration-200 hover:gap-2 hover:text-[#1F3F1A] focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:outline-none rounded-md px-2 py-1 -mr-2"
           >
             Ver más
             <ChevronRight className="w-4 h-4" />

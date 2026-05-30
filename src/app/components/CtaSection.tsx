@@ -5,7 +5,7 @@ export default function CtaSection() {
       <div
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(135deg, #2D5A27, #4A7A3E, #1F3F1A, #2D5A27)',
+          background: 'linear-gradient(135deg, #344221, #4A5D2F, #3D2314, #344221)',
           backgroundSize: '200% 200%',
           animation: 'gradient-shift 15s ease-in-out infinite',
         }}
@@ -32,7 +32,7 @@ export default function CtaSection() {
         aria-hidden="true"
       />
       <div
-        className="absolute w-40 h-40 rounded-full bg-[#8B5A2B]/[0.06] blur-3xl"
+        className="absolute w-40 h-40 rounded-full bg-[#5C3A21]/[0.06] blur-3xl"
         style={{
           top: '50%',
           left: '50%',

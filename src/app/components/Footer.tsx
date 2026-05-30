@@ -65,7 +65,7 @@ const CONTACT_INFO: ContactInfo[] = [
 export default function Footer() {
   return (
     <footer
-      className="bg-[#1A1A1A] text-white pt-16 pb-8 px-4 rounded-3xl mt-2 relative z-20 "
+      className="bg-[#2A2A2A] text-white pt-16 pb-8 px-4 rounded-3xl mt-2 relative z-20 "
       role="contentinfo"
     >
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8 mb-12">
@@ -134,7 +134,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                   className="p-2 text-neutral-400 hover:text-white hover:scale-105 active:scale-95 transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1A1A1A] focus-visible:outline-none rounded-md"
+                   className="p-2 text-neutral-400 hover:text-white hover:scale-105 active:scale-95 transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2A2A2A] focus-visible:outline-none rounded-md"
                 >
                   <Icon className="w-5 h-5" aria-hidden="true" />
                 </a>
@@ -146,7 +146,7 @@ export default function Footer() {
 
       <div className="max-w-6xl mx-auto border-t border-neutral-800 pt-8 text-xs text-neutral-400 text-center">
         &copy; {new Date().getFullYear()} Entre Tragos. Todos los derechos
-        reservados | Diseñado por <a href="https://buveg.com.ar" target="_blank" rel="noopener noreferrer" className="text-[#2D5A27] hover:underline focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1A1A1A] focus-visible:outline-none rounded-sm transition-all duration-200">buveg.com.ar</a>
+        reservados | Diseñado por <a href="https://buveg.com.ar" target="_blank" rel="noopener noreferrer" className="text-[#2D5A27] hover:underline focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2A2A2A] focus-visible:outline-none rounded-sm transition-all duration-200">buveg.com.ar</a>
       </div>
     </footer>
   );
