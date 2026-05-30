@@ -62,7 +62,7 @@ export default function HeroSection() {
           </h1>
 
           <p className="text-white/70 mt-6 max-w-xl text-[clamp(15px,3.5vw,18px)] leading-relaxed">
-            Barras móviles de diseño, ingredients botánicos y bartenders profesionales.
+            Barras móviles premium para bodas, cumpleaños, eventos corporativos y celebraciones especiales.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 mt-10">
