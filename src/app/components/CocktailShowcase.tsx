@@ -113,10 +113,9 @@ export default function CocktailShowcase() {
       </div>
 
       <div
-        className="flex gap-2 mb-10 px-4 hide-scrollbar overflow-x-auto md:overflow-x-visible whitespace-nowrap md:whitespace-normal snap-x md:snap-none md:justify-center"
+        className="flex justify-center gap-2 mb-10 px-4 hide-scrollbar"
         role="tablist"
         aria-label="Filtrar por categoría"
-        style={{ WebkitMaskImage: 'linear-gradient(to right, black 80%, transparent 100%)', maskImage: 'linear-gradient(to right, black 80%, transparent 100%)' }}
       >
         {CATEGORIES.map((cat) => (
           <button
@@ -124,7 +123,7 @@ export default function CocktailShowcase() {
             role="tab"
             aria-selected={activeCategory === cat.id}
             onClick={() => setActiveCategory(cat.id)}
-            className={`cursor-pointer px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap flex-shrink-0 snap-start ${
+            className={`cursor-pointer px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap ${
               activeCategory === cat.id
                 ? 'bg-[#2D5A27] text-white shadow-[0_4px_14px_rgba(45,90,39,0.2)]'
                 : 'bg-white text-neutral-600 hover:bg-neutral-100 hover:shadow-sm border border-neutral-200'

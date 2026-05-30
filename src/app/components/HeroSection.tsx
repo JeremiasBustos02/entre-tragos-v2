@@ -8,17 +8,18 @@ export default function HeroSection() {
     >
       {/* Fallback: gradientes oscuros (se ven si el video no carga) */}
       <div
-        className="absolute inset-0 bg-gradient-to-br from-[#1A1A1A] via-[#2D3A2D] to-[#1A1A1A]"
+        className="rounded-3xl absolute inset-0 bg-gradient-to-br from-[#1A1A1A] via-[#2D3A2D] to-[#1A1A1A]"
         aria-hidden="true"
       />
 
       {/* Video de fondo */}
       <video
-        className="absolute inset-0 w-full h-full object-cover"
+        className="rounded-3xl absolute inset-0 w-full h-full object-cover"
         autoPlay
         loop
         muted
         playsInline
+        poster="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=1920&q=80"
       >
         <source
           src="https://player.vimeo.com/external/435674703.hd.mp4?s=6f431e01b1de29b207558f0ef1a1fb6384fa6b21&profile_id=174&oauth2_token_id=57447761"
@@ -28,7 +29,7 @@ export default function HeroSection() {
 
       {/* Overlay verde oscuro para legibilidad */}
       <div
-        className="absolute inset-0 bg-[#2D5A27]/40"
+        className="rounded-3xl absolute inset-0 bg-[#2D5A27]/40"
         aria-hidden="true"
       />
 
