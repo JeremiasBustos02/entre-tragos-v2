@@ -57,7 +57,7 @@ export default function CtaSection() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-2">
           <a
             href="#contact"
-            className="group inline-flex items-center gap-2 bg-white text-[#2D5A27] rounded-full px-8 py-4 text-base font-semibold shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-all duration-300 ease-out hover:shadow-[0_12px_40px_rgba(0,0,0,0.18)] hover:scale-[1.03] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#2D5A27] focus-visible:outline-none"
+            className="group inline-flex items-center gap-2 bg-white text-[#2D5A27] rounded-full px-8 py-4 text-base font-semibold shadow-md transition-shadow duration-300 hover:shadow-lg hover:scale-[1.03] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#2D5A27] focus-visible:outline-none"
           >
             Cotizá Gratis
           </a>

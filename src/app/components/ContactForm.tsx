@@ -207,7 +207,7 @@ export default function ContactForm() {
           <button
             type="button"
             onClick={handleWhatsAppOpen}
-            className="cursor-pointer w-full sm:w-auto bg-[#2D5A27] text-white rounded-full px-6 sm:px-8 py-3.5 sm:py-4 inline-flex items-center justify-center gap-2 text-sm sm:text-base font-medium whitespace-nowrap shadow-[0_4px_14px_rgba(37,211,102,0.25)] transition-all duration-300 hover:shadow-[0_6px_20px_rgba(37,211,102,0.35)] hover:scale-[1.02] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:outline-none"
+            className="cursor-pointer w-full sm:w-auto bg-[#2D5A27] text-white rounded-full px-6 sm:px-8 py-3.5 sm:py-4 inline-flex items-center justify-center gap-2 text-sm sm:text-base font-medium whitespace-nowrap shadow-[0_4px_14px_rgba(45,90,39,0.2)] transition-all duration-300 hover:bg-[#1F3F1A] hover:shadow-[0_6px_20px_rgba(45,90,39,0.3)] hover:scale-[1.02] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:outline-none"
           >
             <WhatsAppIcon className="w-5 h-5 " aria-hidden="true" />
             Hablemos por WhatsApp ahora

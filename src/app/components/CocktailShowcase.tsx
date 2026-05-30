@@ -100,7 +100,7 @@ export default function CocktailShowcase() {
       className="py-16 sm:py-20 bg-[#EAE7E0] overflow-x-hidden rounded-3xl"
       aria-labelledby="carta-heading"
     >
-      <div className="text-center mb-10 px-4">
+      <div className="text-center mb-4 px-4">
         <span className="text-xs sm:text-sm font-medium text-[#8B5A2B] uppercase tracking-[0.2em]">
           Nuestra Carta
         </span>
@@ -113,7 +113,7 @@ export default function CocktailShowcase() {
       </div>
 
       <div
-        className="flex justify-center gap-2 mb-10 px-4 hide-scrollbar"
+        className="flex flex-wrap justify-center gap-2 md:gap-4 w-full px-4 mb-6"
         role="tablist"
         aria-label="Filtrar por categoría"
       >
@@ -123,7 +123,7 @@ export default function CocktailShowcase() {
             role="tab"
             aria-selected={activeCategory === cat.id}
             onClick={() => setActiveCategory(cat.id)}
-            className={`cursor-pointer px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap ${
+            className={`cursor-pointer px-4 py-2 rounded-full text-sm font-medium ${
               activeCategory === cat.id
                 ? 'bg-[#2D5A27] text-white shadow-[0_4px_14px_rgba(45,90,39,0.2)]'
                 : 'bg-white text-neutral-600 hover:bg-neutral-100 hover:shadow-sm border border-neutral-200'
