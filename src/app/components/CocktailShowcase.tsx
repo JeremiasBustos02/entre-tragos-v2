@@ -101,14 +101,14 @@ export default function CocktailShowcase() {
       aria-labelledby="carta-heading"
     >
       <div className="text-center mb-4 px-4">
-        <span className="text-xs sm:text-sm font-medium text-[#3D261E] uppercase tracking-[0.2em]">
+        <span className="text-xs sm:text-sm font-medium text-[#4B4139] uppercase tracking-[0.2em]">
           Nuestra Carta
         </span>
         <h2
           id="carta-heading"
-          className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight mt-2 mb-4 text-[#1E120E]"
+          className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight mt-2 mb-4 text-[#4B4139]"
         >
-          Cócteles <span className="text-[#1E120E]">Destacados</span>
+          Cócteles <span className="text-[#4B4139]">Destacados</span>
         </h2>
       </div>
 

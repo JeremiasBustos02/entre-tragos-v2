@@ -44,14 +44,14 @@ export default function FaqSection() {
     >
       <div className="max-w-3xl mx-auto px-4">
         <div className="text-center mb-10">
-          <span className="text-xs sm:text-sm font-medium text-[#3D261E] uppercase tracking-[0.2em]">
+          <span className="text-xs sm:text-sm font-medium text-[#4B4139] uppercase tracking-[0.2em]">
             FAQ
           </span>
           <h2
             id="faq-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight mt-2 mb-4 text-[#1E120E]"
+            className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight mt-2 mb-4 text-[#4B4139]"
           >
-            Preguntas <span className="text-[#1E120E]">Frecuentes</span>
+            Preguntas <span className="text-[#4B4139]">Frecuentes</span>
           </h2>
         </div>
 
