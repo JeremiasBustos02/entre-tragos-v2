@@ -149,8 +149,8 @@ export default function ContactForm() {
             <span className="text-xs sm:text-sm font-medium text-[#FEFEFE] uppercase tracking-[0.2em]">
               Contacto
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight mt-2 mb-4 text-[#FEFEFE]">
-              Hagamos algo <span className="text-[#FEFEFE]">increíble</span> en tu evento.
+            <h2 className="text-4xl lg:text-5xl font-serif font-bold leading-tight mt-2 mb-4 text-[#FEFEFE]">
+              Hagamos algo increíble en tu evento.
             </h2>
             <p className="mt-4 text-neutral-100 leading-relaxed">
               Cotiza al instante por correo o resuelve tus dudas directamente por WhatsApp.

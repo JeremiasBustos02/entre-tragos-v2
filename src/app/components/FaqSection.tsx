@@ -49,9 +49,9 @@ export default function FaqSection() {
           </span>
           <h2
             id="faq-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight mt-2 mb-4 text-[#4B4139]"
+            className="text-4xl lg:text-5xl font-serif font-bold leading-tight mt-2 mb-4 text-[#4B4139]"
           >
-            Preguntas <span className="text-[#4B4139]">Frecuentes</span>
+            Preguntas Frecuentes
           </h2>
         </div>
 

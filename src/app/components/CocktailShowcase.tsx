@@ -106,9 +106,9 @@ export default function CocktailShowcase() {
         </span>
         <h2
           id="carta-heading"
-          className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight mt-2 mb-4 text-[#4B4139]"
+          className="text-5xl font-serif font-bold leading-tight mt-2 mb-4 text-[#4B4139]"
         >
-          Cócteles <span className="text-[#4B4139]">Destacados</span>
+          Cócteles Destacados
         </h2>
       </div>
 
@@ -123,7 +123,7 @@ export default function CocktailShowcase() {
             role="tab"
             aria-selected={activeCategory === cat.id}
             onClick={() => setActiveCategory(cat.id)}
-            className={`cursor-pointer px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap ${
+            className={`transition-colors duration-200 cursor-pointer px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap ${
               activeCategory === cat.id
                 ? 'bg-[#4B4E32] text-white shadow-[0_4px_14px_rgba(45,90,39,0.2)]'
                 : 'bg-white text-neutral-600 hover:bg-neutral-100 hover:shadow-sm border border-neutral-200'
@@ -162,7 +162,7 @@ export default function CocktailShowcase() {
                 </div>
               )}
 
-              <h3 className="font-serif text-xl sm:text-2xl text-[#261713] leading-snug">
+              <h3 className="text-2xl font-serif font-bold leading-tight text-[#4B4139]">
                 {cocktail.name}
               </h3>
 
