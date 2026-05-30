@@ -4,17 +4,17 @@ export default function HeroSection() {
   return (
     <section
       id="inicio"
-      className="rounded-3xl relative w-full min-h-screen flex flex-col items-center justify-center overflow-x-hidden"
+      className="rounded-b-3xl relative w-full min-h-screen flex flex-col items-center justify-center overflow-x-hidden"
     >
       {/* Fallback: gradientes oscuros (se ven si el video no carga) */}
       <div
-        className="rounded-3xl absolute inset-0 bg-gradient-to-br from-[#261713] via-[#3A3D28] to-[#261713]"
+        className="rounded-b-3xl absolute inset-0 bg-gradient-to-br from-[#261713] via-[#3A3D28] to-[#261713]"
         aria-hidden="true"
       />
 
       {/* Video de fondo */}
       <video
-        className="rounded-3xl absolute inset-0 w-full h-full object-cover"
+        className="rounded-b-3xl absolute inset-0 w-full h-full object-cover"
         autoPlay
         loop
         muted
@@ -29,7 +29,7 @@ export default function HeroSection() {
 
       {/* Overlay verde oscuro para legibilidad */}
       <div
-        className="rounded-3xl absolute inset-0 bg-[#4B4E32]/40"
+        className="rounded-none md:rounded-3xl absolute inset-0 bg-[#4B4E32]/40"
         aria-hidden="true"
       />
 
@@ -79,7 +79,6 @@ export default function HeroSection() {
           </a>
         </div>
       </div>
-
     </section>
   );
 }

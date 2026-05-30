@@ -12,7 +12,8 @@ import ServicesTray from './app/components/ServicesTray';
 
 function App() {
   return (
-    <div className="relative min-h-screen w-full bg-[#FEFEFE] p-3 sm:p-4 font-sans">
+    // Dejamos el contenedor limpio, sin paddings que fuercen márgenes laterales
+    <div className="relative min-h-screen w-full bg-[#FEFEFE] font-sans">
       <Navbar />
       <main>
         <HeroSection />

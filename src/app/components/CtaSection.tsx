@@ -1,6 +1,6 @@
 export default function CtaSection() {
   return (
-    <section className="relative overflow-hidden py-24 sm:py-20 lg:py-28 rounded-3xl">
+    <section className="relative overflow-hidden py-24 sm:py-20 lg:py-28">
       {/* Animated gradient background */}
       <div
         className="absolute inset-0"
