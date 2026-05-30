@@ -42,13 +42,9 @@ export default function HeroSection() {
       {/* Contenido */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 py-24 sm:py-32 h-full max-w-4xl mx-auto">
         <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 shadow-[0_2px_12px_rgba(0,0,0,0.15)] border border-white/20 text-[13px] text-white/90">
-          <span className="w-2 h-2 rounded-full bg-[#4B4E32] animate-pulse" aria-hidden="true" />
+          <span className="w-2 h-2 rounded-full bg-white animate-pulse" aria-hidden="true" />
           Coctelería Premium
         </div>
-
-        <span className="text-xs sm:text-sm font-medium text-white/60 uppercase tracking-[0.2em] mt-6">
-          Experiencia Premium
-        </span>
 
         <h1
           id="hero-heading"
