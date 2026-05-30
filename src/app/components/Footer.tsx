@@ -65,21 +65,21 @@ const CONTACT_INFO: ContactInfo[] = [
 export default function Footer() {
   return (
     <footer
-      className="bg-[#111010] text-white pt-16 pb-8 px-12 rounded-t-3xl mt-2 relative z-20 "
+      className="bg-[#3D261E] text-white pt-16 pb-8 px-12 rounded-t-3xl mt-2 relative z-20 "
       role="contentinfo"
     >
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8 mb-12">
         <div className="flex flex-col gap-4">
-          <Leaf className="w-8 h-8 text-[#4B4E32]" aria-hidden="true" />
+          <Leaf className="w-8 h-8 text-[#FEFEFE]" aria-hidden="true" />
           <h3 className="text-lg font-semibold">Entre Tragos</h3>
-          <p className="text-sm text-neutral-400 leading-relaxed">
+          <p className="text-sm text-[#FEFEFE] leading-relaxed">
             Coctelería premium para eventos. Barras móviles de diseño con
             ingredientes botánicos y bartenders profesionales.
           </p>
         </div>
 
         <div className="flex flex-col gap-4">
-          <h3 className="text-sm font-semibold text-neutral-300 uppercase tracking-wider">
+          <h3 className="text-sm font-semibold text-[#FEFEFE] uppercase tracking-wider">
             Navegación
           </h3>
           <ul className="flex flex-col gap-3">
@@ -87,7 +87,7 @@ export default function Footer() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="block py-1 text-sm text-neutral-400 hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-[#4B4E32] focus-visible:outline-none rounded-md"
+                  className="block py-1 text-sm text-[#FEFEFE] hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-[#4B4E32] focus-visible:outline-none rounded-md"
                 >
                   {link.label}
                 </a>
@@ -97,7 +97,7 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col gap-4">
-          <h3 className="text-sm font-semibold text-neutral-300 uppercase tracking-wider">
+          <h3 className="text-sm font-semibold text-[#FEFEFE] uppercase tracking-wider">
             Contacto
           </h3>
           <ul className="flex flex-col gap-3">
@@ -106,12 +106,12 @@ export default function Footer() {
                 {item.href ? (
                   <a
                     href={item.href}
-                    className="text-sm text-neutral-400 hover:text-white transition-colors"
+                    className="text-sm text-[#FEFEFE] hover:text-white transition-colors"
                   >
                     {item.value}
                   </a>
                 ) : (
-                  <span className="text-sm text-neutral-400">
+                  <span className="text-sm text-[#FEFEFE]">
                     {item.value}
                   </span>
                 )}
@@ -121,7 +121,7 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col gap-4">
-          <h3 className="text-sm font-semibold text-neutral-300 uppercase tracking-wider">
+          <h3 className="text-sm font-semibold text-[#FEFEFE] uppercase tracking-wider">
             Síguenos
           </h3>
           <div className="flex gap-4">
@@ -134,7 +134,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                   className="p-2 text-neutral-400 hover:text-white hover:scale-105 active:scale-95 transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#4B4E32] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1E120E] focus-visible:outline-none rounded-md"
+                   className=" p-2 text-[#FEFEFE] hover:text-white hover:scale-105 active:scale-95 transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#4B4E32] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1E120E] focus-visible:outline-none rounded-md"
                 >
                   <Icon className="w-5 h-5" aria-hidden="true" />
                 </a>
@@ -144,9 +144,9 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto border-t border-neutral-800 pt-8 text-xs text-neutral-400 text-center">
+      <div className="max-w-6xl mx-auto border-t border-neutral-100 pt-8 text-xs text-[#FEFEFE] text-center">
         &copy; {new Date().getFullYear()} Entre Tragos. Todos los derechos
-        reservados | Diseñado por <a href="https://buveg.com.ar" target="_blank" rel="noopener noreferrer" className="text-[#4B4E32] hover:underline focus-visible:ring-2 focus-visible:ring-[#4B4E32] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1E120E] focus-visible:outline-none rounded-sm transition-all duration-200">buveg.com.ar</a>
+        reservados | Diseñado por <a href="https://buveg.com.ar" target="_blank" rel="noopener noreferrer" className="text-[#fefefe] hover:underline focus-visible:ring-2 focus-visible:ring-[#4B4E32] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1E120E] focus-visible:outline-none rounded-sm transition-all duration-200">buveg.com.ar</a>
       </div>
     </footer>
   );
