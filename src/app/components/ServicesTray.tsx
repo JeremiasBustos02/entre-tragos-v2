@@ -28,11 +28,11 @@ export default function ServicesTray() {
   return (
     <section id="servicios" className="bg-[#FEFEFE] rounded-3xl px-5 py-10 sm:px-8 sm:py-14 lg:px-12 lg:py-12 w-full max-w-[880px] mx-auto shadow-xl relative z-20 mt-[-4rem] scroll-mt-32" aria-labelledby="servicios-heading">
       <div className="text-center mb-10">
-        <span className="text-xs sm:text-sm font-medium tracking-[0.2em] uppercase text-[#3D261E]">
+        <span className="text-xs sm:text-sm font-medium tracking-[0.2em] uppercase text-[#4B4139]">
           Lo que ofrecemos
         </span>
-        <h2 id="servicios-heading" className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight mt-2 mb-4 text-[#1E120E]">
-          Nuestros <span className="text-[#1E120E]">Servicios</span>
+        <h2 id="servicios-heading" className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight mt-2 mb-4 text-[#4B4139]">
+          Nuestros <span className="text-[#4B4139]">Servicios</span>
         </h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">

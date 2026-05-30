@@ -65,7 +65,7 @@ const CONTACT_INFO: ContactInfo[] = [
 export default function Footer() {
   return (
     <footer
-      className="bg-[#3D261E] text-white pt-16 pb-8 px-12 rounded-t-3xl mt-2 relative z-20 "
+      className="bg-[#4B4139] text-white pt-16 pb-8 px-12 rounded-t-3xl mt-2 relative z-20 "
       role="contentinfo"
     >
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8 mb-12">
