@@ -1,15 +1,42 @@
-import { ChevronRight } from 'lucide-react';
-
 export default function CtaSection() {
   return (
-    <section className="relative overflow-hidden bg-[#2D5A27] py-24 sm:py-20 lg:py-28 rounded-3xl">
+    <section className="relative overflow-hidden py-24 sm:py-20 lg:py-28 rounded-3xl">
+      {/* Animated gradient background */}
       <div
         className="absolute inset-0"
         style={{
-          background: `
-            radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.08) 0%, transparent 60%),
-            radial-gradient(ellipse at 70% 80%, rgba(0,0,0,0.15) 0%, transparent 50%)
-          `,
+          background: 'linear-gradient(135deg, #2D5A27, #4A7A3E, #1F3F1A, #2D5A27)',
+          backgroundSize: '200% 200%',
+          animation: 'gradient-shift 15s ease-in-out infinite',
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Floating animated blobs */}
+      <div
+        className="absolute w-72 h-72 rounded-full bg-white/[0.05] blur-3xl"
+        style={{
+          top: '10%',
+          left: '10%',
+          animation: 'float-cta 20s ease-in-out infinite',
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="absolute w-56 h-56 rounded-full bg-white/[0.04] blur-3xl"
+        style={{
+          bottom: '15%',
+          right: '15%',
+          animation: 'float-cta 15s ease-in-out infinite reverse',
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="absolute w-40 h-40 rounded-full bg-[#8B5A2B]/[0.06] blur-3xl"
+        style={{
+          top: '50%',
+          left: '50%',
+          animation: 'float-cta 18s ease-in-out infinite 2s',
         }}
         aria-hidden="true"
       />
@@ -19,8 +46,8 @@ export default function CtaSection() {
           Reservá tu fecha
         </span>
 
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-serif text-white leading-[1.1] tracking-tight">
-          ¿Listo para hacer tu evento inolvidable?
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-serif font-bold leading-[1.1] tracking-tight mt-2 mb-4 text-white">
+          ¿Listo para hacer tu evento <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/80">inolvidable</span>?
         </h2>
 
         <p className="text-white/70 text-base sm:text-lg max-w-2xl mx-auto">

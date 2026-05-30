@@ -9,10 +9,10 @@ import CustomSelect from './CustomSelect';
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
 
 const INPUT_CLASSES =
-  'bg-white border border-neutral-200 rounded-xl px-4 py-3 w-full text-sm text-[#1A1A1A] placeholder:text-neutral-400 focus:ring-2 focus:ring-[#2D5A27]/30 focus:border-[#2D5A27] focus:outline-none transition-all duration-200';
+  'bg-stone-50 border border-neutral-200/60 rounded-xl px-4 py-3.5 w-full text-sm text-[#1A1A1A] placeholder:text-neutral-400 focus:ring-2 focus:ring-[#2D5A27] focus:border-transparent focus:bg-white focus:outline-none transition-all duration-200';
 
 const INPUT_ERROR_CLASSES =
-  'bg-white border border-red-400 rounded-xl px-4 py-3 w-full text-sm text-[#1A1A1A] placeholder:text-neutral-400 focus:ring-2 focus:ring-red-400/30 focus:border-red-400 focus:outline-none transition-all duration-200';
+  'bg-red-50/50 border border-red-300 rounded-xl px-4 py-3.5 w-full text-sm text-[#1A1A1A] placeholder:text-neutral-400 focus:ring-2 focus:ring-red-400 focus:border-transparent focus:bg-white focus:outline-none transition-all duration-200';
 
 const INITIAL_FORM_STATE: FormState = {
   name: '',
@@ -131,7 +131,7 @@ export default function ContactForm() {
           <button
             type="button"
             onClick={handleReset}
-            className="bg-[#2D5A27] text-white rounded-full px-8 py-3 text-sm font-medium shadow-[0_4px_14px_rgba(45,90,39,0.2)] transition-all duration-300 ease-in-out hover:bg-[#244a1f] hover:shadow-[0_8px_24px_rgba(45,90,39,0.3)] hover:scale-[1.02] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:outline-none"
+            className="bg-[#2D5A27] text-white rounded-xl px-8 py-3.5 text-base font-semibold shadow-[0_8px_30px_rgba(45,90,39,0.25)] transition-all duration-300 ease-in-out hover:shadow-[0_12px_40px_rgba(45,90,39,0.35)] hover:scale-[1.02] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:outline-none"
           >
             Enviar otra solicitud
           </button>
@@ -142,15 +142,15 @@ export default function ContactForm() {
 
   return (
     <section id="contact" className="py-16 sm:py-20 px-4 bg-[#FDFBF7] scroll-mt-24">
-      <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* LEFT COLUMN: Contact Info */}
-        <div className="lg:col-span-5 flex flex-col gap-6">
+        <div className="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-neutral-100 flex flex-col justify-center gap-6">
           <div>
             <span className="text-xs sm:text-sm font-medium text-[#8B5A2B] uppercase tracking-[0.2em]">
               Contacto
             </span>
-            <h2 className="text-3xl sm:text-4xl font-serif text-[#1A1A1A] leading-tight mt-2">
-              Hagamos algo increíble en tu evento.
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight mt-2 mb-4 text-zinc-900">
+              Hagamos algo <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2D5A27] to-[#8B5A2B]">increíble</span> en tu evento.
             </h2>
             <p className="mt-4 text-neutral-500 leading-relaxed">
               Cotiza al instante por correo o resuelve tus dudas directamente por WhatsApp.
@@ -207,9 +207,9 @@ export default function ContactForm() {
           <button
             type="button"
             onClick={handleWhatsAppOpen}
-            className="cursor-pointer w-full sm:w-auto bg-[#25D366] text-white rounded-full px-8 py-4 inline-flex items-center justify-center gap-2 text-base font-medium shadow-[0_4px_14px_rgba(37,211,102,0.25)] transition-all duration-300 hover:shadow-[0_6px_20px_rgba(37,211,102,0.35)] hover:scale-[1.02] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 focus-visible:outline-none"
+            className="cursor-pointer w-full sm:w-auto bg-[#2D5A27] text-white rounded-full px-6 sm:px-8 py-3.5 sm:py-4 inline-flex items-center justify-center gap-2 text-sm sm:text-base font-medium whitespace-nowrap shadow-[0_4px_14px_rgba(37,211,102,0.25)] transition-all duration-300 hover:shadow-[0_6px_20px_rgba(37,211,102,0.35)] hover:scale-[1.02] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:outline-none"
           >
-            <WhatsAppIcon className="w-5 h-5" aria-hidden="true" />
+            <WhatsAppIcon className="w-5 h-5 " aria-hidden="true" />
             Hablemos por WhatsApp ahora
           </button>
         </div>
@@ -358,7 +358,7 @@ export default function ContactForm() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="cursor-pointer sm:col-span-2 w-full bg-[#2D5A27] text-white rounded-full py-4 flex items-center justify-center gap-2 text-sm font-semibold shadow-[0_4px_14px_rgba(45,90,39,0.2)] transition-all duration-300 hover:bg-[#244a1f] hover:shadow-[0_6px_20px_rgba(45,90,39,0.3)] hover:scale-[1.01] active:scale-[0.99] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100 focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:outline-none"
+                className="cursor-pointer sm:col-span-2 w-full bg-[#2D5A27] text-white rounded-xl py-3.5 flex items-center justify-center gap-2 text-base font-semibold shadow-[0_8px_30px_rgba(45,90,39,0.25)] transition-all duration-300 hover:shadow-[0_12px_40px_rgba(45,90,39,0.35)] hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100 focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:outline-none"
               >
                 {isSubmitting ? (
                   <>

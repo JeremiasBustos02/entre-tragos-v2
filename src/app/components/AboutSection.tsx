@@ -29,12 +29,12 @@ export default function AboutSection() {
         </div>
 
         <div className="flex flex-col gap-6">
-          <p className="text-[#8B5A2B] uppercase text-sm font-semibold tracking-wider">
+          <span className="text-xs sm:text-sm font-medium text-[#8B5A2B] uppercase tracking-[0.2em]">
             Nuestra Esencia
-          </p>
+          </span>
 
-          <h2 id="about-heading" className="text-4xl lg:text-5xl font-serif text-[#1A1A1A] leading-[1.15]">
-            Barras de diseño en madera natural
+          <h2 id="about-heading" className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight mt-2 mb-4 text-zinc-900">
+            Barras de diseño en <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2D5A27] to-[#8B5A2B]">madera natural</span>
           </h2>
 
           <ul className="flex flex-col gap-4">

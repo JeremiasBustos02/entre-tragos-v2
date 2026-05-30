@@ -97,25 +97,26 @@ export default function CocktailShowcase() {
   return (
     <section
       id="carta"
-      className="py-16 sm:py-20 bg-[#EAE7E0] overflow-hidden rounded-3xl"
+      className="py-16 sm:py-20 bg-[#EAE7E0] overflow-x-hidden rounded-3xl"
       aria-labelledby="carta-heading"
     >
-      <div className="text-center mb-8 px-4">
+      <div className="text-center mb-10 px-4">
         <span className="text-xs sm:text-sm font-medium text-[#8B5A2B] uppercase tracking-[0.2em]">
           Nuestra Carta
         </span>
         <h2
           id="carta-heading"
-          className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#1A1A1A] mt-3 leading-tight"
+          className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight mt-2 mb-4 text-zinc-900"
         >
-          Cócteles Destacados
+          Cócteles <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2D5A27] to-[#8B5A2B]">Destacados</span>
         </h2>
       </div>
 
       <div
-        className="flex justify-center gap-2 mb-10 px-4 overflow-x-auto hide-scrollbar"
+        className="flex gap-2 mb-10 px-4 hide-scrollbar overflow-x-auto md:overflow-x-visible whitespace-nowrap md:whitespace-normal snap-x md:snap-none md:justify-center"
         role="tablist"
         aria-label="Filtrar por categoría"
+        style={{ WebkitMaskImage: 'linear-gradient(to right, black 80%, transparent 100%)', maskImage: 'linear-gradient(to right, black 80%, transparent 100%)' }}
       >
         {CATEGORIES.map((cat) => (
           <button
@@ -123,7 +124,7 @@ export default function CocktailShowcase() {
             role="tab"
             aria-selected={activeCategory === cat.id}
             onClick={() => setActiveCategory(cat.id)}
-            className={`cursor-pointer px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-300 ease-in-out active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:outline-none ${
+            className={`cursor-pointer px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap flex-shrink-0 snap-start ${
               activeCategory === cat.id
                 ? 'bg-[#2D5A27] text-white shadow-[0_4px_14px_rgba(45,90,39,0.2)]'
                 : 'bg-white text-neutral-600 hover:bg-neutral-100 hover:shadow-sm border border-neutral-200'

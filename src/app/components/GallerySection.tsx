@@ -38,8 +38,11 @@ export default function GallerySection() {
   return (
     <section id="galeria" className="py-16 px-4 bg-[#EAE7E0] scroll-mt-24 rounded-3xl" aria-labelledby="gallery-heading">
       <div className="text-center mb-10">
-        <h2 id="gallery-heading" className="text-4xl font-serif text-[#1A1A1A]">
-          Galería de Eventos
+        <span className="text-xs sm:text-sm font-medium text-[#8B5A2B] uppercase tracking-[0.2em]">
+          Trabajos
+        </span>
+        <h2 id="gallery-heading" className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight mt-2 mb-4 text-zinc-900">
+          Galería de <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2D5A27] to-[#8B5A2B]">Eventos</span>
         </h2>
       </div>
 

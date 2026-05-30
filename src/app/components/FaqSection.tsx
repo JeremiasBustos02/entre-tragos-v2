@@ -49,9 +49,9 @@ export default function FaqSection() {
           </span>
           <h2
             id="faq-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#1A1A1A] mt-2 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight mt-2 mb-4 text-zinc-900"
           >
-            Preguntas Frecuentes
+            Preguntas <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2D5A27] to-[#8B5A2B]">Frecuentes</span>
           </h2>
         </div>
 
@@ -65,8 +65,8 @@ export default function FaqSection() {
                 key={index}
                 className={`rounded-2xl border transition-all duration-200 ${
                   isOpen
-                    ? 'bg-[#FDFBF7] border-[#2D5A27]/20 shadow-sm'
-                    : 'bg-white border-neutral-200 hover:border-neutral-300'
+                    ? 'bg-white border-[#2D5A27]/20 shadow-md'
+                    : 'bg-white border-neutral-200 hover:border-[#2D5A27]/20 hover:shadow-sm'
                 }`}
               >
                 <button
@@ -74,7 +74,7 @@ export default function FaqSection() {
                   onClick={() => toggle(index)}
                   aria-expanded={isOpen}
                   aria-controls={contentId}
-                  className="cursor-pointer w-full flex items-center justify-between gap-4 py-5 px-5 sm:px-6 text-left transition-all duration-200 hover:bg-[#FDFBF7] focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:outline-none"
+                  className="cursor-pointer w-full flex items-center justify-between gap-4 py-5 px-5 sm:px-6 text-left transition-all duration-200 hover:bg-stone-50 focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:outline-none"
                 >
                   <span
                     className={`text-base sm:text-lg font-medium transition-colors duration-200 ${

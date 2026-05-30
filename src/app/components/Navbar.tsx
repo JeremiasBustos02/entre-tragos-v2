@@ -47,7 +47,7 @@ export default function Navbar() {
           <div className="flex items-center gap-2">
             <a
               href="#contact"
-              className="hidden md:inline-flex items-center gap-1.5 bg-[#2D5A27] text-white rounded-full px-4 py-2 text-sm font-medium shadow-[0_4px_14px_rgba(45,90,39,0.2)] transition-all duration-300 ease-in-out hover:bg-[#244a1f] hover:shadow-[0_8px_24px_rgba(45,90,39,0.3)] hover:scale-[1.02] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:outline-none"
+              className="hidden md:inline-flex items-center gap-1.5 bg-[#2D5A27] text-white rounded-full px-4 py-2 text-sm font-medium shadow-[0_2px_6px_rgba(45,90,39,0.2)] transition-all duration-300 ease-in-out hover:bg-[#244a1f] hover:shadow-[0_8px_24px_rgba(45,90,39,0.3)] hover:scale-[1.02] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:outline-none"
             >
               Cotizar Evento
             </a>
@@ -90,7 +90,7 @@ export default function Navbar() {
               <a
                 href="#contact"
                 role="menuitem"
-                className="flex items-center justify-center gap-1.5 bg-[#2D5A27] text-white rounded-full px-4 py-2.5 text-sm font-medium shadow-[0_4px_14px_rgba(45,90,39,0.2)] transition-all duration-300 ease-in-out hover:bg-[#244a1f] hover:shadow-[0_8px_24px_rgba(45,90,39,0.3)] hover:scale-[1.02] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:outline-none"
+                className="flex items-center justify-center gap-1.5 bg-[#2D5A27] text-white rounded-full px-4 py-2.5 text-sm font-medium shadow-[0_2px_4px_rgba(45,90,39,0.1)] transition-all duration-300 ease-in-out hover:bg-[#244a1f] hover:shadow-[0_2px_4px_rgba(45,90,39,0.1)] hover:scale-[1.01] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:outline-none"
                 onClick={closeMenu}
               >
                 Cotizar Evento
