@@ -114,7 +114,7 @@ export default function ContactForm() {
     return (
       <section
         id="contact"
-        className="py-20 bg-[#FEFEFE] max-w-4xl mx-auto px-4 scroll-mt-24"
+        className="py-20 bg-[#F9F7F4] max-w-4xl mx-auto px-4 scroll-mt-24"
       >
         <div className="bg-white rounded-3xl shadow-sm border border-neutral-100 p-6 sm:p-10 text-center">
           <CheckCircle2
@@ -141,7 +141,7 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="contact" className="py-16 sm:pb-20 pt-5 px-4 bg-[#FEFEFE] scroll-mt-24">
+    <section id="contact" className="py-16 sm:pb-20 pt-5 px-4 bg-[#F9F7F4] scroll-mt-24">
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* LEFT COLUMN: Contact Info */}
         <div className="lg:col-span-5 bg-[#4B4E32] rounded-3xl p-6 sm:p-8 shadow-[0_8px_30px_rgba(0,0,0,0.3)] flex flex-col justify-center gap-6">

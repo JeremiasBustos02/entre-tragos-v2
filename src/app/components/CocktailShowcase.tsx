@@ -97,7 +97,7 @@ export default function CocktailShowcase() {
   return (
     <section
       id="carta"
-      className="py-16 sm:py-20 bg-[#FEFEFE] overflow-x-hidden rounded-3xl"
+      className="py-16 sm:py-20 bg-[#F9F7F4] overflow-x-hidden rounded-3xl"
       aria-labelledby="carta-heading"
     >
       <div className="text-center mb-4 px-4">

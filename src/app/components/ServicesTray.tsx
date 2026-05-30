@@ -26,7 +26,7 @@ const SERVICES: ServiceCardProps[] = [
 
 export default function ServicesTray() {
   return (
-    <section id="servicios" className="bg-[#FEFEFE] rounded-3xl px-5 py-10 sm:px-8 sm:py-14 lg:px-12 lg:py-12 w-full max-w-[880px] mx-auto shadow-xl relative z-20 mt-[-4rem] scroll-mt-32 border border-[#3D261E/10]" aria-labelledby="servicios-heading">
+    <section id="servicios" className="bg-[#FEFEFE] rounded-3xl px-5 py-10 sm:px-8 sm:py-14 lg:px-12 lg:py-12 w-full max-w-[880px] mx-auto shadow-xl relative z-20 mt-[-4rem] scroll-mt-32" aria-labelledby="servicios-heading">
       <div className="text-center mb-10">
         <span className="text-xs sm:text-sm font-medium tracking-[0.2em] uppercase text-[#3D261E]">
           Lo que ofrecemos
