@@ -12,7 +12,7 @@ import ServicesTray from './app/components/ServicesTray';
 
 function App() {
   return (
-    <div className="relative min-h-screen w-full bg-[#FDFBF7] p-3 sm:p-4 font-sans">
+    <div className="relative min-h-screen w-full bg-[#FEFEFE] p-3 sm:p-4 font-sans">
       <Navbar />
       <main>
         <HeroSection />

@@ -27,15 +27,15 @@ const CATEGORIES: { id: CocktailCategory; label: string }[] = [
 const TAG_STYLES: Record<CocktailTag, { label: string; classes: string }> = {
   'sin-alcohol': {
     label: 'Sin Alcohol',
-    classes: 'bg-[#2D5A27]/10 text-[#2D5A27]',
+    classes: 'bg-[#4B4E32]/10 text-[#4B4E32]',
   },
   recomendado: {
     label: 'Recomendado',
-    classes: 'bg-[#8B5A2B]/10 text-[#8B5A2B]',
+    classes: 'bg-[#3D261E]/10 text-[#3D261E]',
   },
   temporada: {
     label: 'Temporada',
-    classes: 'bg-[#D4A574]/20 text-[#8B5A2B]',
+    classes: 'bg-[#D4A574]/20 text-[#3D261E]',
   },
   fuerte: {
     label: 'Fuerte',
@@ -48,7 +48,7 @@ const COCKTAILS: CocktailItem[] = [
     id: 'negroni-de-autor',
     name: 'Negroni de Autor',
     ingredients: 'Gin, Campari, Vermouth Rosso, Naranja deshidratada',
-    gradient: 'from-[#8B0000]/30 via-[#D4C5A9] to-[#1A1A1A]/10',
+    gradient: 'from-[#8B0000]/30 via-[#D4C5A9] to-[#261713]/10',
     category: 'de-autor',
     tags: ['recomendado'],
   },
@@ -56,7 +56,7 @@ const COCKTAILS: CocktailItem[] = [
     id: 'gin-tonic-botanico',
     name: 'Gin Tonic Botánico',
     ingredients: 'Gin London Dry, Tónica artesanal, Romero, Eneldo',
-    gradient: 'from-[#2D5A27]/25 via-[#EAE7E0] to-[#8B5A2B]/10',
+    gradient: 'from-[#4B4E32]/25 via-[#FEFEFE] to-[#3D261E]/10',
     category: 'de-autor',
     tags: ['temporada'],
   },
@@ -72,7 +72,7 @@ const COCKTAILS: CocktailItem[] = [
     id: 'aperol-spritz',
     name: 'Aperol Spritz',
     ingredients: 'Aperol, Prosecco, Soda, Naranja, Hielo',
-    gradient: 'from-[#FF6B35]/25 via-[#FDFBF7] to-[#FF8C00]/10',
+    gradient: 'from-[#FF6B35]/25 via-[#FEFEFE] to-[#FF8C00]/10',
     category: 'compartir',
     tags: ['temporada'],
   },
@@ -97,23 +97,23 @@ export default function CocktailShowcase() {
   return (
     <section
       id="carta"
-      className="py-16 sm:py-20 bg-[#EAE7E0] overflow-x-hidden rounded-3xl"
+      className="py-16 sm:py-20 bg-[#FEFEFE] overflow-x-hidden rounded-3xl"
       aria-labelledby="carta-heading"
     >
       <div className="text-center mb-4 px-4">
-        <span className="text-xs sm:text-sm font-medium text-[#8B5A2B] uppercase tracking-[0.2em]">
+        <span className="text-xs sm:text-sm font-medium text-[#3D261E] uppercase tracking-[0.2em]">
           Nuestra Carta
         </span>
         <h2
           id="carta-heading"
-          className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight mt-2 mb-4 text-zinc-900"
+          className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight mt-2 mb-4 text-[#1E120E]"
         >
-          Cócteles <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2D5A27] to-[#8B5A2B]">Destacados</span>
+          Cócteles <span className="text-[#1E120E]">Destacados</span>
         </h2>
       </div>
 
       <div
-        className="flex flex-wrap justify-center gap-2 md:gap-4 w-full px-4 mb-6"
+        className="flex justify-center gap-2 mb-10 px-4 hide-scrollbar"
         role="tablist"
         aria-label="Filtrar por categoría"
       >
@@ -123,9 +123,9 @@ export default function CocktailShowcase() {
             role="tab"
             aria-selected={activeCategory === cat.id}
             onClick={() => setActiveCategory(cat.id)}
-            className={`cursor-pointer px-4 py-2 rounded-full text-sm font-medium ${
+            className={`cursor-pointer px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap ${
               activeCategory === cat.id
-                ? 'bg-[#2D5A27] text-white shadow-[0_4px_14px_rgba(45,90,39,0.2)]'
+                ? 'bg-[#4B4E32] text-white shadow-[0_4px_14px_rgba(45,90,39,0.2)]'
                 : 'bg-white text-neutral-600 hover:bg-neutral-100 hover:shadow-sm border border-neutral-200'
             }`}
           >
@@ -138,7 +138,7 @@ export default function CocktailShowcase() {
         {filteredCocktails.map((cocktail) => (
           <article
             key={cocktail.id}
-            className="group bg-[#FDFBF7] rounded-2xl overflow-hidden border border-neutral-200/80 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 focus-within:ring-2 focus-within:ring-[#2D5A27] focus-within:ring-offset-2"
+            className="group bg-[#FEFEFE] rounded-2xl overflow-hidden border border-neutral-200/80 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 focus-within:ring-2 focus-within:ring-[#4B4E32] focus-within:ring-offset-2"
           >
             <div className="relative w-full aspect-[4/3] overflow-hidden">
               <div
@@ -162,7 +162,7 @@ export default function CocktailShowcase() {
                 </div>
               )}
 
-              <h3 className="font-serif text-xl sm:text-2xl text-[#1A1A1A] leading-snug">
+              <h3 className="font-serif text-xl sm:text-2xl text-[#261713] leading-snug">
                 {cocktail.name}
               </h3>
 
@@ -179,7 +179,7 @@ export default function CocktailShowcase() {
           href="/carta.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#2D5A27] text-[#2D5A27] font-medium hover:bg-[#2D5A27] hover:text-white transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:outline-none"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#4B4E32] text-[#4B4E32] font-medium hover:bg-[#4B4E32] hover:text-white transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-[#4B4E32] focus-visible:ring-offset-2 focus-visible:outline-none"
         >
           <FileText className="w-4 h-4" />
           Ver carta completa

@@ -76,7 +76,7 @@ export default function CustomSelect({
           tabIndex={0}
           onClick={toggle}
           onKeyDown={handleKeyDown}
-          className="bg-stone-50 border border-neutral-200/60 rounded-xl px-4 py-3.5 w-full text-sm text-[#1A1A1A] flex items-center justify-between cursor-pointer focus:ring-2 focus:ring-[#2D5A27] focus:border-transparent focus:bg-white focus:outline-none transition-all duration-200"
+          className="bg-stone-50 border border-neutral-200/60 rounded-xl px-4 py-3.5 w-full text-sm text-[#261713] flex items-center justify-between cursor-pointer focus:ring-2 focus:ring-[#4B4E32] focus:border-transparent focus:bg-white focus:outline-none transition-all duration-200"
         >
           <span className={value ? '' : 'text-neutral-400'}>{selectedLabel || 'Seleccionar'}</span>
           <ChevronDown
@@ -100,8 +100,8 @@ export default function CustomSelect({
                 onKeyDown={() => {}}
                 className={`px-4 py-3 text-sm cursor-pointer transition-colors ${
                   opt.value === value
-                    ? 'text-[#2D5A27] font-semibold bg-[#2D5A27]/5'
-                    : 'text-[#1A1A1A] hover:bg-neutral-50'
+                    ? 'text-[#4B4E32] font-semibold bg-[#4B4E32]/5'
+                    : 'text-[#261713] hover:bg-neutral-50'
                 }`}
               >
                 {opt.label}

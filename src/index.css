@@ -16,10 +16,10 @@
 
 @keyframes pulse-whatsapp {
   0%, 100% {
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+    box-shadow: 0 4px 12px rgba(75, 78, 50, 0.4);
   }
   50% {
-    box-shadow: 0 4px 24px rgba(37, 211, 102, 0.8);
+    box-shadow: 0 4px 24px rgba(75, 78, 50, 0.8);
   }
 }
 
@@ -36,6 +36,15 @@
 }
 
 @keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes moverMarron {
   0%, 100% {
     background-position: 0% 50%;
   }

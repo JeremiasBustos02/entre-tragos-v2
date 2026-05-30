@@ -1,4 +1,4 @@
-import {ChevronRight } from 'lucide-react';
+import { ChevronDown, ChevronRight } from 'lucide-react';
 
 export default function HeroSection() {
   return (
@@ -8,7 +8,7 @@ export default function HeroSection() {
     >
       {/* Fallback: gradientes oscuros (se ven si el video no carga) */}
       <div
-        className="rounded-3xl absolute inset-0 bg-gradient-to-br from-[#1A1A1A] via-[#2D3A2D] to-[#1A1A1A]"
+        className="rounded-3xl absolute inset-0 bg-gradient-to-br from-[#261713] via-[#3A3D28] to-[#261713]"
         aria-hidden="true"
       />
 
@@ -29,7 +29,7 @@ export default function HeroSection() {
 
       {/* Overlay verde oscuro para legibilidad */}
       <div
-        className="rounded-3xl absolute inset-0 bg-[#2D5A27]/40"
+        className="rounded-3xl absolute inset-0 bg-[#4B4E32]/40"
         aria-hidden="true"
       />
 
@@ -42,7 +42,7 @@ export default function HeroSection() {
       {/* Contenido */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 py-24 sm:py-32 h-full max-w-4xl mx-auto">
         <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 shadow-[0_2px_12px_rgba(0,0,0,0.15)] border border-white/20 text-[13px] text-white/90">
-          <span className="w-2 h-2 rounded-full bg-[#2D5A27] animate-pulse" aria-hidden="true" />
+          <span className="w-2 h-2 rounded-full bg-[#4B4E32] animate-pulse" aria-hidden="true" />
           Coctelería Premium
         </div>
 
@@ -55,7 +55,7 @@ export default function HeroSection() {
           className="text-[clamp(40px,8vw,80px)] leading-[1.05] font-serif font-bold mt-4 text-white"
         >
           Elevando la{' '}
-          <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70">
+          <span className="italic text-[#FEFEFE]">
             Coctelería
           </span>
           <br />
@@ -69,7 +69,7 @@ export default function HeroSection() {
         <div className="flex flex-col sm:flex-row items-center gap-4 mt-10">
           <a
             href="#contact"
-            className="group inline-flex items-center gap-2 bg-white text-[#2D5A27] rounded-full px-8 py-4 text-base font-semibold shadow-md transition-shadow duration-300 hover:shadow-lg hover:scale-[1.03] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#2D5A27] focus-visible:outline-none"
+            className="group inline-flex items-center gap-2 bg-white text-[#4B4E32] rounded-full px-8 py-4 text-base font-semibold shadow-md transition-shadow duration-300 hover:shadow-lg hover:scale-[1.03] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#4B4E32] focus-visible:outline-none"
           >
             Cotizá Gratis
             <ChevronRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -77,12 +77,13 @@ export default function HeroSection() {
 
           <a
             href="#servicios"
-            className="inline-flex items-center gap-2 border-2 border-white/30 text-white rounded-full px-8 py-4 text-base font-medium transition-all duration-300 ease-out hover:border-white/60 hover:bg-white/10 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#2D5A27] focus-visible:outline-none"
+            className="inline-flex items-center gap-2 border-2 border-white/30 text-white rounded-full px-8 py-4 text-base font-medium transition-all duration-300 ease-out hover:border-white/60 hover:bg-white/10 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#4B4E32] focus-visible:outline-none"
           >
             Ver servicios
           </a>
         </div>
       </div>
+
     </section>
   );
 }
