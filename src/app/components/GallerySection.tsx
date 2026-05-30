@@ -41,8 +41,8 @@ export default function GallerySection() {
         <span className="text-xs sm:text-sm font-medium text-[#4B4139] uppercase tracking-[0.2em]">
           Trabajos
         </span>
-        <h2 id="gallery-heading" className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight mt-2 mb-4 text-[#4B4139]">
-          Galería de <span className="text-[#4B4139]">Eventos</span>
+        <h2 id="gallery-heading" className="text-5xl font-serif font-bold leading-tight mt-2 text-[#4B4139]">
+          Galería de Eventos
         </h2>
       </div>
 

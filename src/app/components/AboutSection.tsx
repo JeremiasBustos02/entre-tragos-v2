@@ -35,8 +35,8 @@ export default function AboutSection() {
             Nuestra Esencia
           </span>
 
-          <h2 id="about-heading" className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight text-[#4B4139]">
-            Barras de diseño en <span className="text-[#4B4139]">madera natural</span>
+          <h2 id="about-heading" className="text-5xl font-serif font-bold leading-tight text-[#4B4139]">
+            Barras de diseño en madera natural
           </h2>
 
           <ul className="flex flex-col gap-2">

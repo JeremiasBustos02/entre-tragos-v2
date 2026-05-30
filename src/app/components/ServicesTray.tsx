@@ -31,9 +31,8 @@ export default function ServicesTray() {
         <span className="text-xs sm:text-sm font-medium tracking-[0.2em] uppercase text-[#4B4139]">
           Lo que ofrecemos
         </span>
-        <h2 id="servicios-heading" className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight mt-2 mb-4 text-[#4B4139]">
-          Nuestros <span className="text-[#4B4139]">Servicios</span>
-        </h2>
+        <h2 id="servicios-heading" className="text-5xl font-serif font-bold leading-tight mt-2 mb-4 text-[#4B4139]">
+          Nuestros Servicios</h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
         {SERVICES.map((service) => (

@@ -46,8 +46,8 @@ export default function CtaSection() {
           Reservá tu fecha
         </span>
 
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-serif font-bold leading-[1.1] tracking-tight mt-2 mb-4 text-white">
-          ¿Listo para hacer tu evento <span className="text-[#FEFEFE]">inolvidable</span>?
+        <h2 className="text-5xl lg:text-5xl xl:text-7xl font-serif font-bold mt-2 mb-4 text-white">
+          ¿Listo para hacer tu evento inolvidable?
         </h2>
 
         <p className="text-white/70 text-base sm:text-lg max-w-2xl mx-auto">

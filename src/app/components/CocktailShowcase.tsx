@@ -106,9 +106,9 @@ export default function CocktailShowcase() {
         </span>
         <h2
           id="carta-heading"
-          className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight mt-2 mb-4 text-[#4B4139]"
+          className="text-5xl font-serif font-bold leading-tight mt-2 mb-4 text-[#4B4139]"
         >
-          Cócteles <span className="text-[#4B4139]">Destacados</span>
+          Cócteles Destacados
         </h2>
       </div>
 
@@ -162,7 +162,7 @@ export default function CocktailShowcase() {
                 </div>
               )}
 
-              <h3 className="font-serif text-xl sm:text-2xl text-[#261713] leading-snug">
+              <h3 className="text-2xl font-serif font-bold leading-tight text-[#4B4139]">
                 {cocktail.name}
               </h3>
 

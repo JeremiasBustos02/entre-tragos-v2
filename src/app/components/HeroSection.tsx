@@ -51,10 +51,10 @@ export default function HeroSection() {
 
           <h1
             id="hero-heading"
-            className="text-[clamp(40px,8vw,80px)] leading-[1.05] font-serif font-bold mt-4 text-white"
+            className="text-[clamp(48px,12vw,80px)] leading-[1.05] font-serif font-bold mt-4 text-white"
           >
             Elevando la{' '}
-            <span className="italic text-[#FEFEFE]">
+            <span className="italic">
               Coctelería
             </span>
             <br />
