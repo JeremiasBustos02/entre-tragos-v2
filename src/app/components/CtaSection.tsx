@@ -5,7 +5,7 @@ export default function CtaSection() {
       <div
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(135deg, #344221, #4A5D2F, #3D2314, #344221)',
+          background: 'linear-gradient(135deg, #4B4E32, #4B4E32, #4B4E32, #4B4E32)',
           backgroundSize: '200% 200%',
           animation: 'gradient-shift 15s ease-in-out infinite',
         }}
@@ -32,7 +32,7 @@ export default function CtaSection() {
         aria-hidden="true"
       />
       <div
-        className="absolute w-40 h-40 rounded-full bg-[#5C3A21]/[0.06] blur-3xl"
+        className="absolute w-40 h-40 rounded-full bg-[#3D261E]/[0.06] blur-3xl"
         style={{
           top: '50%',
           left: '50%',
@@ -47,7 +47,7 @@ export default function CtaSection() {
         </span>
 
         <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-serif font-bold leading-[1.1] tracking-tight mt-2 mb-4 text-white">
-          ¿Listo para hacer tu evento <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/80">inolvidable</span>?
+          ¿Listo para hacer tu evento <span className="text-[#FEFEFE]">inolvidable</span>?
         </h2>
 
         <p className="text-white/70 text-base sm:text-lg max-w-2xl mx-auto">
@@ -57,14 +57,14 @@ export default function CtaSection() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-2">
           <a
             href="#contact"
-            className="group inline-flex items-center gap-2 bg-white text-[#2D5A27] rounded-full px-8 py-4 text-base font-semibold shadow-md transition-shadow duration-300 hover:shadow-lg hover:scale-[1.03] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#2D5A27] focus-visible:outline-none"
+            className="group inline-flex items-center gap-2 bg-white text-[#4B4E32] rounded-full px-8 py-4 text-base font-semibold shadow-md transition-shadow duration-300 hover:shadow-lg hover:scale-[1.03] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#4B4E32] focus-visible:outline-none"
           >
             Cotizá Gratis
           </a>
 
           <a
             href="#gallery"
-            className="inline-flex items-center gap-2 border-2 border-white/30 text-white rounded-full px-8 py-4 text-base font-medium backdrop-blur-sm transition-all duration-300 ease-out hover:border-white/60 hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#2D5A27] focus-visible:outline-none active:scale-[0.98]"
+            className="inline-flex items-center gap-2 border-2 border-white/30 text-white rounded-full px-8 py-4 text-base font-medium backdrop-blur-sm transition-all duration-300 ease-out hover:border-white/60 hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#4B4E32] focus-visible:outline-none active:scale-[0.98]"
           >
             Mirá ejemplos
           </a>

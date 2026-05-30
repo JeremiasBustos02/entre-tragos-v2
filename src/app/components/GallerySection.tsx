@@ -9,40 +9,40 @@ const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: 'main-bar',
     label: 'Barra principal en evento',
-    gradient: 'from-[#8B5A2B]/30 via-[#D4C5A9] to-[#2D5A27]/20',
+    gradient: 'from-[#3D261E]/30 via-[#D4C5A9] to-[#4B4E32]/20',
     featured: true,
   },
   {
     id: 'signature-cocktails',
     label: 'Cócteles de autor',
-    gradient: 'from-[#2D5A27]/25 via-[#EAE7E0] to-[#8B5A2B]/15',
+    gradient: 'from-[#4B4E32]/25 via-[#FEFEFE] to-[#3D261E]/15',
   },
   {
     id: 'fresh-ingredients',
     label: 'Ingredientes frescos',
-    gradient: 'from-[#EAE7E0] via-[#2D5A27]/20 to-[#8B5A2B]/10',
+    gradient: 'from-[#FEFEFE] via-[#4B4E32]/20 to-[#3D261E]/10',
   },
   {
     id: 'bartender-action',
     label: 'Bartender en acción',
-    gradient: 'from-[#8B5A2B]/20 via-[#2D5A27]/15 to-[#EAE7E0]',
+    gradient: 'from-[#3D261E]/20 via-[#4B4E32]/15 to-[#FEFEFE]',
   },
   {
     id: 'botanical-details',
     label: 'Detalles botánicos',
-    gradient: 'from-[#D4C5A9] via-[#8B5A2B]/25 to-[#2D5A27]/15',
+    gradient: 'from-[#D4C5A9] via-[#3D261E]/25 to-[#4B4E32]/15',
   },
 ];
 
 export default function GallerySection() {
   return (
-    <section id="galeria" className="py-16 px-4 bg-[#EAE7E0] scroll-mt-24 rounded-3xl" aria-labelledby="gallery-heading">
+    <section id="galeria" className="py-16 px-4 bg-[#FEFEFE] scroll-mt-24 rounded-3xl" aria-labelledby="gallery-heading">
       <div className="text-center mb-10">
-        <span className="text-xs sm:text-sm font-medium text-[#8B5A2B] uppercase tracking-[0.2em]">
+        <span className="text-xs sm:text-sm font-medium text-[#3D261E] uppercase tracking-[0.2em]">
           Trabajos
         </span>
-        <h2 id="gallery-heading" className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight mt-2 mb-4 text-zinc-900">
-          Galería de <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2D5A27] to-[#8B5A2B]">Eventos</span>
+        <h2 id="gallery-heading" className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight mt-2 mb-4 text-[#1E120E]">
+          Galería de <span className="text-[#1E120E]">Eventos</span>
         </h2>
       </div>
 

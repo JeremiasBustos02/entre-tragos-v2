@@ -44,14 +44,14 @@ export default function FaqSection() {
     >
       <div className="max-w-3xl mx-auto px-4">
         <div className="text-center mb-10">
-          <span className="text-xs sm:text-sm font-medium text-[#8B5A2B] uppercase tracking-[0.2em]">
+          <span className="text-xs sm:text-sm font-medium text-[#3D261E] uppercase tracking-[0.2em]">
             FAQ
           </span>
           <h2
             id="faq-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight mt-2 mb-4 text-zinc-900"
+            className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight mt-2 mb-4 text-[#1E120E]"
           >
-            Preguntas <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2D5A27] to-[#8B5A2B]">Frecuentes</span>
+            Preguntas <span className="text-[#1E120E]">Frecuentes</span>
           </h2>
         </div>
 
@@ -65,8 +65,8 @@ export default function FaqSection() {
                 key={index}
                 className={`rounded-2xl border transition-all duration-200 ${
                   isOpen
-                    ? 'bg-white border-[#2D5A27]/20 shadow-md'
-                    : 'bg-white border-neutral-200 hover:border-[#2D5A27]/20 hover:shadow-sm'
+                    ? 'bg-white border-[#4B4E32]/20 shadow-md'
+                    : 'bg-white border-neutral-200 hover:border-[#4B4E32]/20 hover:shadow-sm'
                 }`}
               >
                 <button
@@ -74,11 +74,11 @@ export default function FaqSection() {
                   onClick={() => toggle(index)}
                   aria-expanded={isOpen}
                   aria-controls={contentId}
-                  className="cursor-pointer w-full flex items-center justify-between gap-4 py-5 px-5 sm:px-6 text-left transition-all duration-200 hover:bg-stone-50 focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:outline-none"
+                  className="cursor-pointer w-full flex items-center justify-between gap-4 py-5 px-5 sm:px-6 text-left transition-all duration-200 hover:bg-stone-50 focus-visible:ring-2 focus-visible:ring-[#4B4E32] focus-visible:ring-offset-2 focus-visible:outline-none"
                 >
                   <span
                     className={`text-base sm:text-lg font-medium transition-colors duration-200 ${
-                      isOpen ? 'text-[#2D5A27]' : 'text-[#1A1A1A]'
+                      isOpen ? 'text-[#4B4E32]' : 'text-[#261713]'
                     }`}
                   >
                     {item.question}
@@ -86,11 +86,11 @@ export default function FaqSection() {
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
                       isOpen
-                        ? 'bg-[#2D5A27]/10 rotate-180'
+                        ? 'bg-[#4B4E32]/10 rotate-180'
                         : 'bg-neutral-100'
                     }`}
                   >
-                    <ChevronDown className="w-4 h-4 text-[#2D5A27]" />
+                    <ChevronDown className="w-4 h-4 text-[#4B4E32]" />
                   </div>
                 </button>
 
@@ -116,7 +116,7 @@ export default function FaqSection() {
           ¿No encuentras lo que buscas?{' '}
           <a
             href="#contact"
-            className="text-[#2D5A27] font-medium hover:underline focus-visible:ring-2 focus-visible:ring-[#2D5A27] focus-visible:ring-offset-2 focus-visible:outline-none rounded-md"
+            className="text-[#4B4E32] font-medium hover:underline focus-visible:ring-2 focus-visible:ring-[#4B4E32] focus-visible:ring-offset-2 focus-visible:outline-none rounded-md"
           >
             Contáctanos
           </a>
