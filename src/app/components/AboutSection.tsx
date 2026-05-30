@@ -5,9 +5,9 @@ type Feature = {
 };
 
 const FEATURES: Feature[] = [
-  { text: 'Barras artesanales en madera de roble y nogal' },
-  { text: 'Ingredientes botánicos frescos de temporada' },
-  { text: 'Bartenders certificados con experiencia internacional' },
+  { text: 'Barras artesanales que elevan la estética de tu evento' },
+  { text: 'Propuestas adaptadas a bodas, cumpleaños, eventos empresariales y más.' },
+  { text: 'Atención profesional para que vos solo te ocupes de disfrutar' },
 ];
 
 export default function AboutSection() {
