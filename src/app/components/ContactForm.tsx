@@ -1,5 +1,5 @@
 import { useState, type ChangeEvent, type FormEvent } from 'react';
-import { CheckCircle2, Loader2, Mail, MapPin, Phone } from 'lucide-react';
+import { CheckCircle2, Loader2, Mail, Phone } from 'lucide-react';
 import { WhatsAppIcon } from './icons/WhatsAppIcon';
 
 import { BAR_TYPES } from '../types/contact';
