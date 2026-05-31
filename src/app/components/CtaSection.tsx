@@ -1,51 +1,59 @@
 export default function CtaSection() {
   return (
     <section className="relative overflow-hidden">
-      {/* Animated gradient background */}
+      {/* Background */}
       <div
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(135deg, #4B4E32, #4B4E32, #4B4E32, #4B4E32)',
+          background:
+            'linear-gradient(135deg, #4B4E32, #4B4E32, #4B4E32, #4B4E32)',
           backgroundSize: '200% 200%',
           animation: 'gradient-shift 15s ease-in-out infinite',
         }}
         aria-hidden="true"
       />
 
-      {/* Floating animated blobs */}
       <div
-        className="absolute w-72 h-72 rounded-full bg-white/[0.05] blur-3xl"
+        className="absolute rounded-full blur-[80px]"
         style={{
-          top: '10%',
-          left: '10%',
-          animation: 'float-cta 20s ease-in-out infinite',
+          width: '450px',
+          height: '450px',
+          background: '#D6C29A',
+          opacity: 0.18,
+          top: '-5%',
+          left: '-5%',
+          animation: 'float-cta 12s ease-in-out infinite',
         }}
-        aria-hidden="true"
       />
 
       <div
-        className="absolute w-56 h-56 rounded-full bg-white/[0.04] blur-3xl"
+        className="absolute rounded-full blur-[90px]"
         style={{
-          bottom: '15%',
-          right: '15%',
-          animation: 'float-cta 15s ease-in-out infinite reverse',
+          width: '350px',
+          height: '350px',
+          background: '#8B6B4A',
+          opacity: 0.15,
+          bottom: '-10%',
+          right: '0%',
+          animation: 'float-cta 10s ease-in-out infinite reverse',
         }}
-        aria-hidden="true"
       />
 
       <div
-        className="absolute w-40 h-40 rounded-full bg-[#3D261E]/[0.06] blur-3xl"
+        className="absolute rounded-full blur-[70px]"
         style={{
-          top: '50%',
-          left: '50%',
-          animation: 'float-cta 18s ease-in-out infinite 2s',
+          width: '280px',
+          height: '280px',
+          background: '#B89A6A',
+          opacity: 0.12,
+          top: '35%',
+          left: '45%',
+          animation: 'float-cta 14s ease-in-out infinite',
         }}
-        aria-hidden="true"
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-24 items-center">
-
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-16 lg:py-0">
+        <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-0 lg:gap-24 items-center">
           {/* Texto */}
           <div className="text-center lg:text-left">
             <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-white/90 text-xs sm:text-sm font-medium tracking-wide uppercase">
@@ -57,20 +65,21 @@ export default function CtaSection() {
             </h2>
 
             <p className="text-white/70 text-base sm:text-lg max-w-xl">
-              Cotizá tu barra personalizada y sorprendé a tus invitados con una experiencia única.
+              Cotizá tu barra personalizada y sorprendé a tus invitados con una
+              experiencia única.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mt-8 justify-center lg:justify-start">
               <a
                 href="#contact"
-                className="group inline-flex items-center justify-center gap-2 bg-white text-[#4B4E32] rounded-full px-8 py-4 text-base font-semibold shadow-md transition-all duration-300 hover:shadow-lg hover:scale-[1.03] active:scale-[0.98]"
+                className="group inline-flex items-center justify-center gap-2 bg-white text-[#4B4E32] rounded-full px-8 py-4 text-base font-semibold shadow-md transition-all duration-300 hover:-translate-y-1 hover:scale-[1.03] hover:shadow-xl active:scale-[0.98]"
               >
                 Cotizá Gratis
               </a>
 
               <a
                 href="#gallery"
-                className="inline-flex items-center justify-center gap-2 border-2 border-white/30 text-white rounded-full px-8 py-4 text-base font-medium transition-all duration-300 ease-out hover:border-white hover:bg-white/20 hover:scale-[1.03] active:scale-[0.98] backdrop-blur-sm"
+                className="inline-flex items-center justify-center gap-2 border-2 border-white/30 text-white rounded-full px-8 py-4 text-base font-medium transition-all duration-300 ease-out hover:border-white hover:bg-white/20 hover:-translate-y-1 hover:scale-[1.03] active:scale-[0.98] backdrop-blur-sm"
               >
                 Mirá ejemplos
               </a>
@@ -85,7 +94,6 @@ export default function CtaSection() {
               className="w-full max-w-lg lg:max-w-3xl object-contain"
             />
           </div>
-
         </div>
       </div>
     </section>
