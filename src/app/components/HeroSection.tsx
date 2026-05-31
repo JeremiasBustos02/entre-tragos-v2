@@ -137,7 +137,7 @@ export default function HeroSection() {
             </div>
 
             {/* Reseña flotante derecha (Ajustada de -bottom-8 a -bottom-2 para que no se corte abajo) */}
-            <div className="absolute -bottom-2 -right-8 xl:-right-12 bg-white p-4 rounded-xl shadow-xl flex flex-col gap-1 w-52 xl:w-56 transform rotate-3 animate-float-slow animation-delay-1000">
+            <div className="absolute -bottom-10 -right-8 xl:-right-12 bg-white p-4 rounded-xl shadow-xl flex flex-col gap-1 w-52 xl:w-56 transform rotate-3 animate-float-slow animation-delay-1000">
                 <p className="text-[#4B4E32] font-semibold text-xs xl:text-sm">{testimonials[1].name}</p>
                 <p className="text-[#4B4E32]/80 text-[11px] xl:text-xs line-clamp-2">"{testimonials[1].text}"</p>
                 <div className="flex gap-0.5 mt-1">
