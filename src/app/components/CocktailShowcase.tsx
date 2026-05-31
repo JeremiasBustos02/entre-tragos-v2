@@ -11,7 +11,7 @@ type CocktailItem = {
   id: string;
   name: string;
   ingredients: string;
-  gradient: string;
+  image: string; // Cambiado gradient por la ruta de la imagen
   category: CocktailCategory;
   tags: CocktailTag[];
 };
@@ -48,7 +48,7 @@ const COCKTAILS: CocktailItem[] = [
     id: 'negroni-de-autor',
     name: 'Negroni de Autor',
     ingredients: 'Gin, Campari, Vermouth Rosso, Naranja deshidratada',
-    gradient: 'from-[#8B0000]/30 via-[#D4C5A9] to-[#261713]/10',
+    image: '/foto-cocktail-2.webp',
     category: 'de-autor',
     tags: ['recomendado'],
   },
@@ -56,7 +56,7 @@ const COCKTAILS: CocktailItem[] = [
     id: 'gin-tonic-botanico',
     name: 'Gin Tonic Botánico',
     ingredients: 'Gin London Dry, Tónica artesanal, Romero, Eneldo',
-    gradient: 'from-[#4B4E32]/25 via-[#FEFEFE] to-[#3D261E]/10',
+    image: '/foto-cocktail-2.webp',
     category: 'de-autor',
     tags: ['temporada'],
   },
@@ -64,7 +64,7 @@ const COCKTAILS: CocktailItem[] = [
     id: 'old-fashioned',
     name: 'Old Fashioned',
     ingredients: 'Bourbon, Azúcar mascabado, Angostura, Naranja',
-    gradient: 'from-[#5C2E0E]/30 via-[#D4C5A9] to-[#D2691E]/10',
+    image: '/foto-cocktail-2.webp',
     category: 'clasicos',
     tags: ['fuerte'],
   },
@@ -72,7 +72,7 @@ const COCKTAILS: CocktailItem[] = [
     id: 'aperol-spritz',
     name: 'Aperol Spritz',
     ingredients: 'Aperol, Prosecco, Soda, Naranja, Hielo',
-    gradient: 'from-[#FF6B35]/25 via-[#FEFEFE] to-[#FF8C00]/10',
+    image: '/foto-cocktail-2.webp',
     category: 'compartir',
     tags: ['temporada'],
   },
@@ -80,7 +80,7 @@ const COCKTAILS: CocktailItem[] = [
     id: 'espresso-martini',
     name: 'Espresso Martini',
     ingredients: 'Vodka, Espresso, Licor de café, Jarabe de vainilla',
-    gradient: 'from-[#3C1414]/30 via-[#2D1B1B] to-[#8B4513]/20',
+    image: '/foto-cocktail-2.webp',
     category: 'de-autor',
     tags: ['recomendado'],
   },
@@ -140,11 +140,12 @@ export default function CocktailShowcase() {
             key={cocktail.id}
             className="group bg-[#FEFEFE] rounded-2xl overflow-hidden border border-neutral-200/80 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 focus-within:ring-2 focus-within:ring-[#4B4E32] focus-within:ring-offset-2"
           >
-            <div className="relative w-full aspect-[4/3] overflow-hidden">
-              <div
-                className={`absolute inset-0 bg-gradient-to-br ${cocktail.gradient} transition-transform duration-500 ease-out group-hover:scale-105`}
-                role="img"
-                aria-label={cocktail.name}
+            <div className="relative w-full aspect-[4/3] overflow-hidden bg-neutral-100">
+              <img
+                src={cocktail.image}
+                alt={cocktail.name}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                loading="lazy"
               />
             </div>
 
