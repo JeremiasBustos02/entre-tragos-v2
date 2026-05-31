@@ -1,7 +1,7 @@
 type GalleryItem = {
   id: string;
   label: string;
-  gradient: string;
+  image: string; // Cambiado gradient por la ruta de la imagen
   featured?: boolean;
 };
 
@@ -9,28 +9,28 @@ const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: 'main-bar',
     label: 'Barra principal en evento',
-    gradient: 'from-[#3D261E]/30 via-[#D4C5A9] to-[#4B4E32]/20',
+    image: '/gallery-1.webp', // Ruta apuntando a public/galeria-barra.jpeg
     featured: true,
   },
   {
     id: 'signature-cocktails',
     label: 'Cócteles de autor',
-    gradient: 'from-[#4B4E32]/25 via-[#FEFEFE] to-[#3D261E]/15',
+    image: '/gallery-2.webp',
   },
   {
     id: 'fresh-ingredients',
     label: 'Ingredientes frescos',
-    gradient: 'from-[#FEFEFE] via-[#4B4E32]/20 to-[#3D261E]/10',
+    image: '/gallery-3.webp',
   },
   {
     id: 'bartender-action',
     label: 'Bartender en acción',
-    gradient: 'from-[#3D261E]/20 via-[#4B4E32]/15 to-[#FEFEFE]',
+    image: '/gallery-4.jpg',
   },
   {
     id: 'botanical-details',
     label: 'Detalles botánicos',
-    gradient: 'from-[#D4C5A9] via-[#3D261E]/25 to-[#4B4E32]/15',
+    image: '/gallery-5.jpg',
   },
 ];
 
@@ -52,21 +52,25 @@ export default function GallerySection() {
         {GALLERY_ITEMS.map((item) => (
           <div
             key={item.id}
-            className={`relative group rounded-3xl overflow-hidden ${
+            className={`relative group rounded-3xl overflow-hidden bg-neutral-100 ${
               item.featured
                 ? 'md:col-span-2 md:row-span-2 h-[400px] md:h-[600px]'
                 : 'h-[250px] md:h-[292px]'
             }`}
           >
-            <div
-              className={`absolute inset-0 w-full h-full bg-gradient-to-br ${item.gradient} group-hover:scale-105 transition-transform duration-500`}
-              role="img"
-              aria-label={item.label}
+            {/* Imagen real en lugar del div con gradiente */}
+            <img
+              src={item.image}
+              alt={item.label}
+              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+              loading="lazy"
             />
 
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            {/* Overlay sutil oscuro que se intensifica al hacer hover para que el texto blanco resalte siempre */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
 
-            <div className="absolute bottom-4 left-4 text-white text-sm font-medium opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500">
+            {/* Texto de la etiqueta */}
+            <div className="absolute bottom-5 left-5 text-white text-base font-medium z-10 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 tracking-wide">
               {item.label}
             </div>
           </div>
