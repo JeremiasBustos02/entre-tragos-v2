@@ -29,10 +29,93 @@ const FAQ_DATA = [
   },
 ];
 
+function FaqItem({ item, index, isOpen, onToggle }: {
+  item: typeof FAQ_DATA[number];
+  index: number;
+  isOpen: boolean;
+  onToggle: () => void;
+}) {
+  const itemRef = useReveal<HTMLDivElement>({ type: 'fade', threshold: 0.1, stagger: index });
+  const contentId = `faq-answer-${index}`;
+
+  return (
+    <div
+      ref={itemRef}
+      className="rounded-xl transition-all duration-200"
+      style={{
+        backgroundColor: 'var(--color-surface)',
+        border: `1px solid ${isOpen ? 'var(--color-accent)' : 'var(--color-border)'}`,
+      }}
+    >
+      <button
+        id={`faq-question-${index}`}
+        type="button"
+        onClick={onToggle}
+        aria-expanded={isOpen}
+        aria-controls={contentId}
+        className="cursor-pointer w-full flex items-center justify-between gap-4 py-5 px-5 sm:px-6 text-left transition-colors duration-200"
+        style={{ backgroundColor: 'transparent' }}
+      >
+        <span
+          style={{
+            fontFamily: 'var(--font-sans)',
+            fontWeight: 500,
+            fontSize: '15px',
+            color: isOpen ? 'var(--color-accent)' : 'var(--color-text)',
+          }}
+        >
+          {item.question}
+        </span>
+        <div
+          className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300"
+          style={{
+            backgroundColor: isOpen ? 'var(--color-accent-10)' : 'var(--color-bg-alt)',
+            transform: isOpen ? 'rotate(180deg)' : 'rotate(0)',
+          }}
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            stroke="var(--color-accent)"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <polyline points="4,6 8,10 12,6" />
+          </svg>
+        </div>
+      </button>
+
+      <div
+        id={contentId}
+        role="region"
+        aria-labelledby={`faq-question-${index}`}
+        className="grid transition-[grid-template-rows] duration-300 ease-in-out"
+        style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
+      >
+        <div className="overflow-hidden min-h-0">
+          <p
+            className="px-5 sm:px-6 pb-5 leading-relaxed"
+            style={{
+              fontFamily: 'var(--font-sans)',
+              fontWeight: 400,
+              fontSize: '14px',
+              color: 'var(--color-text-secondary)',
+            }}
+          >
+            {item.answer}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const headerRef = useReveal<HTMLDivElement>({ type: 'fade', threshold: 0.2 });
-  const listRef = useReveal<HTMLDivElement>({ type: 'fade', threshold: 0.1, delay: 100 });
 
   const toggle = (index: number) => {
     setOpenIndex((prev) => (prev === index ? null : index));
@@ -73,84 +156,16 @@ export default function FaqSection() {
           </h2>
         </div>
 
-        <div ref={listRef} className="flex flex-col gap-3">
-          {FAQ_DATA.map((item, index) => {
-            const isOpen = openIndex === index;
-            const contentId = `faq-answer-${index}`;
-
-            return (
-              <div
-                key={index}
-                className="rounded-xl transition-all duration-200"
-                style={{
-                  backgroundColor: 'var(--color-surface)',
-                  border: `1px solid ${isOpen ? 'var(--color-accent)' : 'var(--color-border)'}`,
-                }}
-              >
-                <button
-                  type="button"
-                  onClick={() => toggle(index)}
-                  aria-expanded={isOpen}
-                  aria-controls={contentId}
-                  className="cursor-pointer w-full flex items-center justify-between gap-4 py-5 px-5 sm:px-6 text-left transition-colors duration-200"
-                  style={{ backgroundColor: 'transparent' }}
-                >
-                  <span
-                    style={{
-                      fontFamily: 'var(--font-sans)',
-                      fontWeight: 500,
-                      fontSize: '15px',
-                      color: isOpen ? 'var(--color-accent)' : 'var(--color-text)',
-                    }}
-                  >
-                    {item.question}
-                  </span>
-                  <div
-                    className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300"
-                    style={{
-                      backgroundColor: isOpen ? 'var(--color-accent-10)' : 'var(--color-bg-alt)',
-                      transform: isOpen ? 'rotate(180deg)' : 'rotate(0)',
-                    }}
-                  >
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      stroke="var(--color-accent)"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <polyline points="4,6 8,10 12,6" />
-                    </svg>
-                  </div>
-                </button>
-
-                <div
-                  id={contentId}
-                  role="region"
-                  aria-labelledby={`faq-question-${index}`}
-                  className="grid transition-[grid-template-rows] duration-300 ease-in-out"
-                  style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
-                >
-                  <div className="overflow-hidden min-h-0">
-                    <p
-                      className="px-5 sm:px-6 pb-5 leading-relaxed"
-                      style={{
-                        fontFamily: 'var(--font-sans)',
-                        fontWeight: 400,
-                        fontSize: '14px',
-                        color: 'var(--color-text-secondary)',
-                      }}
-                    >
-                      {item.answer}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+        <div className="flex flex-col gap-3">
+          {FAQ_DATA.map((item, index) => (
+            <FaqItem
+              key={index}
+              item={item}
+              index={index}
+              isOpen={openIndex === index}
+              onToggle={() => toggle(index)}
+            />
+          ))}
         </div>
 
         <p

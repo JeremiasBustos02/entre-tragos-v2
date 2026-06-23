@@ -17,17 +17,56 @@ function CheckCircle() {
   );
 }
 
+function InclusionItem({ item, index }: { item: typeof INCLUSIONS[number]; index: number }) {
+  const itemRef = useReveal<HTMLDivElement>({ type: 'fade', threshold: 0.1, stagger: index });
+
+  return (
+    <div
+      ref={itemRef}
+      className="flex items-start gap-4 p-5 rounded-xl transition-all duration-300 ease-out cursor-default bg-transparent border border-transparent hover:bg-[var(--color-surface)] hover:border-[var(--color-border)] hover:-translate-y-px"
+    >
+      <div
+        className="shrink-0 w-10 h-10 rounded-full flex items-center justify-center"
+        style={{ backgroundColor: 'var(--color-accent-10)' }}
+      >
+        <CheckCircle />
+      </div>
+      <div className="flex flex-col gap-0.5">
+        <span
+          style={{
+            fontFamily: 'var(--font-sans)',
+            fontWeight: 600,
+            fontSize: '15px',
+            color: 'var(--color-text)',
+          }}
+        >
+          {item.feature}
+        </span>
+        <span
+          style={{
+            fontFamily: 'var(--font-sans)',
+            fontWeight: 400,
+            fontSize: '14px',
+            color: 'var(--color-text-secondary)',
+          }}
+        >
+          {item.benefit}
+        </span>
+      </div>
+    </div>
+  );
+}
+
 export default function ServiceInclusions() {
   const headerRef = useReveal<HTMLDivElement>({ type: 'fade', threshold: 0.2 });
-  const gridRef = useReveal<HTMLDivElement>({ type: 'fade', threshold: 0.1 });
 
   return (
     <section
       id="servicio"
-      className="w-full px-5 py-20 sm:px-8 sm:py-28 lg:px-12"
+      className="w-full px-5 py-20 sm:px-8 sm:py-28 lg:px-12 noise-overlay"
       style={{ backgroundColor: 'var(--color-bg-alt)' }}
     >
-      <div className="max-w-[900px] mx-auto">
+      <div className="max-w-[900px] mx-auto relative z-[2]">
         <div ref={headerRef} className="text-center mb-12">
           <span
             style={{
@@ -66,55 +105,9 @@ export default function ServiceInclusions() {
           </p>
         </div>
 
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {INCLUSIONS.map((item) => (
-            <div
-              key={item.feature}
-              className="flex items-start gap-4 p-5 rounded-xl transition-all duration-300 ease-out cursor-default"
-              style={{
-                backgroundColor: 'transparent',
-                border: '1px solid transparent',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'var(--color-surface)';
-                e.currentTarget.style.borderColor = 'var(--color-border)';
-                e.currentTarget.style.transform = 'translateY(-1px)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'transparent';
-                e.currentTarget.style.borderColor = 'transparent';
-                e.currentTarget.style.transform = 'translateY(0)';
-              }}
-            >
-              <div
-                className="shrink-0 w-10 h-10 rounded-full flex items-center justify-center"
-                style={{ backgroundColor: 'var(--color-accent-10)' }}
-              >
-                <CheckCircle />
-              </div>
-              <div className="flex flex-col gap-0.5">
-                <span
-                  style={{
-                    fontFamily: 'var(--font-sans)',
-                    fontWeight: 600,
-                    fontSize: '15px',
-                    color: 'var(--color-text)',
-                  }}
-                >
-                  {item.feature}
-                </span>
-                <span
-                  style={{
-                    fontFamily: 'var(--font-sans)',
-                    fontWeight: 400,
-                    fontSize: '14px',
-                    color: 'var(--color-text-secondary)',
-                  }}
-                >
-                  {item.benefit}
-                </span>
-              </div>
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {INCLUSIONS.map((item, i) => (
+            <InclusionItem key={item.feature} item={item} index={i} />
           ))}
         </div>
       </div>

@@ -40,26 +40,6 @@ export default function Preloader({ onZoomStart, onComplete }: PreloaderProps) {
         willChange: 'transform, opacity, filter',
       }}
     >
-      <style>{`
-        @keyframes preloaderDraw {
-          from { stroke-dashoffset: 600; }
-          to { stroke-dashoffset: 0; }
-        }
-        @keyframes preloaderWave {
-          0%, 100% { transform: translateX(0); }
-          50% { transform: translateX(-12px); }
-        }
-        @keyframes preloaderGlow {
-          0%, 100% { opacity: 0.06; }
-          50% { opacity: 0.12; }
-        }
-        @keyframes preloaderLiquidInertia {
-          0% { transform: translateY(0); }
-          40% { transform: translateY(-3px); }
-          100% { transform: translateY(0); }
-        }
-      `}</style>
-
       <div
         className="flex flex-col items-center"
         style={{
@@ -95,7 +75,7 @@ export default function Preloader({ onZoomStart, onComplete }: PreloaderProps) {
             style={{
               strokeDasharray: 600,
               strokeDashoffset: isFilling || showText ? 0 : 600,
-              animation: phase === 'outline' ? 'preloaderDraw 400ms cubic-bezier(0.4, 0, 0.2, 1) forwards' : 'none',
+              animation: phase === 'outline' ? 'preloader-draw 400ms cubic-bezier(0.4, 0, 0.2, 1) forwards' : 'none',
               opacity: isZooming ? 0 : 1,
               transition: 'opacity 300ms ease-out',
             }}
@@ -115,7 +95,7 @@ export default function Preloader({ onZoomStart, onComplete }: PreloaderProps) {
                 transition: phase === 'fill'
                   ? 'transform 1400ms cubic-bezier(0.25, 0.46, 0.45, 0.94)'
                   : 'none',
-                animation: showText && !isZooming ? 'preloaderLiquidInertia 400ms cubic-bezier(0.34, 1.56, 0.64, 1) 1' : 'none',
+                animation: showText && !isZooming ? 'preloader-liquid-inertia 400ms cubic-bezier(0.34, 1.56, 0.64, 1) 1' : 'none',
               }}
             />
 
@@ -130,7 +110,7 @@ export default function Preloader({ onZoomStart, onComplete }: PreloaderProps) {
                   transition: phase === 'fill'
                     ? 'transform 1400ms cubic-bezier(0.25, 0.46, 0.45, 0.94)'
                     : 'none',
-                  animation: isFilling ? 'preloaderWave 3s ease-in-out infinite' : 'none',
+                  animation: isFilling ? 'preloader-wave 3s ease-in-out infinite' : 'none',
                 }}
               />
             )}
@@ -143,7 +123,7 @@ export default function Preloader({ onZoomStart, onComplete }: PreloaderProps) {
               height="50"
               rx="4"
               fill="white"
-              style={{ animation: 'preloaderGlow 4s ease-in-out infinite' }}
+              style={{ animation: 'preloader-glow 4s ease-in-out infinite' }}
             />
           </g>
         </svg>

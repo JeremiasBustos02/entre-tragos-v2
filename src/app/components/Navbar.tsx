@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { NAV_LINKS } from '../../types/navigation';
+import { WHATSAPP_BASE_URL, WHATSAPP_MESSAGES } from '../constants';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -126,20 +127,8 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-[13px] font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent-dark)] focus-visible:ring-offset-2 rounded-full px-2 py-1"
-                style={{
-                  fontFamily: 'var(--font-sans)',
-                  color: 'var(--color-bg)',
-                  opacity: 0.7,
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.opacity = '1';
-                  e.currentTarget.style.color = 'var(--color-accent-dark)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.opacity = '0.7';
-                  e.currentTarget.style.color = 'var(--color-bg)';
-                }}
+                className="text-[13px] font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-text)] focus-visible:ring-offset-2 rounded-full px-2 py-1 text-[var(--color-bg)] opacity-70 hover:opacity-100 hover:text-[var(--color-bg)]"
+                style={{ fontFamily: 'var(--font-sans)' }}
               >
                 {link.label}
               </a>
@@ -295,7 +284,7 @@ export default function Navbar() {
                   fontWeight: 700,
                   fontSize: '20px',
                   letterSpacing: '0.04em',
-                  color: 'var(--color-text)',
+                  color: 'var(--color-bg)',
                 }}
               >
                 EntreTragos
@@ -306,7 +295,7 @@ export default function Navbar() {
                   fontFamily: 'var(--font-serif)',
                   fontStyle: 'italic',
                   fontSize: '13px',
-                  color: 'var(--color-accent)',
+                  color: 'var(--color-bg)',
                   opacity: 0.8,
                 }}
               >
@@ -320,7 +309,7 @@ export default function Navbar() {
                 style={{
                   width: '32px',
                   height: '1px',
-                  backgroundColor: 'var(--color-accent)',
+                  backgroundColor: 'var(--color-bg)',
                   opacity: isMenuVisible ? 0.4 : 0,
                   transition: 'opacity 300ms ease-out 150ms',
                 }}
@@ -334,23 +323,16 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   role="menuitem"
-                  className="w-full text-center rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)]"
+                  className="w-full text-center rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-bg)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)] text-[var(--color-bg)] hover:text-[var(--color-accent)]"
                   style={{
                     fontFamily: 'var(--font-sans)',
                     fontWeight: 600,
                     fontSize: 'clamp(24px, 7vw, 32px)',
                     letterSpacing: '0.02em',
-                    color: 'var(--color-text)',
                     padding: '14px 0',
                     opacity: isMenuVisible ? 1 : 0,
                     transform: isMenuVisible ? 'translateY(0)' : 'translateY(16px)',
                     transition: `opacity 300ms ease-out ${150 + i * 60}ms, transform 400ms cubic-bezier(0.16, 1, 0.3, 1) ${150 + i * 60}ms, color 200ms`,
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = 'var(--color-accent)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = 'var(--color-text)';
                   }}
                   onClick={(e) => {
                     e.preventDefault();
@@ -375,20 +357,20 @@ export default function Navbar() {
                 style={{
                   width: '32px',
                   height: '1px',
-                  backgroundColor: 'var(--color-accent)',
+                  backgroundColor: 'var(--color-bg)',
                   opacity: 0.4,
                 }}
               />
 
               <a
-                href="https://wa.me/5492235000000?text=Hola%2C%20me%20interesa%20cotizar%20un%20evento"
+                href={`${WHATSAPP_BASE_URL}?text=${encodeURIComponent(WHATSAPP_MESSAGES.nav)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2.5 rounded-full font-semibold transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)]"
+                className="inline-flex items-center justify-center gap-2.5 rounded-full font-semibold transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-accent)]"
                 style={{
                   fontFamily: 'var(--font-sans)',
-                  backgroundColor: 'var(--color-accent)',
-                  color: 'var(--color-bg)',
+                  backgroundColor: 'var(--color-bg)',
+                  color: 'var(--color-accent)',
                   padding: '14px 32px',
                   fontSize: '15px',
                 }}
@@ -397,7 +379,7 @@ export default function Navbar() {
                   closeMenu();
                   setTimeout(() => {
                     window.open(
-                      'https://wa.me/5492235000000?text=Hola%2C%20me%20interesa%20cotizar%20un%20evento',
+                      `${WHATSAPP_BASE_URL}?text=${encodeURIComponent(WHATSAPP_MESSAGES.nav)}`,
                       '_blank',
                     );
                   }, 350);

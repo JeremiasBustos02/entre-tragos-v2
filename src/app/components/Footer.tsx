@@ -1,3 +1,5 @@
+import { CONTACT, SOCIAL_LINKS } from '../constants';
+
 export default function Footer() {
   return (
     <footer
@@ -60,22 +62,21 @@ export default function Footer() {
               Navegación
             </span>
             <nav className="flex flex-col gap-2" aria-label="Navegación del footer">
-              <a href="#paquetes" className="transition-colors duration-200" style={{ fontFamily: 'var(--font-sans)', fontWeight: 400, fontSize: '14px', color: 'var(--color-text-secondary)' }}
-                onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-accent)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-text-secondary)'; }}
-              >Paquetes</a>
-              <a href="#carta" className="transition-colors duration-200" style={{ fontFamily: 'var(--font-sans)', fontWeight: 400, fontSize: '14px', color: 'var(--color-text-secondary)' }}
-                onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-accent)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-text-secondary)'; }}
-              >Carta</a>
-              <a href="#galeria" className="transition-colors duration-200" style={{ fontFamily: 'var(--font-sans)', fontWeight: 400, fontSize: '14px', color: 'var(--color-text-secondary)' }}
-                onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-accent)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-text-secondary)'; }}
-              >Galería</a>
-              <a href="#faq" className="transition-colors duration-200" style={{ fontFamily: 'var(--font-sans)', fontWeight: 400, fontSize: '14px', color: 'var(--color-text-secondary)' }}
-                onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-accent)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-text-secondary)'; }}
-              >FAQ</a>
+              {[
+                { href: '#paquetes', label: 'Paquetes' },
+                { href: '#carta', label: 'Carta' },
+                { href: '#galeria', label: 'Galería' },
+                { href: '#faq', label: 'FAQ' },
+              ].map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="font-normal text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-colors duration-200"
+                  style={{ fontFamily: 'var(--font-sans)' }}
+                >
+                  {link.label}
+                </a>
+              ))}
             </nav>
           </div>
 
@@ -123,14 +124,20 @@ export default function Footer() {
               Contacto
             </span>
             <div className="flex flex-col gap-2">
-              <a href="mailto:hola@entretragos.com" className="transition-colors duration-200" style={{ fontFamily: 'var(--font-sans)', fontWeight: 400, fontSize: '14px', color: 'var(--color-text-secondary)' }}
-                onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-accent)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-text-secondary)'; }}
-              >hola@entretragos.com</a>
-              <a href="tel:+5492235000000" className="transition-colors duration-200" style={{ fontFamily: 'var(--font-sans)', fontWeight: 400, fontSize: '14px', color: 'var(--color-text-secondary)' }}
-                onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-accent)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-text-secondary)'; }}
-              >+54 9 223 500-0000</a>
+              <a
+                href={`mailto:${CONTACT.email}`}
+                className="font-normal text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-colors duration-200"
+                style={{ fontFamily: 'var(--font-sans)' }}
+              >
+                {CONTACT.email}
+              </a>
+              <a
+                href={`tel:${CONTACT.phone}`}
+                className="font-normal text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-colors duration-200"
+                style={{ fontFamily: 'var(--font-sans)' }}
+              >
+                {CONTACT.phoneFormatted}
+              </a>
               <span style={{ fontFamily: 'var(--font-sans)', fontWeight: 400, fontSize: '14px', color: 'var(--color-text-secondary)' }}>
                 Mar del Plata y alrededores
               </span>
@@ -155,58 +162,37 @@ export default function Footer() {
 
           <div className="flex items-center gap-4">
             <a
-              href="https://instagram.com/entretragos"
+              href={SOCIAL_LINKS.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200"
-              style={{ backgroundColor: 'var(--color-surface)', border: '1px solid var(--color-border)' }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'var(--color-accent)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'var(--color-border)';
-              }}
+              className="w-9 h-9 rounded-full flex items-center justify-center bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all duration-200"
               aria-label="Instagram"
             >
-              <svg className="w-4 h-4" style={{ color: 'var(--color-text-secondary)' }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg className="w-4 h-4 text-[var(--color-text-secondary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
                 <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
               </svg>
             </a>
             <a
-              href="https://facebook.com/entretragos"
+              href={SOCIAL_LINKS.facebook}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200"
-              style={{ backgroundColor: 'var(--color-surface)', border: '1px solid var(--color-border)' }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'var(--color-accent)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'var(--color-border)';
-              }}
+              className="w-9 h-9 rounded-full flex items-center justify-center bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all duration-200"
               aria-label="Facebook"
             >
-              <svg className="w-4 h-4" style={{ color: 'var(--color-text-secondary)' }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg className="w-4 h-4 text-[var(--color-text-secondary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
               </svg>
             </a>
             <a
-              href="https://wa.me/5492235000000"
+              href={SOCIAL_LINKS.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200"
-              style={{ backgroundColor: 'var(--color-surface)', border: '1px solid var(--color-border)' }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'var(--color-accent)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'var(--color-border)';
-              }}
+              className="w-9 h-9 rounded-full flex items-center justify-center bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all duration-200"
               aria-label="WhatsApp"
             >
-              <svg className="w-4 h-4" style={{ color: 'var(--color-text-secondary)' }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg className="w-4 h-4 text-[var(--color-text-secondary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
               </svg>
             </a>

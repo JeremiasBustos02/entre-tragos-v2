@@ -63,9 +63,37 @@ function GraduationIcon() {
   );
 }
 
+function IdealCard({ item, index }: { item: typeof ITEMS[number]; index: number }) {
+  const cardRef = useReveal<HTMLDivElement>({ type: 'scale', threshold: 0.15, stagger: index });
+  const Icon = item.icon;
+
+  return (
+    <div
+      ref={cardRef}
+      className="group flex flex-col items-center justify-center gap-3 rounded-xl cursor-default transition-all duration-300 ease-out border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:bg-[var(--color-surface)] hover:-translate-y-0.5"
+      style={{
+        padding: '24px 8px',
+        minHeight: '130px',
+      }}
+    >
+      <Icon />
+      <span
+        style={{
+          fontFamily: 'var(--font-sans)',
+          fontWeight: 500,
+          fontSize: '13px',
+          color: 'var(--color-text-secondary)',
+          lineHeight: 1.3,
+        }}
+      >
+        {item.label}
+      </span>
+    </div>
+  );
+}
+
 export default function IdealForSection() {
   const headerRef = useReveal<HTMLDivElement>({ type: 'fade', threshold: 0.2 });
-  const gridRef = useReveal<HTMLDivElement>({ type: 'scale', threshold: 0.15 });
 
   return (
     <section
@@ -100,44 +128,10 @@ export default function IdealForSection() {
           </h2>
         </div>
 
-        <div ref={gridRef} className="grid grid-cols-3 sm:grid-cols-5 gap-3 mt-10">
-          {ITEMS.map((item) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={item.label}
-                className="group flex flex-col items-center justify-center gap-3 rounded-xl cursor-default transition-all duration-300 ease-out"
-                style={{
-                  border: '1px solid var(--color-border)',
-                  padding: '24px 8px',
-                  minHeight: '130px',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = 'var(--color-surface)';
-                  e.currentTarget.style.borderColor = 'var(--color-accent)';
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = 'transparent';
-                  e.currentTarget.style.borderColor = 'var(--color-border)';
-                  e.currentTarget.style.transform = 'translateY(0)';
-                }}
-              >
-                <Icon />
-                <span
-                  style={{
-                    fontFamily: 'var(--font-sans)',
-                    fontWeight: 500,
-                    fontSize: '13px',
-                    color: 'var(--color-text-secondary)',
-                    lineHeight: 1.3,
-                  }}
-                >
-                  {item.label}
-                </span>
-              </div>
-            );
-          })}
+        <div className="grid grid-cols-3 sm:grid-cols-5 gap-3 mt-10">
+          {ITEMS.map((item, i) => (
+            <IdealCard key={item.label} item={item} index={i} />
+          ))}
         </div>
       </div>
     </section>

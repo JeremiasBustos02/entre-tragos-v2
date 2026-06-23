@@ -36,9 +36,44 @@ const GALLERY_ITEMS: GalleryItem[] = [
   },
 ];
 
+function GalleryCard({ item, index }: { item: GalleryItem; index: number }) {
+  const cardRef = useReveal<HTMLDivElement>({ type: 'fade', threshold: 0.1, stagger: index });
+
+  return (
+    <div
+      ref={cardRef}
+      className={`relative group overflow-hidden rounded-xl cursor-default ${
+        item.featured
+          ? 'sm:col-span-2 lg:col-span-2 lg:row-span-2 aspect-[4/3] lg:aspect-auto lg:h-full'
+          : 'aspect-[4/3]'
+      }`}
+      style={{ border: '1px solid var(--color-border)' }}
+    >
+      <img
+        src={item.image}
+        alt={item.label}
+        loading="lazy"
+        decoding="async"
+        className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-[1.04] group-hover:brightness-110"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
+      <div
+        className="absolute bottom-4 left-4 z-10 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500 md:translate-y-2 md:group-hover:translate-y-0"
+        style={{
+          fontFamily: 'var(--font-sans)',
+          fontWeight: 500,
+          fontSize: '14px',
+          color: 'var(--color-text)',
+        }}
+      >
+        {item.label}
+      </div>
+    </div>
+  );
+}
+
 export default function GallerySection() {
   const headerRef = useReveal<HTMLDivElement>({ type: 'fade', threshold: 0.2 });
-  const gridRef = useReveal<HTMLDivElement>({ type: 'mask', threshold: 0.1 });
 
   return (
     <section id="galeria" className="py-20 sm:py-28 px-5 sm:px-8 lg:px-12" aria-labelledby="gallery-heading">
@@ -82,35 +117,9 @@ export default function GallerySection() {
           </p>
         </div>
 
-        <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {GALLERY_ITEMS.map((item) => (
-            <div
-              key={item.id}
-              className={`relative group overflow-hidden rounded-xl cursor-default ${
-                item.featured
-                  ? 'sm:col-span-2 lg:col-span-2 lg:row-span-2 aspect-[4/3] lg:aspect-auto lg:h-full'
-                  : 'aspect-[4/3]'
-              }`}
-              style={{ border: '1px solid var(--color-border)' }}
-            >
-              <img
-                src={item.image}
-                alt={item.label}
-                className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-[1.04] group-hover:brightness-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
-              <div
-                className="absolute bottom-4 left-4 z-10 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500 md:translate-y-2 md:group-hover:translate-y-0"
-                style={{
-                  fontFamily: 'var(--font-sans)',
-                  fontWeight: 500,
-                  fontSize: '14px',
-                  color: 'var(--color-text)',
-                }}
-              >
-                {item.label}
-              </div>
-            </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {GALLERY_ITEMS.map((item, i) => (
+            <GalleryCard key={item.id} item={item} index={i} />
           ))}
         </div>
       </div>

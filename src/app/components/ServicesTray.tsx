@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useInView } from '../hooks/useInView';
 import { useReveal } from '../hooks/useReveal';
+import { useMagneticButton } from '../hooks/useMagneticButton';
 import ServiceCard from './ServiceCard';
 
 const PACKAGES = [
@@ -37,26 +38,10 @@ const PACKAGES = [
 ];
 
 export default function ServicesTray() {
-  const [visible, setVisible] = useState(false);
-  const ref = useRef<HTMLElement>(null);
+  const { ref, inView: visible } = useInView<HTMLElement>({ threshold: 0.1 });
   const headerRef = useReveal<HTMLDivElement>({ type: 'fade', threshold: 0.2 });
   const ctaRef = useReveal<HTMLDivElement>({ type: 'scale', threshold: 0.2, delay: 200 });
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  const { ref: magneticRef } = useMagneticButton<HTMLAnchorElement>();
 
   return (
     <section
@@ -130,19 +115,10 @@ export default function ServicesTray() {
               ¿Algo distinto? Diseñamos una propuesta a medida para tu evento.
             </p>
             <a
+              ref={magneticRef}
               href="#contacto"
-              className="inline-flex items-center justify-center rounded-full px-8 py-3.5 text-base font-semibold transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
-              style={{
-                fontFamily: 'var(--font-sans)',
-                backgroundColor: 'var(--color-accent)',
-                color: 'var(--color-bg)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'var(--color-accent-hover)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'var(--color-accent)';
-              }}
+              className="magnetic-btn inline-flex items-center justify-center rounded-full px-8 py-3.5 text-base font-semibold transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-[var(--color-bg)]"
+              style={{ fontFamily: 'var(--font-sans)' }}
             >
               Consultar disponibilidad
             </a>

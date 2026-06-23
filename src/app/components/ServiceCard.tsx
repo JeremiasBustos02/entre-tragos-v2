@@ -178,22 +178,8 @@ export default function ServiceCard({ pkg, index, visible }: ServiceCardProps) {
       <div className="px-5 pb-5 sm:px-6 sm:pb-6">
         <a
           href="#contacto"
-          className="block w-full text-center py-3 rounded-full font-medium transition-all duration-300"
-          style={{
-            fontFamily: 'var(--font-sans)',
-            fontWeight: 500,
-            fontSize: '14px',
-            border: '1px solid var(--color-accent)',
-            color: 'var(--color-accent)',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = 'var(--color-accent)';
-            e.currentTarget.style.color = 'var(--color-bg)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = 'transparent';
-            e.currentTarget.style.color = 'var(--color-accent)';
-          }}
+          className="block w-full text-center py-3 rounded-full font-medium transition-all duration-300 border border-[var(--color-accent)] text-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-[var(--color-bg)]"
+          style={{ fontFamily: 'var(--font-sans)', fontWeight: 500, fontSize: '14px' }}
         >
           Consultar
         </a>

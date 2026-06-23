@@ -22,12 +22,17 @@ export default function CustomSelect({
   name,
 }: CustomSelectProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [focusedIndex, setFocusedIndex] = useState(-1);
   const containerRef = useRef<HTMLDivElement>(null);
+  const listRef = useRef<HTMLUListElement>(null);
 
   const selectedLabel = options.find((o) => o.value === value)?.label ?? '';
 
   const toggle = () => setIsOpen((prev) => !prev);
-  const close = () => setIsOpen(false);
+  const close = () => {
+    setIsOpen(false);
+    setFocusedIndex(-1);
+  };
 
   const selectOption = (optValue: string) => {
     onChange(optValue);
@@ -47,12 +52,23 @@ export default function CustomSelect({
     return () => document.removeEventListener('mousedown', handleMouseDown);
   }, [isOpen]);
 
+  useEffect(() => {
+    if (isOpen && focusedIndex >= 0 && listRef.current) {
+      const items = listRef.current.querySelectorAll('[role="option"]');
+      items[focusedIndex]?.scrollIntoView({ block: 'nearest' });
+    }
+  }, [isOpen, focusedIndex]);
+
   const handleKeyDown = (e: React.KeyboardEvent) => {
     switch (e.key) {
       case 'Enter':
       case ' ':
         e.preventDefault();
-        toggle();
+        if (isOpen && focusedIndex >= 0) {
+          selectOption(options[focusedIndex].value);
+        } else {
+          toggle();
+        }
         break;
       case 'Escape':
         e.preventDefault();
@@ -61,6 +77,28 @@ export default function CustomSelect({
       case 'Tab':
         close();
         break;
+      case 'ArrowDown':
+        e.preventDefault();
+        if (!isOpen) {
+          setIsOpen(true);
+          setFocusedIndex(0);
+        } else {
+          setFocusedIndex((prev) => (prev < options.length - 1 ? prev + 1 : 0));
+        }
+        break;
+      case 'ArrowUp':
+        e.preventDefault();
+        if (isOpen) {
+          setFocusedIndex((prev) => (prev > 0 ? prev - 1 : options.length - 1));
+        }
+        break;
+    }
+  };
+
+  const handleOptionKeyDown = (e: React.KeyboardEvent, optValue: string) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      selectOption(optValue);
     }
   };
 
@@ -97,6 +135,7 @@ export default function CustomSelect({
           aria-expanded={isOpen}
           aria-haspopup="listbox"
           aria-controls={`${name}-listbox`}
+          aria-activedescendant={isOpen && focusedIndex >= 0 ? `${name}-option-${focusedIndex}` : undefined}
           tabIndex={0}
           onClick={toggle}
           onKeyDown={handleKeyDown}
@@ -118,6 +157,7 @@ export default function CustomSelect({
 
         {isOpen && (
           <ul
+            ref={listRef}
             id={`${name}-listbox`}
             role="listbox"
             className="absolute z-[60] mt-2 w-full"
@@ -128,31 +168,22 @@ export default function CustomSelect({
               boxShadow: '0 8px 32px var(--color-black-40)',
             }}
           >
-            {options.map((opt) => (
+            {options.map((opt, index) => (
               <li
                 key={opt.value}
+                id={`${name}-option-${index}`}
                 role="option"
                 aria-selected={opt.value === value}
                 onClick={() => selectOption(opt.value)}
-                onKeyDown={() => {}}
-                className="px-4 py-3 cursor-pointer transition-colors duration-150 first:rounded-t-[11px] last:rounded-b-[11px]"
-                style={{
-                  fontFamily: 'var(--font-sans)',
-                  fontSize: '14px',
-                  backgroundColor: opt.value === value ? 'var(--color-accent-10)' : 'transparent',
-                  color: opt.value === value ? 'var(--color-accent)' : 'var(--color-text)',
-                  fontWeight: opt.value === value ? 600 : 400,
-                }}
-                onMouseEnter={(e) => {
-                  if (opt.value !== value) {
-                    e.currentTarget.style.backgroundColor = 'var(--color-accent-5)';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (opt.value !== value) {
-                    e.currentTarget.style.backgroundColor = 'transparent';
-                  }
-                }}
+                onKeyDown={(e) => handleOptionKeyDown(e, opt.value)}
+                className={`px-4 py-3 cursor-pointer transition-colors duration-150 first:rounded-t-[11px] last:rounded-b-[11px] ${
+                  opt.value === value
+                    ? 'bg-[var(--color-accent-10)] text-[var(--color-accent)] font-semibold'
+                    : 'bg-transparent text-[var(--color-text)] font-normal hover:bg-[var(--color-accent-5)]'
+                }`}
+                style={{ fontFamily: 'var(--font-sans)', fontSize: '14px' }}
+                onMouseEnter={() => setFocusedIndex(index)}
+                onMouseLeave={() => setFocusedIndex(-1)}
               >
                 {opt.label}
               </li>

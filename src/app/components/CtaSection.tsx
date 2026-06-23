@@ -1,36 +1,20 @@
-import { useEffect, useRef, useState } from 'react';
+import { WHATSAPP_BASE_URL, WHATSAPP_MESSAGES } from '../constants';
+import { useInView } from '../hooks/useInView';
+import { useMagneticButton } from '../hooks/useMagneticButton';
 
 export default function CtaSection() {
-  const [visible, setVisible] = useState(false);
-  const ref = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  const { ref, inView: visible } = useInView<HTMLElement>({ threshold: 0.15 });
+  const { ref: magneticRef } = useMagneticButton<HTMLAnchorElement>();
 
   return (
     <section
       ref={ref}
-      className="w-full px-5 py-20 sm:px-8 sm:py-28 lg:px-12"
+      className="w-full px-5 py-20 sm:px-8 sm:py-28 lg:px-12 noise-overlay"
       style={{ backgroundColor: 'var(--color-bg-alt)' }}
     >
       <div
-        className="max-w-[1000px] mx-auto rounded-2xl overflow-hidden"
+        className="max-w-[1000px] mx-auto rounded-2xl overflow-hidden relative z-[2] glass"
         style={{
-          backgroundColor: 'var(--color-bg)',
-          border: '1px solid var(--color-border)',
           opacity: visible ? 1 : 0,
           transform: visible ? 'translateY(0)' : 'translateY(24px)',
           transition: 'opacity 600ms ease-out, transform 600ms ease-out',
@@ -48,6 +32,8 @@ export default function CtaSection() {
             <img
               src="/cocktail-cta.png"
               alt="Cocktail preparado por Entre Tragos"
+              loading="lazy"
+              decoding="async"
               className="absolute inset-0 w-full h-full object-cover"
             />
             <div
@@ -126,22 +112,15 @@ export default function CtaSection() {
               }}
             >
               <a
-                href="https://wa.me/5492235000000?text=Hola%2C%20me%20interesa%20consultar%20disponibilidad%20para%20un%20evento"
+                ref={magneticRef}
+                href={`${WHATSAPP_BASE_URL}?text=${encodeURIComponent(WHATSAPP_MESSAGES.cta)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2.5 rounded-full font-semibold transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2"
+                className="magnetic-btn inline-flex items-center justify-center gap-2.5 rounded-full font-semibold transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-[var(--color-bg)]"
                 style={{
                   fontFamily: 'var(--font-sans)',
-                  backgroundColor: 'var(--color-accent)',
-                  color: 'var(--color-bg)',
                   padding: 'clamp(14px, 2.5vw, 16px) clamp(28px, 5vw, 40px)',
                   fontSize: 'clamp(14px, 2.5vw, 16px)',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = 'var(--color-accent-hover)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = 'var(--color-accent)';
                 }}
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">

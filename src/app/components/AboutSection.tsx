@@ -8,13 +8,14 @@ const FEATURES = [
 ];
 
 export default function AboutSection() {
-  const [isDesktop, setIsDesktop] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(() =>
+    typeof window !== 'undefined' ? window.matchMedia('(min-width: 640px)').matches : false
+  );
   const imageRef = useReveal<HTMLDivElement>({ type: 'mask', threshold: 0.2 });
   const contentRef = useReveal<HTMLDivElement>({ type: 'fade', threshold: 0.2, delay: 100 });
 
   useEffect(() => {
     const mq = window.matchMedia('(min-width: 640px)');
-    setIsDesktop(mq.matches);
     const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
     mq.addEventListener('change', handler);
     return () => mq.removeEventListener('change', handler);
@@ -30,12 +31,16 @@ export default function AboutSection() {
           <img
             src="/barra-trago.jpg"
             alt="Barra de coctelería de madera natural"
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover"
           />
           {isDesktop && (
             <img
               src="/madera.jpg"
               alt="Detalle de ingredientes botánicos"
+              loading="lazy"
+              decoding="async"
               className="absolute bottom-4 right-4 w-40 h-40 rounded-xl object-cover"
               style={{ border: '2px solid var(--color-border)' }}
             />
