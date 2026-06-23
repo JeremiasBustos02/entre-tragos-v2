@@ -1,59 +1,105 @@
-import { CheckCircle2 } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { useReveal } from '../hooks/useReveal';
 
-type Feature = {
-  text: string;
-};
-
-const FEATURES: Feature[] = [
-  { text: 'Barras artesanales que elevan la estética de tu evento' },
-  { text: 'Propuestas adaptadas a bodas, cumpleaños, eventos empresariales y más.' },
-  { text: 'Atención profesional para que vos solo te ocupes de disfrutar' },
+const FEATURES = [
+  'Barras artesanales que elevan la estética de tu evento',
+  'Propuestas adaptadas a bodas, cumpleaños, eventos empresariales y más',
+  'Atención profesional para que vos solo te ocupes de disfrutar',
 ];
 
 export default function AboutSection() {
+  const [isDesktop, setIsDesktop] = useState(false);
+  const imageRef = useReveal<HTMLDivElement>({ type: 'mask', threshold: 0.2 });
+  const contentRef = useReveal<HTMLDivElement>({ type: 'fade', threshold: 0.2, delay: 100 });
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 640px)');
+    setIsDesktop(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+
   return (
-    <section id="about" className="py-24 px-4 bg-[#F9F7F4] scroll-mt-24 rounded-3xl" aria-labelledby="about-heading">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto items-center">
-        
-        {/* CONTENEDOR DE FOTOS */}
-        <div className="relative w-full h-[500px] order-2 lg:order-1">
-          {/* Foto Principal (Reemplaza al gradiente grande) */}
+    <section id="about" className="py-20 sm:py-28 px-5 sm:px-8 lg:px-12" aria-labelledby="about-heading">
+      <div className="max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div
+          ref={imageRef}
+          className="relative w-full aspect-[4/3] lg:aspect-[3/4] order-2 lg:order-1 overflow-hidden rounded-2xl"
+        >
           <img
             src="/barra-trago.jpg"
             alt="Barra de coctelería de madera natural"
-            className="rounded-3xl w-full h-full object-cover shadow-sm"
-            loading="lazy"
+            className="w-full h-full object-cover"
           />
-
-          {/* Foto Secundaria Flotante (Reemplaza al segundo gradiente pequeño) */}
-          <img
-            src="/madera.jpg"
-            alt="Detalle de ingredientes botánicos"
-            className="absolute bottom-4 right-4 w-48 h-48 rounded-2xl object-cover shadow-lg"
-            loading="lazy"
-          />
+          {isDesktop && (
+            <img
+              src="/madera.jpg"
+              alt="Detalle de ingredientes botánicos"
+              className="absolute bottom-4 right-4 w-40 h-40 rounded-xl object-cover"
+              style={{ border: '2px solid var(--color-border)' }}
+            />
+          )}
         </div>
 
-        {/* CONTENEDOR DE TEXTO */}
-        <div className="flex flex-col gap-4 order-1 lg:order-2">
-          <span className="text-xs sm:text-sm font-medium text-[#4B4139] uppercase tracking-[0.2em]">
+        <div ref={contentRef} className="flex flex-col gap-5 order-1 lg:order-2">
+          <span
+            style={{
+              fontFamily: 'var(--font-sans)',
+              fontWeight: 500,
+              fontSize: '12px',
+              color: 'var(--color-accent)',
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+            }}
+          >
             Nuestra Esencia
           </span>
 
-          <h2 id="about-heading" className="text-5xl font-serif font-bold leading-tight text-[#4B4139]">
+          <h2
+            id="about-heading"
+            style={{
+              fontFamily: 'var(--font-sans)',
+              fontWeight: 700,
+              fontSize: 'clamp(28px, 4vw, 40px)',
+              color: 'var(--color-text)',
+              lineHeight: 1.15,
+            }}
+          >
             Barras de diseño en madera natural
           </h2>
 
-          <ul className="flex flex-col gap-2">
-            {FEATURES.map((feature) => (
-              <li key={feature.text} className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-[#4B4139] mt-0.5 shrink-0" aria-hidden="true" />
-                <span className="text-neutral-700 text-[15px] leading-relaxed">{feature.text}</span>
+          <ul className="flex flex-col gap-3 mt-2">
+            {FEATURES.map((text) => (
+              <li key={text} className="flex items-start gap-3">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  stroke="var(--color-accent)"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="mt-0.5 shrink-0"
+                >
+                  <polyline points="4,10 8,14 16,6" />
+                </svg>
+                <span
+                  style={{
+                    fontFamily: 'var(--font-sans)',
+                    fontWeight: 400,
+                    fontSize: '15px',
+                    color: 'var(--color-text-secondary)',
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {text}
+                </span>
               </li>
             ))}
           </ul>
         </div>
-
       </div>
     </section>
   );

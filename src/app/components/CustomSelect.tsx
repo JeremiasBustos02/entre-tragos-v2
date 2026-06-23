@@ -64,10 +64,34 @@ export default function CustomSelect({
     }
   };
 
+  const labelStyle: React.CSSProperties = {
+    fontFamily: 'var(--font-sans)',
+    fontWeight: 500,
+    fontSize: '13px',
+    color: 'var(--color-text-secondary)',
+  };
+
+  const triggerStyle: React.CSSProperties = {
+    fontFamily: 'var(--font-sans)',
+    backgroundColor: 'var(--color-bg)',
+    color: value ? 'var(--color-text)' : 'var(--color-text-secondary)',
+    border: '1px solid var(--color-border)',
+    borderRadius: '12px',
+    padding: '12px 16px',
+    width: '100%',
+    fontSize: '14px',
+    outline: 'none',
+    transition: 'border-color 200ms',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  };
+
   return (
-    <label className="flex flex-col gap-1.5 text-sm font-medium text-neutral-700">
-      {label}
-      <div className="relative" ref={containerRef}>
+    <label className="flex flex-col gap-1.5">
+      <span style={labelStyle}>{label}</span>
+      <div className="relative" ref={containerRef} style={{ overflow: 'visible' }}>
         <div
           role="combobox"
           aria-expanded={isOpen}
@@ -76,11 +100,18 @@ export default function CustomSelect({
           tabIndex={0}
           onClick={toggle}
           onKeyDown={handleKeyDown}
-          className="bg-stone-50 border border-neutral-200/60 rounded-xl px-4 py-3.5 w-full text-sm text-[#261713] flex items-center justify-between cursor-pointer focus:ring-2 focus:ring-[#4B4E32] focus:border-transparent focus:bg-white focus:outline-none transition-all duration-200"
+          style={triggerStyle}
+          onFocus={(e) => {
+            e.currentTarget.style.borderColor = 'var(--color-accent)';
+          }}
+          onBlur={(e) => {
+            e.currentTarget.style.borderColor = 'var(--color-border)';
+          }}
         >
-          <span className={value ? '' : 'text-neutral-400'}>{selectedLabel || 'Seleccionar'}</span>
+          <span>{selectedLabel || 'Seleccionar'}</span>
           <ChevronDown
-             className={`w-4 h-4 text-neutral-500 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+            className={`w-4 h-4 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+            style={{ color: 'var(--color-text-secondary)' }}
             aria-hidden="true"
           />
         </div>
@@ -89,7 +120,13 @@ export default function CustomSelect({
           <ul
             id={`${name}-listbox`}
             role="listbox"
-            className="absolute z-30 mt-2 w-full bg-white border border-neutral-100 rounded-2xl shadow-lg overflow-hidden"
+            className="absolute z-[60] mt-2 w-full"
+            style={{
+              backgroundColor: 'var(--color-surface)',
+              border: '1px solid var(--color-border)',
+              borderRadius: '12px',
+              boxShadow: '0 8px 32px var(--color-black-40)',
+            }}
           >
             {options.map((opt) => (
               <li
@@ -98,11 +135,24 @@ export default function CustomSelect({
                 aria-selected={opt.value === value}
                 onClick={() => selectOption(opt.value)}
                 onKeyDown={() => {}}
-                className={`px-4 py-3 text-sm cursor-pointer transition-colors ${
-                  opt.value === value
-                    ? 'text-[#4B4E32] font-semibold bg-[#4B4E32]/5'
-                    : 'text-[#261713] hover:bg-neutral-50'
-                }`}
+                className="px-4 py-3 cursor-pointer transition-colors duration-150 first:rounded-t-[11px] last:rounded-b-[11px]"
+                style={{
+                  fontFamily: 'var(--font-sans)',
+                  fontSize: '14px',
+                  backgroundColor: opt.value === value ? 'var(--color-accent-10)' : 'transparent',
+                  color: opt.value === value ? 'var(--color-accent)' : 'var(--color-text)',
+                  fontWeight: opt.value === value ? 600 : 400,
+                }}
+                onMouseEnter={(e) => {
+                  if (opt.value !== value) {
+                    e.currentTarget.style.backgroundColor = 'var(--color-accent-5)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (opt.value !== value) {
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                  }
+                }}
               >
                 {opt.label}
               </li>

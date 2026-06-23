@@ -1,7 +1,5 @@
-'use client';
-
 import { useState } from 'react';
-import { FileText } from 'lucide-react';
+import { useReveal } from '../hooks/useReveal';
 
 type CocktailTag = 'sin-alcohol' | 'recomendado' | 'temporada' | 'fuerte';
 
@@ -11,7 +9,7 @@ type CocktailItem = {
   id: string;
   name: string;
   ingredients: string;
-  image: string; // Cambiado gradient por la ruta de la imagen
+  image: string;
   category: CocktailCategory;
   tags: CocktailTag[];
 };
@@ -24,22 +22,26 @@ const CATEGORIES: { id: CocktailCategory; label: string }[] = [
   { id: 'compartir', label: 'Para Compartir' },
 ];
 
-const TAG_STYLES: Record<CocktailTag, { label: string; classes: string }> = {
+const TAG_STYLES: Record<CocktailTag, { label: string; bg: string; color: string }> = {
   'sin-alcohol': {
     label: 'Sin Alcohol',
-    classes: 'bg-[#4B4E32]/10 text-[#4B4E32]',
+    bg: 'var(--color-accent-10)',
+    color: 'var(--color-accent)',
   },
   recomendado: {
     label: 'Recomendado',
-    classes: 'bg-[#3D261E]/10 text-[#3D261E]',
+    bg: 'var(--color-accent-15)',
+    color: 'var(--color-accent)',
   },
   temporada: {
     label: 'Temporada',
-    classes: 'bg-[#D4A574]/20 text-[#3D261E]',
+    bg: 'var(--color-accent-10)',
+    color: 'var(--color-accent-hover)',
   },
   fuerte: {
     label: 'Fuerte',
-    classes: 'bg-[#8B0000]/10 text-[#8B0000]',
+    bg: 'var(--color-accent-8)',
+    color: 'var(--color-text-secondary)',
   },
 };
 
@@ -88,6 +90,9 @@ const COCKTAILS: CocktailItem[] = [
 
 export default function CocktailShowcase() {
   const [activeCategory, setActiveCategory] = useState<CocktailCategory>('todos');
+  const headerRef = useReveal<HTMLDivElement>({ type: 'fade', threshold: 0.2 });
+  const filtersRef = useReveal<HTMLDivElement>({ type: 'fade', threshold: 0.2, delay: 80 });
+  const gridRef = useReveal<HTMLDivElement>({ type: 'mask', threshold: 0.1, delay: 160 });
 
   const filteredCocktails =
     activeCategory === 'todos'
@@ -97,94 +102,155 @@ export default function CocktailShowcase() {
   return (
     <section
       id="carta"
-      className="py-16 sm:py-20 bg-[#F9F7F4] overflow-x-hidden rounded-3xl"
+      className="py-20 sm:py-28 px-5 sm:px-8 lg:px-12"
       aria-labelledby="carta-heading"
     >
-      <div className="text-center mb-4 px-4">
-        <span className="text-xs sm:text-sm font-medium text-[#4B4139] uppercase tracking-[0.2em]">
-          Nuestra Carta
-        </span>
-        <h2
-          id="carta-heading"
-          className="text-5xl font-serif font-bold leading-tight mt-2 mb-4 text-[#4B4139]"
-        >
-          Cócteles Destacados
-        </h2>
-      </div>
-
-      <div
-        className="flex flex-wrap justify-center gap-2 mb-10 px-4"
-        role="tablist"
-        aria-label="Filtrar por categoría"
-      >
-        {CATEGORIES.map((cat) => (
-          <button
-            key={cat.id}
-            role="tab"
-            aria-selected={activeCategory === cat.id}
-            onClick={() => setActiveCategory(cat.id)}
-            className={`transition-colors duration-200 cursor-pointer px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap ${
-              activeCategory === cat.id
-                ? 'bg-[#4B4E32] text-white shadow-[0_4px_14px_rgba(45,90,39,0.2)]'
-                : 'bg-white text-neutral-600 hover:bg-neutral-100 hover:shadow-sm border border-neutral-200'
-            }`}
+      <div className="max-w-[1100px] mx-auto">
+        <div ref={headerRef} className="text-center mb-10">
+          <span
+            style={{
+              fontFamily: 'var(--font-sans)',
+              fontWeight: 500,
+              fontSize: '12px',
+              color: 'var(--color-accent)',
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+            }}
           >
-            {cat.label}
-          </button>
-        ))}
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-8">
-        {filteredCocktails.map((cocktail) => (
-          <article
-            key={cocktail.id}
-            className="group bg-[#FEFEFE] rounded-2xl overflow-hidden border border-neutral-200/80 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 focus-within:ring-2 focus-within:ring-[#4B4E32] focus-within:ring-offset-2"
+            Nuestra Carta
+          </span>
+          <h2
+            id="carta-heading"
+            style={{
+              fontFamily: 'var(--font-sans)',
+              fontWeight: 700,
+              fontSize: 'clamp(28px, 4vw, 40px)',
+              color: 'var(--color-text)',
+              lineHeight: 1.15,
+              marginTop: '8px',
+            }}
           >
-            <div className="relative w-full aspect-[4/3] overflow-hidden bg-neutral-100">
-              <img
-                src={cocktail.image}
-                alt={cocktail.name}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                loading="lazy"
-              />
-            </div>
+            Cócteles Destacados
+          </h2>
+        </div>
 
-            <div className="p-4 sm:p-5 flex flex-col gap-2">
-              {cocktail.tags.length > 0 && (
-                <div className="flex flex-wrap gap-1.5">
-                  {cocktail.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className={`text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full ${TAG_STYLES[tag].classes}`}
-                    >
-                      {TAG_STYLES[tag].label}
-                    </span>
-                  ))}
-                </div>
-              )}
-
-              <h3 className="text-2xl font-serif font-bold leading-tight text-[#4B4139]">
-                {cocktail.name}
-              </h3>
-
-              <p className="text-sm text-neutral-500 leading-relaxed">
-                {cocktail.ingredients}
-              </p>
-            </div>
-          </article>
-        ))}
-      </div>
-
-      <div className="flex justify-center mt-10">
-        <a
-          href="/carta.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#4B4E32] text-[#4B4E32] font-medium hover:bg-[#4B4E32] hover:text-white transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-[#4B4E32] focus-visible:ring-offset-2 focus-visible:outline-none"
+        <div
+          ref={filtersRef}
+          className="flex flex-wrap justify-center gap-2 mb-10"
+          role="tablist"
+          aria-label="Filtrar por categoría"
         >
-          <FileText className="w-4 h-4" />
-          Ver carta completa
-        </a>
+          {CATEGORIES.map((cat) => (
+            <button
+              key={cat.id}
+              role="tab"
+              aria-selected={activeCategory === cat.id}
+              onClick={() => setActiveCategory(cat.id)}
+              className="cursor-pointer px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200"
+              style={{
+                fontFamily: 'var(--font-sans)',
+                fontWeight: 500,
+                fontSize: '13px',
+                backgroundColor: activeCategory === cat.id ? 'var(--color-accent)' : 'var(--color-surface)',
+                color: activeCategory === cat.id ? 'var(--color-bg)' : 'var(--color-text-secondary)',
+                border: `1px solid ${activeCategory === cat.id ? 'var(--color-accent)' : 'var(--color-border)'}`,
+              }}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+
+        <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {filteredCocktails.map((cocktail) => (
+            <article
+              key={cocktail.id}
+              className="group overflow-hidden rounded-xl transition-all duration-300 hover:-translate-y-1"
+              style={{
+                backgroundColor: 'var(--color-surface)',
+                border: '1px solid var(--color-border)',
+              }}
+            >
+              <div className="relative w-full aspect-[4/3] overflow-hidden">
+                <img
+                  src={cocktail.image}
+                  alt={cocktail.name}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                />
+              </div>
+
+              <div className="p-4 sm:p-5 flex flex-col gap-2">
+                {cocktail.tags.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5">
+                    {cocktail.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full"
+                        style={{
+                          fontFamily: 'var(--font-sans)',
+                          backgroundColor: TAG_STYLES[tag].bg,
+                          color: TAG_STYLES[tag].color,
+                        }}
+                      >
+                        {TAG_STYLES[tag].label}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                <h3
+                  style={{
+                    fontFamily: 'var(--font-sans)',
+                    fontWeight: 700,
+                    fontSize: '18px',
+                    color: 'var(--color-text)',
+                    lineHeight: 1.3,
+                  }}
+                >
+                  {cocktail.name}
+                </h3>
+
+                <p
+                  style={{
+                    fontFamily: 'var(--font-sans)',
+                    fontWeight: 400,
+                    fontSize: '13px',
+                    color: 'var(--color-text-secondary)',
+                    lineHeight: 1.5,
+                  }}
+                >
+                  {cocktail.ingredients}
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div className="flex justify-center mt-10">
+          <a
+            href="/carta.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full transition-all duration-300"
+            style={{
+              fontFamily: 'var(--font-sans)',
+              fontWeight: 500,
+              fontSize: '14px',
+              border: '1px solid var(--color-accent)',
+              color: 'var(--color-accent)',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = 'var(--color-accent)';
+              e.currentTarget.style.color = 'var(--color-bg)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = 'transparent';
+              e.currentTarget.style.color = 'var(--color-accent)';
+            }}
+          >
+            Ver carta completa
+          </a>
+        </div>
       </div>
     </section>
   );
