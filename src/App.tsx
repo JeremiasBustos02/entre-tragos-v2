@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import AboutSection from './app/components/AboutSection';
 import CocktailShowcase from './app/components/CocktailShowcase';
 import ContactForm from './app/components/ContactForm';
@@ -7,49 +8,75 @@ import FloatingWhatsApp from './app/components/FloatingWhatsApp';
 import Footer from './app/components/Footer';
 import GallerySection from './app/components/GallerySection';
 import HeroSection from './app/components/HeroSection';
+import IdealForSection from './app/components/IdealForSection';
 import Marquee from './app/components/Marquee';
 import Navbar from './app/components/Navbar';
+import Preloader from './app/components/Preloader';
+import SectionDivider from './app/components/SectionDivider';
+import ServiceInclusions from './app/components/ServiceInclusions';
 import ServicesTray from './app/components/ServicesTray';
+import TrustSignals from './app/components/TrustSignals';
+
+const PRELOADER_KEY = 'entre-tragos-preloader-done';
 
 function App() {
+  const [preloaderDone, setPreloaderDone] = useState(() => {
+    return sessionStorage.getItem(PRELOADER_KEY) === 'true';
+  });
+  const [landingVisible, setLandingVisible] = useState(() => {
+    return sessionStorage.getItem(PRELOADER_KEY) === 'true';
+  });
+
+  const handlePreloaderComplete = () => {
+    sessionStorage.setItem(PRELOADER_KEY, 'true');
+    setPreloaderDone(true);
+  };
+
   return (
-    <div className="relative min-h-screen w-full bg-[#F9F7F4] font-sans">
-      <Navbar />
-      <main>
-        <HeroSection />
-        <div className="flex justify-center px-3 sm:px-4 pb-12 sm:pb-16">
+    <div className="relative min-h-screen w-full font-sans" style={{ backgroundColor: 'var(--color-bg)' }}>
+      <div
+        style={{
+          opacity: landingVisible ? 1 : 0,
+          transition: 'opacity 700ms cubic-bezier(0.4, 0, 0.2, 1)',
+        }}
+      >
+        <Navbar />
+        <main>
+          <HeroSection />
           <ServicesTray />
-        </div>
-        <CocktailShowcase />
+          <CocktailShowcase />
 
-        <Marquee
-          items={[
-            'Barras Móviles',
-            'Coctelería',
-            'Eventos Exclusivos',
-            'Casamientos',
-            'Cumpleaños',
-            'Eventos Corporativos',
-          ]}
+          <Marquee
+            items={[
+              'Barras Móviles',
+              'Coctelería',
+              'Eventos Exclusivos',
+              'Casamientos',
+              'Cumpleaños',
+              'Eventos Corporativos',
+            ]}
+          />
+
+          <IdealForSection />
+          <SectionDivider variant="curve" />
+          <AboutSection />
+          <TrustSignals />
+          <ServiceInclusions />
+          <GallerySection />
+          <CtaSection />
+          <FaqSection />
+          <ContactForm />
+        </main>
+        <Footer />
+        <FloatingWhatsApp />
+      </div>
+
+      {!preloaderDone && (
+        <Preloader
+          onZoomStart={() => setLandingVisible(true)}
+          onComplete={handlePreloaderComplete}
         />
-
-        <AboutSection />
-
-        <div className="max-w-4xl mx-auto flex items-center justify-center gap-4 px-4 opacity-60">
-          <div className="h-[1px] flex-1 bg-[#4B4139]/20" />
-          <span className="font-serif italic text-xl text-[#4B4139] tracking-wide text-center whitespace-nowrap">
-            "Cada evento merece una barra inolvidable"
-          </span>
-          <div className="h-[1px] flex-1 bg-[#4B4139]/20" />
-        </div>
-        <GallerySection />
-
-        <CtaSection />
-        <FaqSection />
-        <ContactForm />
-      </main>
-      <Footer />
-      <FloatingWhatsApp />
+      )}
     </div>
   );
 }

@@ -1,154 +1,212 @@
-import { ChevronRight, Star, Users, MapPin } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import heroImg from '/hero.png';
+import { useMagneticButton } from '../hooks/useMagneticButton';
+
+// NOTE: Navbar alignment issue lives in Navbar.tsx — out of scope here
+
+const HEADING = 'LA BARRA QUE VA A TU EVENTO';
+
+function splitHeading(text: string): { char: string; isSpace: boolean }[] {
+  return text.split('').map((char) => ({ char, isSpace: char === ' ' }));
+}
 
 export default function HeroSection() {
-  const testimonials = [
-    { name: 'Ana P.', text: 'El mejor servicio de barra móvil. ¡Cocteles increíbles!' },
-    { name: 'Carlos R.', text: 'Profesionalismo total en nuestro evento corporativo.' },
-  ];
+  const [scrollY, setScrollY] = useState(0);
+  const [charsVisible, setCharsVisible] = useState(false);
+  const ticking = useRef(false);
+  const { ref: magneticRef } = useMagneticButton<HTMLAnchorElement>();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (ticking.current) return;
+      ticking.current = true;
+      requestAnimationFrame(() => {
+        setScrollY(window.scrollY);
+        ticking.current = false;
+      });
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Trigger character reveal after mount
+  useEffect(() => {
+    const t = setTimeout(() => setCharsVisible(true), 200);
+    return () => clearTimeout(t);
+  }, []);
+
+  const contentOpacity = Math.max(1 - scrollY / 600, 0);
+  const contentY = Math.min(scrollY * 0.12, 50);
+  const headingChars = splitHeading(HEADING);
 
   return (
-    <div className="w-full md:p-4">
-      <section
-        id="inicio"
-        className="rounded-none md:rounded-3xl relative w-full min-h-screen flex items-center justify-center overflow-hidden"
-      >
-        {/* --- CAPAS DE FONDO --- */}
-        <div
-          className="rounded-none md:rounded-3xl absolute inset-0 bg-gradient-to-br from-[#261713] via-[#3A3D28] to-[#261713]"
-          aria-hidden="true"
-        />
-
-        <video
-          className="rounded-none md:rounded-3xl absolute inset-0 w-full h-full object-cover"
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=1920&q=80"
-        >
-          <source
-            src="https://player.vimeo.com/external/435674703.hd.mp4?s=6f431e01b1de29b207558f0ef1a1fb6384fa6b21&profile_id=174&oauth2_token_id=57447761"
-            type="video/mp4"
+    <section
+      id="inicio"
+      className="grid grid-cols-1 md:grid-cols-[3fr_1.2fr] 2xl:grid-cols-[2fr_1fr] min-h-screen overflow-hidden"
+    >
+      {/* Left panel — content */}
+      <div className="
+  relative
+  flex
+  flex-col
+  items-center
+  justify-center
+  px-6
+  pt-20
+  md:pt-0
+  md:pl-16
+  md:pr-8
+  min-h-[60vh]
+  md:min-h-0
+  overflow-hidden
+">
+        {/* Floating ambient elements — left panel only */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+          <div
+            className="absolute top-[15%] left-[8%] w-2 h-2 rounded-full"
+            style={{
+              backgroundColor: 'var(--color-accent)',
+              opacity: 0.12,
+              animation: 'float-gentle 8s ease-in-out infinite',
+            }}
           />
-        </video>
-
-        <div
-          className="rounded-none md:rounded-3xl absolute inset-0 bg-[#4B4E32]/50"
-          aria-hidden="true"
-        />
-
-        <div
-          className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20"
-          aria-hidden="true"
-        />
-
-        {/* --- CONTENIDO PRINCIPAL --- */}
-        {/* Bajamos el padding a lg:py-12 y reducimos el gap vertical para que encaje impecable en un monitor de 768px de alto */}
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center px-6 py-20 lg:py-12 h-full max-w-6xl mx-auto w-full">
-          
-          {/* COLUMNA IZQUIERDA: Texto y Acciones */}
-          <div className="flex flex-col items-center text-center lg:items-start lg:text-left order-1">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 shadow-[0_2px_12px_rgba(0,0,0,0.15)] border border-white/20 text-[13px] text-[#FEFEFE]">
-              <span className="w-2 h-2 rounded-full bg-white animate-pulse" aria-hidden="true" />
-              Coctelería Premium para Eventos
-            </div>
-
-            <h1
-              id="hero-heading"
-              className="text-[clamp(42px,9vw,64px)] leading-[1.05] font-serif font-bold mt-4 text-white"
-            >
-              Elevando la{' '}
-              <span className="italic text-[#D9C4A9]">
-                Coctelería
-              </span>
-              <br />
-              en tu celebración
-            </h1>
-
-            <p className="text-white/80 mt-6 max-w-xl text-[clamp(15px,3.5vw,18px)] leading-relaxed">
-              Barras móviles exclusivas para bodas, eventos corporativos y celebraciones privadas. Creamos experiencias líquidas inolvidables.
-            </p>
-
-            {/* ⭐ Rating adaptado para pantallas Mobile y Medias */}
-            <div className="flex lg:hidden items-center gap-2 mt-6 bg-black/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 shadow-lg">
-              <div className="flex gap-0.5">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 text-[#D9C4A9] fill-[#D9C4A9]" />
-                ))}
-              </div>
-              <span className="text-white text-sm font-semibold">4.9/5</span>
-              <span className="text-white/30 text-xs">|</span>
-              <span className="text-white/80 text-xs">Mar del Plata</span>
-            </div>
-
-            {/* BOTONES DE ACCIÓN */}
-            <div className="flex flex-row flex-wrap justify-center lg:justify-start items-center gap-4 mt-8 w-full">
-              <a
-                href="#contact"
-                className="group w-auto inline-flex items-center justify-center gap-2 bg-white text-[#4B4E32] rounded-full px-6 sm:px-8 py-3.5 text-base font-semibold shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-[1.03] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none"
-              >
-                Cotizá Gratis
-                <ChevronRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-              </a>
-
-              <a
-                href="#servicios"
-                className="w-auto inline-flex items-center justify-center gap-2 border-2 border-white/40 text-white rounded-full px-6 sm:px-8 py-3.5 text-base font-medium transition-all duration-300 ease-out hover:border-white hover:bg-white/10 hover:scale-[1.03] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none backdrop-blur-sm"
-              >
-                Ver servicios
-              </a>
-            </div>
-          </div>
-
-          {/* COLUMNA DERECHA: Widget de Reputación */}
-          <div className="hidden lg:flex flex-col items-center justify-center order-2 h-full relative select-none">
-            
-            {/* Tarjeta Principal de Rating (Ajustada a max-w-xs para cuidar el ancho en 1366) */}
-            <div className="bg-white/5 backdrop-blur-md border border-white/10 p-6 xl:p-8 rounded-3xl shadow-2xl flex flex-col items-center gap-4 w-full max-w-xs xl:max-w-sm transform rotate-1 hover:rotate-0 transition-transform duration-500">
-              <div className="flex gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-7 h-7 xl:w-8 xl:h-8 text-[#D9C4A9] fill-[#D9C4A9]" />
-                ))}
-              </div>
-              <p className="text-white text-4xl xl:text-5xl font-serif font-bold">4.9 / 5</p>
-              <p className="text-white/70 text-xs xl:text-sm text-center">Calificación media de más de 100 eventos exitosos</p>
-              
-              <div className="w-full h-px bg-white/10 my-1" />
-              
-              <div className="flex items-center gap-4 xl:gap-6 text-white/90 text-sm xl:text-base">
-                 <div className='flex items-center gap-2'>
-                    <Users className='w-4 h-4 xl:w-5 xl:h-5 text-[#D9C4A9]' />
-                    <span className='font-semibold'>100+</span> <span className='text-xs text-white/60'>Eventos</span>
-                 </div>
-                 <div className='flex items-center gap-2'>
-                    <MapPin className='w-4 h-4 xl:w-5 xl:h-5 text-[#D9C4A9]' />
-                    <span className='font-semibold'>Mar del Plata</span>
-                 </div>
-              </div>
-            </div>
-
-            {/* Reseña flotante izquierda (Corregido a -top-4 y reducida la distancia lateral) */}
-            <div className="absolute -top-4 -left-10 xl:-left-16 bg-white p-4 rounded-xl shadow-xl flex flex-col gap-1 w-44 xl:w-48 transform -rotate-6 animate-float-slow">
-                <p className="text-[#4B4E32] font-semibold text-xs xl:text-sm">{testimonials[0].name}</p>
-                <p className="text-[#4B4E32]/80 text-[11px] xl:text-xs line-clamp-2">"{testimonials[0].text}"</p>
-                <div className="flex gap-0.5 mt-1">
-                    {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 text-[#B89A6A] fill-[#B89A6A]" />)}
-                </div>
-            </div>
-
-            {/* Reseña flotante derecha (Ajustada de -bottom-8 a -bottom-2 para que no se corte abajo) */}
-            <div className="absolute -bottom-10 -right-8 xl:-right-12 bg-white p-4 rounded-xl shadow-xl flex flex-col gap-1 w-52 xl:w-56 transform rotate-3 animate-float-slow animation-delay-1000">
-                <p className="text-[#4B4E32] font-semibold text-xs xl:text-sm">{testimonials[1].name}</p>
-                <p className="text-[#4B4E32]/80 text-[11px] xl:text-xs line-clamp-2">"{testimonials[1].text}"</p>
-                <div className="flex gap-0.5 mt-1">
-                    {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 text-[#B89A6A] fill-[#B89A6A]" />)}
-                </div>
-            </div>
-
-          </div>
-
+          <div
+            className="absolute top-[25%] right-[12%] w-3 h-3 rounded-full"
+            style={{
+              backgroundColor: 'var(--color-accent)',
+              opacity: 0.08,
+              animation: 'float-gentle 10s ease-in-out infinite 1s',
+            }}
+          />
+          <div
+            className="absolute bottom-[30%] left-[15%] w-1.5 h-1.5 rounded-full"
+            style={{
+              backgroundColor: 'var(--color-accent)',
+              opacity: 0.1,
+              animation: 'float-gentle 7s ease-in-out infinite 2s',
+            }}
+          />
+          <div
+            className="absolute bottom-[20%] right-[8%] w-2.5 h-2.5 rounded-full"
+            style={{
+              backgroundColor: 'var(--color-accent)',
+              opacity: 0.06,
+              animation: 'float-gentle 9s ease-in-out infinite 0.5s',
+            }}
+          />
         </div>
-      </section>
-    </div>
+
+        {/* Content — parallax + opacity fade */}
+        <div
+          className="relative z-10 flex flex-col items-center text-center md:items-start md:text-left px-6 py-16 md:py-32 max-w-3xl w-full"
+          style={{
+            transform: `translateY(${contentY}px)`,
+            opacity: contentOpacity,
+            willChange: 'transform, opacity',
+          }}
+        >
+          {/* Heading — character-by-character reveal */}
+          <h1
+            className="leading-[1.05] tracking-tight"
+            style={{
+              fontFamily: 'var(--font-sans)',
+              fontWeight: 700,
+              fontSize: 'clamp(28px, 8vw, 36px)',
+              color: 'var(--color-text)',
+            }}
+            aria-label={HEADING}
+          >
+            {headingChars.map(({ char, isSpace }, i) =>
+              isSpace ? (
+                <span key={i}>&nbsp;</span>
+              ) : (
+                <span
+                  key={i}
+                  className={`hero-char ${charsVisible ? 'is-visible' : ''}`}
+                  style={{
+                    animationDelay: `${i * 25}ms`,
+                  }}
+                  aria-hidden="true"
+                >
+                  {char}
+                </span>
+              )
+            )}
+          </h1>
+
+          <p
+            className={`mt-5 max-w-xl hero-subtitle ${charsVisible ? 'is-visible' : ''}`}
+            style={{
+              fontFamily: 'var(--font-serif)',
+              fontSize: 'clamp(18px, 5vw, 24px)',
+              color: 'var(--color-accent)',
+              lineHeight: 1.3,
+              transition: 'opacity 600ms ease-out 500ms, transform 600ms ease-out 500ms',
+            }}
+          >
+            Vos ponés las bebidas, nosotros ponemos la barra.
+          </p>
+
+          <p
+            className={`mt-5 max-w-[85%] md:max-w-lg leading-relaxed hero-subtitle ${charsVisible ? 'is-visible' : ''}`}
+            style={{
+              fontFamily: 'var(--font-sans)',
+              fontWeight: 400,
+              fontSize: 'clamp(14px, 2vw, 17px)',
+              color: 'var(--color-text-secondary)',
+              transition: 'opacity 600ms ease-out 650ms, transform 600ms ease-out 650ms',
+            }}
+          >
+            Barras móviles exclusivas para bodas, eventos corporativos y celebraciones privadas en Mar del Plata.
+          </p>
+
+          <div
+            className={`mt-10 hero-cta ${charsVisible ? 'is-visible' : ''}`}
+            style={{
+              transition: 'opacity 600ms ease-out 800ms, transform 600ms ease-out 800ms',
+            }}
+          >
+            <div className="flex flex-col items-center gap-3">
+              <a
+                ref={magneticRef}
+                href="#contacto"
+                className="magnetic-btn inline-flex items-center justify-center rounded-full text-base font-semibold transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-[var(--color-bg)] w-full max-w-[280px] md:w-auto md:max-w-none py-4 px-8 md:py-4 md:px-10"
+                style={{
+                  fontFamily: 'var(--font-sans)',
+                  fontSize: '16px',
+                }}
+              >
+                Consultar disponibilidad
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Right panel — image (desktop) */}
+      <div
+        className="relative hidden md:block overflow-hidden"
+        style={{ boxShadow: 'inset 8px 0 24px rgba(0,0,0,0.08)' }}
+      >
+        <img
+          src={heroImg}
+          alt=""
+          aria-hidden="true"
+          decoding="async"
+          className="w-full h-full object-cover object-center"
+        />
+      </div>
+
+      {/* Mobile image — stacked below text */}
+      <div className="relative md:hidden overflow-hidden h-[40vh]">
+        <img
+          src={heroImg}
+          alt=""
+          aria-hidden="true"
+          decoding="async"
+          className="w-full h-full object-cover object-center"
+        />
+      </div>
+    </section>
   );
 }

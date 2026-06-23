@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { useReveal } from '../hooks/useReveal';
 
 const FAQ_DATA = [
   {
@@ -15,7 +15,7 @@ const FAQ_DATA = [
   {
     question: '¿Cuál es el número mínimo de invitados?',
     answer:
-      'Trabajamos desde 20 invitados. Para eventos más pequeños contáctanos directamente y buscaremos una opción especial para ti.',
+      'Trabajamos desde 20 invitados. Para eventos más pequeños contanos directamente y buscaremos una opción especial para vos.',
   },
   {
     question: '¿Cuánto tiempo toma la instalación?',
@@ -29,8 +29,93 @@ const FAQ_DATA = [
   },
 ];
 
+function FaqItem({ item, index, isOpen, onToggle }: {
+  item: typeof FAQ_DATA[number];
+  index: number;
+  isOpen: boolean;
+  onToggle: () => void;
+}) {
+  const itemRef = useReveal<HTMLDivElement>({ type: 'fade', threshold: 0.1, stagger: index });
+  const contentId = `faq-answer-${index}`;
+
+  return (
+    <div
+      ref={itemRef}
+      className="rounded-xl transition-all duration-200"
+      style={{
+        backgroundColor: 'var(--color-surface)',
+        border: `1px solid ${isOpen ? 'var(--color-accent)' : 'var(--color-border)'}`,
+      }}
+    >
+      <button
+        id={`faq-question-${index}`}
+        type="button"
+        onClick={onToggle}
+        aria-expanded={isOpen}
+        aria-controls={contentId}
+        className="cursor-pointer w-full flex items-center justify-between gap-4 py-5 px-5 sm:px-6 text-left transition-colors duration-200"
+        style={{ backgroundColor: 'transparent' }}
+      >
+        <span
+          style={{
+            fontFamily: 'var(--font-sans)',
+            fontWeight: 500,
+            fontSize: '15px',
+            color: isOpen ? 'var(--color-accent)' : 'var(--color-text)',
+          }}
+        >
+          {item.question}
+        </span>
+        <div
+          className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300"
+          style={{
+            backgroundColor: isOpen ? 'var(--color-accent-10)' : 'var(--color-bg-alt)',
+            transform: isOpen ? 'rotate(180deg)' : 'rotate(0)',
+          }}
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            stroke="var(--color-accent)"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <polyline points="4,6 8,10 12,6" />
+          </svg>
+        </div>
+      </button>
+
+      <div
+        id={contentId}
+        role="region"
+        aria-labelledby={`faq-question-${index}`}
+        className="grid transition-[grid-template-rows] duration-300 ease-in-out"
+        style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
+      >
+        <div className="overflow-hidden min-h-0">
+          <p
+            className="px-5 sm:px-6 pb-5 leading-relaxed"
+            style={{
+              fontFamily: 'var(--font-sans)',
+              fontWeight: 400,
+              fontSize: '14px',
+              color: 'var(--color-text-secondary)',
+            }}
+          >
+            {item.answer}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const headerRef = useReveal<HTMLDivElement>({ type: 'fade', threshold: 0.2 });
 
   const toggle = (index: number) => {
     setOpenIndex((prev) => (prev === index ? null : index));
@@ -39,86 +124,66 @@ export default function FaqSection() {
   return (
     <section
       id="faq"
-      className="py-16 sm:py-20 scroll-mt-24 rounded-3xl"
+      className="py-15 px-5 sm:px-8 lg:px-12"
       aria-labelledby="faq-heading"
     >
-      <div className="max-w-3xl mx-auto px-4">
-        <div className="text-center mb-10">
-          <span className="text-xs sm:text-sm font-medium text-[#4B4139] uppercase tracking-[0.2em]">
+      <div className="max-w-[700px] mx-auto">
+        <div ref={headerRef} className="text-center mb-10">
+          <span
+            style={{
+              fontFamily: 'var(--font-sans)',
+              fontWeight: 500,
+              fontSize: '12px',
+              color: 'var(--color-accent)',
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+            }}
+          >
             FAQ
           </span>
           <h2
             id="faq-heading"
-            className="text-4xl lg:text-5xl font-serif font-bold leading-tight mt-2 mb-4 text-[#4B4139]"
+            style={{
+              fontFamily: 'var(--font-sans)',
+              fontWeight: 700,
+              fontSize: 'clamp(28px, 4vw, 40px)',
+              color: 'var(--color-text)',
+              lineHeight: 1.15,
+              marginTop: '8px',
+            }}
           >
             Preguntas Frecuentes
           </h2>
         </div>
 
         <div className="flex flex-col gap-3">
-          {FAQ_DATA.map((item, index) => {
-            const isOpen = openIndex === index;
-            const contentId = `faq-answer-${index}`;
-
-            return (
-              <div
-                key={index}
-                className={`rounded-2xl border transition-all duration-200 ${
-                  isOpen
-                    ? 'bg-white border-[#4B4E32]/20 shadow-md'
-                    : 'bg-white border-neutral-200 hover:border-[#4B4E32]/20 hover:shadow-sm'
-                }`}
-              >
-                <button
-                  type="button"
-                  onClick={() => toggle(index)}
-                  aria-expanded={isOpen}
-                  aria-controls={contentId}
-                  className="cursor-pointer w-full flex items-center justify-between gap-4 py-5 px-5 sm:px-6 text-left transition-all duration-200 hover:bg-stone-50 focus-visible:ring-2 focus-visible:ring-[#4B4E32] focus-visible:ring-offset-2 focus-visible:outline-none"
-                >
-                  <span
-                    className={`text-base sm:text-lg font-medium transition-colors duration-200 ${
-                      isOpen ? 'text-[#4B4E32]' : 'text-[#261713]'
-                    }`}
-                  >
-                    {item.question}
-                  </span>
-                  <div
-                    className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
-                      isOpen
-                        ? 'bg-[#4B4E32]/10 rotate-180'
-                        : 'bg-neutral-100'
-                    }`}
-                  >
-                    <ChevronDown className="w-4 h-4 text-[#4B4E32]" />
-                  </div>
-                </button>
-
-                <div
-                  id={contentId}
-                  role="region"
-                  aria-labelledby={`faq-question-${index}`}
-                  className="grid transition-[grid-template-rows] duration-300 ease-in-out"
-                  style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
-                >
-                  <div className="overflow-hidden min-h-0">
-                    <p className="px-5 sm:px-6 pb-5 text-sm sm:text-[15px] text-neutral-500 leading-relaxed">
-                      {item.answer}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+          {FAQ_DATA.map((item, index) => (
+            <FaqItem
+              key={index}
+              item={item}
+              index={index}
+              isOpen={openIndex === index}
+              onToggle={() => toggle(index)}
+            />
+          ))}
         </div>
 
-        <p className="text-center text-neutral-500 text-sm mt-10">
-          ¿No encuentras lo que buscas?{' '}
+        <p
+          className="text-center mt-10"
+          style={{
+            fontFamily: 'var(--font-sans)',
+            fontWeight: 400,
+            fontSize: '14px',
+            color: 'var(--color-text-secondary)',
+          }}
+        >
+          ¿No encontrás lo que buscas?{' '}
           <a
-            href="#contact"
-            className="text-[#4B4E32] font-medium hover:underline focus-visible:ring-2 focus-visible:ring-[#4B4E32] focus-visible:ring-offset-2 focus-visible:outline-none rounded-md"
+            href="#contacto"
+            style={{ color: 'var(--color-accent)', fontWeight: 500 }}
+            className="hover:underline"
           >
-            Contáctanos
+            Contactanos
           </a>
         </p>
       </div>

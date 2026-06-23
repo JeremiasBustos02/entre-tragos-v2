@@ -1,59 +1,99 @@
-import { CheckCircle2 } from 'lucide-react';
+import { useReveal } from '../hooks/useReveal';
 
-type Feature = {
-  text: string;
-};
-
-const FEATURES: Feature[] = [
-  { text: 'Barras artesanales que elevan la estética de tu evento' },
-  { text: 'Propuestas adaptadas a bodas, cumpleaños, eventos empresariales y más.' },
-  { text: 'Atención profesional para que vos solo te ocupes de disfrutar' },
+const FEATURES = [
+  'Barras artesanales que elevan la estética de tu evento',
+  'Propuestas adaptadas a bodas, cumpleaños, eventos empresariales y más',
+  'Atención profesional para que vos solo te ocupes de disfrutar',
 ];
 
 export default function AboutSection() {
-  return (
-    <section id="about" className="py-24 px-4 bg-[#F9F7F4] scroll-mt-24 rounded-3xl" aria-labelledby="about-heading">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto items-center">
-        
-        {/* CONTENEDOR DE FOTOS */}
-        <div className="relative w-full h-[500px] order-2 lg:order-1">
-          {/* Foto Principal (Reemplaza al gradiente grande) */}
-          <img
-            src="/barra-trago.jpg"
-            alt="Barra de coctelería de madera natural"
-            className="rounded-3xl w-full h-full object-cover shadow-sm"
-            loading="lazy"
-          />
+  const imageRef = useReveal<HTMLDivElement>({ type: 'mask', threshold: 0.2 });
+  const contentRef = useReveal<HTMLDivElement>({ type: 'fade', threshold: 0.2, delay: 100 });
 
-          {/* Foto Secundaria Flotante (Reemplaza al segundo gradiente pequeño) */}
+  return (
+    <section
+      id="about"
+      aria-labelledby="about-heading"
+    >
+      <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr]">
+        {/* Image panel — LEFT */}
+        <div
+          ref={imageRef}
+          className="relative overflow-hidden order-2 md:order-1 max-h-[300px] md:max-h-[600px] "
+        >
           <img
-            src="/madera.jpg"
-            alt="Detalle de ingredientes botánicos"
-            className="absolute bottom-4 right-4 w-48 h-48 rounded-2xl object-cover shadow-lg"
+            src="/about.png"
+            alt="Barra de coctelería de madera natural"
             loading="lazy"
+            decoding="async"
+            className="w-full h-full object-cover object-center"
           />
         </div>
 
-        {/* CONTENEDOR DE TEXTO */}
-        <div className="flex flex-col gap-4 order-1 lg:order-2">
-          <span className="text-xs sm:text-sm font-medium text-[#4B4139] uppercase tracking-[0.2em]">
+        {/* Text panel — RIGHT */}
+        <div
+          ref={contentRef}
+          className="flex flex-col justify-center py-20 px-8 lg:px-12 order-1 md:order-2"
+          style={{ backgroundColor: 'var(--color-bg-alt)' }}
+        >
+          <span
+            style={{
+              fontFamily: 'var(--font-sans)',
+              fontWeight: 500,
+              fontSize: '12px',
+              color: 'var(--color-accent)',
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+            }}
+          >
             Nuestra Esencia
           </span>
 
-          <h2 id="about-heading" className="text-5xl font-serif font-bold leading-tight text-[#4B4139]">
+          <h2
+            id="about-heading"
+            className="mt-3"
+            style={{
+              fontFamily: 'var(--font-sans)',
+              fontWeight: 700,
+              fontSize: 'clamp(28px, 4vw, 40px)',
+              color: 'var(--color-text)',
+              lineHeight: 1.15,
+            }}
+          >
             Barras de diseño en madera natural
           </h2>
 
-          <ul className="flex flex-col gap-2">
-            {FEATURES.map((feature) => (
-              <li key={feature.text} className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-[#4B4139] mt-0.5 shrink-0" aria-hidden="true" />
-                <span className="text-neutral-700 text-[15px] leading-relaxed">{feature.text}</span>
+          <ul className="flex flex-col gap-3 mt-6">
+            {FEATURES.map((text) => (
+              <li key={text} className="flex items-start gap-3">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  stroke="var(--color-accent)"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="mt-0.5 shrink-0"
+                >
+                  <polyline points="4,10 8,14 16,6" />
+                </svg>
+                <span
+                  style={{
+                    fontFamily: 'var(--font-sans)',
+                    fontWeight: 400,
+                    fontSize: '15px',
+                    color: 'var(--color-text-secondary)',
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {text}
+                </span>
               </li>
             ))}
           </ul>
         </div>
-
       </div>
     </section>
   );
