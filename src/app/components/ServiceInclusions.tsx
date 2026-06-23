@@ -63,23 +63,11 @@ export default function ServiceInclusions() {
   return (
     <section
       id="servicio"
-      className="w-full px-5 py-20 sm:px-8 sm:py-28 lg:px-12 noise-overlay"
+      className="w-full px-5 py-15 sm:px-8 sm:py-15 lg:px-12 noise-overlay"
       style={{ backgroundColor: 'var(--color-bg-alt)' }}
     >
       <div className="max-w-[900px] mx-auto relative z-[2]">
         <div ref={headerRef} className="text-center mb-12">
-          <span
-            style={{
-              fontFamily: 'var(--font-sans)',
-              fontWeight: 500,
-              fontSize: '12px',
-              color: 'var(--color-accent)',
-              letterSpacing: '0.15em',
-              textTransform: 'uppercase',
-            }}
-          >
-            Incluido
-          </span>
           <h2
             className="mt-2"
             style={{

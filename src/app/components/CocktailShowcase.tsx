@@ -153,6 +153,7 @@ function CocktailCard({ cocktail, index }: { cocktail: CocktailItem; index: numb
           {cocktail.ingredients}
         </p>
       </div>
+      
     </article>
   );
 }
@@ -170,23 +171,11 @@ export default function CocktailShowcase() {
   return (
     <section
       id="carta"
-      className="py-20 sm:py-28 px-5 sm:px-8 lg:px-12"
+      className="py-15 px-5 sm:px-8 lg:px-12"
       aria-labelledby="carta-heading"
     >
       <div className="max-w-[1100px] mx-auto">
         <div ref={headerRef} className="text-center mb-10">
-          <span
-            style={{
-              fontFamily: 'var(--font-sans)',
-              fontWeight: 500,
-              fontSize: '12px',
-              color: 'var(--color-accent)',
-              letterSpacing: '0.15em',
-              textTransform: 'uppercase',
-            }}
-          >
-            Nuestra Carta
-          </span>
           <h2
             id="carta-heading"
             style={{

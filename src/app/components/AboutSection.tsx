@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useReveal } from '../hooks/useReveal';
 
 const FEATURES = [
@@ -13,6 +13,8 @@ export default function AboutSection() {
   );
   const imageRef = useReveal<HTMLDivElement>({ type: 'mask', threshold: 0.2 });
   const contentRef = useReveal<HTMLDivElement>({ type: 'fade', threshold: 0.2, delay: 100 });
+  const clipRef = useRef<HTMLDivElement>(null);
+  const [clipVisible, setClipVisible] = useState(false);
 
   useEffect(() => {
     const mq = window.matchMedia('(min-width: 640px)');
@@ -21,8 +23,18 @@ export default function AboutSection() {
     return () => mq.removeEventListener('change', handler);
   }, []);
 
+  useEffect(() => {
+    if (!clipRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setClipVisible(true); },
+      { threshold: 0.3 },
+    );
+    observer.observe(clipRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="about" className="py-20 sm:py-28 px-5 sm:px-8 lg:px-12" aria-labelledby="about-heading">
+    <section id="about" className="py-15 px-5 sm:px-8 lg:px-12" aria-labelledby="about-heading">
       <div className="max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <div
           ref={imageRef}
@@ -36,14 +48,19 @@ export default function AboutSection() {
             className="w-full h-full object-cover"
           />
           {isDesktop && (
-            <img
-              src="/madera.jpg"
-              alt="Detalle de ingredientes botánicos"
-              loading="lazy"
-              decoding="async"
-              className="absolute bottom-4 right-4 w-40 h-40 rounded-xl object-cover"
+            <div
+              ref={clipRef}
+              className={`absolute bottom-4 right-4 w-40 h-40 rounded-xl overflow-hidden ${clipVisible ? 'reveal-mask-image is-visible' : 'reveal-mask-image'}`}
               style={{ border: '2px solid var(--color-border)' }}
-            />
+            >
+              <img
+                src="/madera.jpg"
+                alt="Detalle de ingredientes botánicos"
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover"
+              />
+            </div>
           )}
         </div>
 

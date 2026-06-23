@@ -97,23 +97,11 @@ export default function IdealForSection() {
 
   return (
     <section
-      className="w-full px-5 py-20 sm:px-8 sm:py-28 lg:px-12"
+      className="w-full px-5 py-10 sm:px-8 sm:py-15 lg:px-12"
       style={{ backgroundColor: 'var(--color-bg)' }}
     >
       <div className="max-w-[900px] mx-auto text-center">
         <div ref={headerRef}>
-          <span
-            style={{
-              fontFamily: 'var(--font-sans)',
-              fontWeight: 500,
-              fontSize: '12px',
-              color: 'var(--color-accent)',
-              letterSpacing: '0.15em',
-              textTransform: 'uppercase',
-            }}
-          >
-            Tipos de Evento
-          </span>
           <h2
             className="mt-2"
             style={{

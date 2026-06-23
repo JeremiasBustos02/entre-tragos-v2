@@ -9,7 +9,7 @@
 --color-surface: #E0DCD4;
 --color-border: #C4C0B4;
 --color-text: #141412;
---color-text-secondary: #706C64;
+--color-text-secondary: #5C5852;
 --color-accent: #2A2824;
 --color-accent-hover: #444038;
 --color-accent-dark: #141210;
@@ -126,6 +126,23 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Floating ambient elements */
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Success form submit animations */
+@keyframes success-ring {
+  0% { transform: scale(0.5); opacity: 1; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+@keyframes success-pop {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
 @keyframes hero-fade-in {
@@ -326,6 +343,15 @@ button:focus-visible,
   transition: outline-offset 150ms ease-out, box-shadow 150ms ease-out;
 }
 
+/* ── Image reveal clipping mask ── */
+.reveal-mask-image {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 800ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-mask-image.is-visible {
+  clip-path: inset(0 0 0 0);
+}
+
 /* ── Hero character reveal ──
    Each .char spans a letter; staggered reveal on .is-visible */
 .hero-char {
@@ -401,6 +427,9 @@ button:focus-visible,
     transform: none !important;
     clip-path: none !important;
     pointer-events: auto !important;
+  }
+  .reveal-mask-image {
+    clip-path: inset(0 0 0 0) !important;
   }
   html {
     scroll-behavior: auto;

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import heroImg from '../../assets/hero.png';
+import heroImg from '/hero.png';
 import { useMagneticButton } from '../hooks/useMagneticButton';
 
 const HEADING = 'LA BARRA QUE VA A TU EVENTO';
@@ -44,6 +44,42 @@ export default function HeroSection() {
       className="relative w-full min-h-screen flex items-center justify-center overflow-hidden"
       style={{ backgroundColor: 'var(--color-bg)' }}
     >
+      {/* Floating ambient elements */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <div
+          className="absolute top-[15%] left-[8%] w-2 h-2 rounded-full"
+          style={{
+            backgroundColor: 'var(--color-accent)',
+            opacity: 0.12,
+            animation: 'float-gentle 8s ease-in-out infinite',
+          }}
+        />
+        <div
+          className="absolute top-[25%] right-[12%] w-3 h-3 rounded-full"
+          style={{
+            backgroundColor: 'var(--color-accent)',
+            opacity: 0.08,
+            animation: 'float-gentle 10s ease-in-out infinite 1s',
+          }}
+        />
+        <div
+          className="absolute bottom-[30%] left-[15%] w-1.5 h-1.5 rounded-full"
+          style={{
+            backgroundColor: 'var(--color-accent)',
+            opacity: 0.1,
+            animation: 'float-gentle 7s ease-in-out infinite 2s',
+          }}
+        />
+        <div
+          className="absolute bottom-[20%] right-[8%] w-2.5 h-2.5 rounded-full"
+          style={{
+            backgroundColor: 'var(--color-accent)',
+            opacity: 0.06,
+            animation: 'float-gentle 9s ease-in-out infinite 0.5s',
+          }}
+        />
+      </div>
+
       {/* Background image with parallax */}
       <div
         className="absolute inset-0 z-0"
@@ -57,12 +93,19 @@ export default function HeroSection() {
           className="w-full h-full object-cover"
           style={{
             transform: `translateY(${bgY}px) scale(1.1)`,
-            opacity: 0.08,
+            opacity: 0.5,
             willChange: 'transform',
+            filter: 'blur(2px) brightness(0.85) contrast(1.1)',
           }}
         />
       </div>
-
+{/* Overlay gradient — agregá esto justo después del div de la imagen */}
+<div
+  className="absolute inset-0 z-[1]"
+  style={{
+    background: 'linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.65) 100%)'
+  }}
+/>
       {/* Content — parallax + opacity fade */}
       <div
         className="relative z-10 flex flex-col items-center text-center px-6 py-32 max-w-3xl mx-auto w-full"
@@ -133,18 +176,20 @@ export default function HeroSection() {
             transition: 'opacity 600ms ease-out 800ms, transform 600ms ease-out 800ms',
           }}
         >
-          <a
-            ref={magneticRef}
-            href="#contacto"
-            className="magnetic-btn inline-flex items-center justify-center rounded-full text-base font-semibold transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-[var(--color-bg)]"
-            style={{
-              fontFamily: 'var(--font-sans)',
-              padding: '16px 40px',
-              fontSize: '16px',
-            }}
-          >
-            Consultar disponibilidad
-          </a>
+          <div className="flex flex-col items-center gap-3">
+            <a
+              ref={magneticRef}
+              href="#contacto"
+              className="magnetic-btn inline-flex items-center justify-center rounded-full text-base font-semibold transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-[var(--color-bg)]"
+              style={{
+                fontFamily: 'var(--font-sans)',
+                padding: '16px 40px',
+                fontSize: '16px',
+              }}
+            >
+              Consultar disponibilidad
+            </a>
+          </div>
         </div>
       </div>
     </section>

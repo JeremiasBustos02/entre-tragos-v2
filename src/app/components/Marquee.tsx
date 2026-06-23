@@ -26,12 +26,9 @@ export default function Marquee({ items }: MarqueeProps) {
   );
 
   return (
-    <div
-      className="w-full overflow-hidden whitespace-nowrap"
-      style={{ backgroundColor: 'var(--color-surface)' }}
-    >
+    <div className="w-full overflow-hidden" style={{ backgroundColor: 'var(--color-surface)' }}>
       <div
-        className="marquee-track flex w-max py-3.5"
+        className="marquee-track flex w-max py-3.5 whitespace-nowrap"
         style={{ color: 'var(--color-text)' }}
       >
         {Array.from({ length: 4 }).map((_, i) => (

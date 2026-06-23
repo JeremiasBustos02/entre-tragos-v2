@@ -124,7 +124,7 @@ export default function FaqSection() {
   return (
     <section
       id="faq"
-      className="py-20 sm:py-28 px-5 sm:px-8 lg:px-12"
+      className="py-15 px-5 sm:px-8 lg:px-12"
       aria-labelledby="faq-heading"
     >
       <div className="max-w-[700px] mx-auto">

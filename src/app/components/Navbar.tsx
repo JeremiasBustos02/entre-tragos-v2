@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { NAV_LINKS } from '../../types/navigation';
+import { NAV_LINKS } from '../types/navigation';
 import { WHATSAPP_BASE_URL, WHATSAPP_MESSAGES } from '../constants';
 
 export default function Navbar() {

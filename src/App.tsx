@@ -12,8 +12,10 @@ import IdealForSection from './app/components/IdealForSection';
 import Marquee from './app/components/Marquee';
 import Navbar from './app/components/Navbar';
 import Preloader from './app/components/Preloader';
+import SectionDivider from './app/components/SectionDivider';
 import ServiceInclusions from './app/components/ServiceInclusions';
 import ServicesTray from './app/components/ServicesTray';
+import TrustSignals from './app/components/TrustSignals';
 
 const PRELOADER_KEY = 'entre-tragos-preloader-done';
 
@@ -56,8 +58,11 @@ function App() {
           />
 
           <IdealForSection />
+          <SectionDivider variant="curve" />
           <AboutSection />
+          <TrustSignals />
           <ServiceInclusions />
+          <SectionDivider variant="line" />
           <GallerySection />
           <CtaSection />
           <FaqSection />
