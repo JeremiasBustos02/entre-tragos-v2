@@ -62,7 +62,6 @@ function App() {
           <AboutSection />
           <TrustSignals />
           <ServiceInclusions />
-          <SectionDivider variant="line" />
           <GallerySection />
           <CtaSection />
           <FaqSection />

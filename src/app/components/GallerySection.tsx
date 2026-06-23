@@ -10,28 +10,28 @@ type GalleryItem = {
 const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: 'main-bar',
-    label: 'Barra principal en evento',
+    label: 'Boda al aire libre',
     image: '/gallery-1.webp',
     featured: true,
   },
   {
     id: 'signature-cocktails',
-    label: 'Cócteles de autor',
+    label: 'Recepción premium',
     image: '/gallery-2.webp',
   },
   {
     id: 'fresh-ingredients',
-    label: 'Ingredientes frescos',
+    label: 'Cumpleaños íntimo',
     image: '/gallery-3.webp',
   },
   {
     id: 'bartender-action',
-    label: 'Bartender en acción',
+    label: 'Evento corporativo',
     image: '/gallery-4.jpg',
   },
   {
     id: 'botanical-details',
-    label: 'Detalles botánicos',
+    label: 'Fiesta privada',
     image: '/gallery-5.jpg',
   },
 ];
@@ -63,7 +63,7 @@ function GalleryCard({ item, index }: { item: GalleryItem; index: number }) {
           fontFamily: 'var(--font-sans)',
           fontWeight: 500,
           fontSize: '14px',
-          color: 'var(--color-text)',
+          color: 'var(--color-bg)',
         }}
       >
         {item.label}
@@ -97,7 +97,7 @@ export default function GallerySection() {
               fontFamily: 'var(--font-sans)',
               fontWeight: 700,
               fontSize: 'clamp(28px, 4vw, 40px)',
-              color: 'var(--color-text)',
+              color: 'var(--color-accent)',
               lineHeight: 1.15,
               marginTop: '8px',
             }}

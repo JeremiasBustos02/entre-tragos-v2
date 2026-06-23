@@ -1,75 +1,60 @@
 import { useReveal } from '../hooks/useReveal';
+import galleryImg from '/services.png';
 
 const INCLUSIONS = [
-  { feature: 'Barra móvil elegante y profesional', benefit: 'Tu evento se ve profesional' },
-  { feature: 'Cristalería y utensilios de coctelería', benefit: 'No comprás ni limpiás nada' },
-  { feature: 'Decoración de la barra', benefit: 'Todo coordinado, sin estrés' },
-  { feature: 'Organización y presentación', benefit: 'Vos solo disfrutás' },
-  { feature: 'Bartender incluido según paquete', benefit: 'Cocteles perfectos, cero preocupación' },
+  'Barra móvil elegante y profesional para cualquier tipo de evento',
+  'Cristalería y utensilios incluidos para que no tengas que preocuparte por nada',
+  'Decoración y presentación coordinadas para una experiencia impecable',
+  'Organización integral para que vos solo disfrutes',
+  'Bartender profesional incluido según el paquete contratado',
 ];
 
-function CheckCircle() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="10" />
-      <polyline points="8,12 11,15 16,9" />
-    </svg>
-  );
-}
-
-function InclusionItem({ item, index }: { item: typeof INCLUSIONS[number]; index: number }) {
-  const itemRef = useReveal<HTMLDivElement>({ type: 'fade', threshold: 0.1, stagger: index });
-
-  return (
-    <div
-      ref={itemRef}
-      className="flex items-start gap-4 p-5 rounded-xl transition-all duration-300 ease-out cursor-default bg-transparent border border-transparent hover:bg-[var(--color-surface)] hover:border-[var(--color-border)] hover:-translate-y-px"
-    >
-      <div
-        className="shrink-0 w-10 h-10 rounded-full flex items-center justify-center"
-        style={{ backgroundColor: 'var(--color-accent-10)' }}
-      >
-        <CheckCircle />
-      </div>
-      <div className="flex flex-col gap-0.5">
-        <span
-          style={{
-            fontFamily: 'var(--font-sans)',
-            fontWeight: 600,
-            fontSize: '15px',
-            color: 'var(--color-text)',
-          }}
-        >
-          {item.feature}
-        </span>
-        <span
-          style={{
-            fontFamily: 'var(--font-sans)',
-            fontWeight: 400,
-            fontSize: '14px',
-            color: 'var(--color-text-secondary)',
-          }}
-        >
-          {item.benefit}
-        </span>
-      </div>
-    </div>
-  );
-}
-
 export default function ServiceInclusions() {
-  const headerRef = useReveal<HTMLDivElement>({ type: 'fade', threshold: 0.2 });
+  const imageRef = useReveal<HTMLDivElement>({ type: 'mask', threshold: 0.2 });
+  const contentRef = useReveal<HTMLDivElement>({ type: 'fade', threshold: 0.2, delay: 100 });
 
   return (
     <section
       id="servicio"
-      className="w-full px-5 py-15 sm:px-8 sm:py-15 lg:px-12 noise-overlay"
-      style={{ backgroundColor: 'var(--color-bg-alt)' }}
+      aria-labelledby="servicio-heading"
     >
-      <div className="max-w-[900px] mx-auto relative z-[2]">
-        <div ref={headerRef} className="text-center mb-12">
+      <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr]">
+        {/* Image panel — LEFT */}
+        <div
+          ref={imageRef}
+          className="relative overflow-hidden order-2 md:order-1 max-h-[300px] md:max-h-[600px]"
+        >
+          <img
+            src={galleryImg}
+            alt="Servicio de coctelería profesional"
+            loading="lazy"
+            decoding="async"
+            className="w-full h-full object-cover object-center"
+          />
+        </div>
+
+        {/* Text panel — RIGHT */}
+        <div
+          ref={contentRef}
+          className="flex flex-col justify-center py-20 px-8 lg:px-12 order-1 md:order-2"
+          style={{ backgroundColor: 'var(--color-bg-alt)' }}
+        >
+          <span
+            style={{
+              fontFamily: 'var(--font-sans)',
+              fontWeight: 500,
+              fontSize: '12px',
+              color: 'var(--color-accent)',
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+            }}
+          >
+            Servicio
+          </span>
+
           <h2
-            className="mt-2"
+            id="servicio-heading"
+            className="mt-3"
             style={{
               fontFamily: 'var(--font-sans)',
               fontWeight: 700,
@@ -80,23 +65,37 @@ export default function ServiceInclusions() {
           >
             ¿Qué incluye nuestro servicio?
           </h2>
-          <p
-            className="mt-3 max-w-md mx-auto"
-            style={{
-              fontFamily: 'var(--font-sans)',
-              fontWeight: 400,
-              fontSize: '15px',
-              color: 'var(--color-text-secondary)',
-            }}
-          >
-            Todo lo que necesitás para que tu evento sea perfecto.
-          </p>
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {INCLUSIONS.map((item, i) => (
-            <InclusionItem key={item.feature} item={item} index={i} />
-          ))}
+          <ul className="flex flex-col gap-3 mt-6">
+            {INCLUSIONS.map((text) => (
+              <li key={text} className="flex items-start gap-3">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  stroke="var(--color-accent)"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="mt-0.5 shrink-0"
+                >
+                  <polyline points="4,10 8,14 16,6" />
+                </svg>
+                <span
+                  style={{
+                    fontFamily: 'var(--font-sans)',
+                    fontWeight: 400,
+                    fontSize: '15px',
+                    color: 'var(--color-text-secondary)',
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {text}
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

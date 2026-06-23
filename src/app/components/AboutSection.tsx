@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from 'react';
 import { useReveal } from '../hooks/useReveal';
 
 const FEATURES = [
@@ -8,63 +7,35 @@ const FEATURES = [
 ];
 
 export default function AboutSection() {
-  const [isDesktop, setIsDesktop] = useState(() =>
-    typeof window !== 'undefined' ? window.matchMedia('(min-width: 640px)').matches : false
-  );
   const imageRef = useReveal<HTMLDivElement>({ type: 'mask', threshold: 0.2 });
   const contentRef = useReveal<HTMLDivElement>({ type: 'fade', threshold: 0.2, delay: 100 });
-  const clipRef = useRef<HTMLDivElement>(null);
-  const [clipVisible, setClipVisible] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia('(min-width: 640px)');
-    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
-    mq.addEventListener('change', handler);
-    return () => mq.removeEventListener('change', handler);
-  }, []);
-
-  useEffect(() => {
-    if (!clipRef.current) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setClipVisible(true); },
-      { threshold: 0.3 },
-    );
-    observer.observe(clipRef.current);
-    return () => observer.disconnect();
-  }, []);
 
   return (
-    <section id="about" className="py-15 px-5 sm:px-8 lg:px-12" aria-labelledby="about-heading">
-      <div className="max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <section
+      id="about"
+      aria-labelledby="about-heading"
+    >
+      <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr]">
+        {/* Image panel — LEFT */}
         <div
           ref={imageRef}
-          className="relative w-full aspect-[4/3] lg:aspect-[3/4] order-2 lg:order-1 overflow-hidden rounded-2xl"
+          className="relative overflow-hidden order-2 md:order-1 max-h-[300px] md:max-h-[600px] "
         >
           <img
-            src="/barra-trago.jpg"
+            src="/about.png"
             alt="Barra de coctelería de madera natural"
             loading="lazy"
             decoding="async"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-center"
           />
-          {isDesktop && (
-            <div
-              ref={clipRef}
-              className={`absolute bottom-4 right-4 w-40 h-40 rounded-xl overflow-hidden ${clipVisible ? 'reveal-mask-image is-visible' : 'reveal-mask-image'}`}
-              style={{ border: '2px solid var(--color-border)' }}
-            >
-              <img
-                src="/madera.jpg"
-                alt="Detalle de ingredientes botánicos"
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          )}
         </div>
 
-        <div ref={contentRef} className="flex flex-col gap-5 order-1 lg:order-2">
+        {/* Text panel — RIGHT */}
+        <div
+          ref={contentRef}
+          className="flex flex-col justify-center py-20 px-8 lg:px-12 order-1 md:order-2"
+          style={{ backgroundColor: 'var(--color-bg-alt)' }}
+        >
           <span
             style={{
               fontFamily: 'var(--font-sans)',
@@ -80,6 +51,7 @@ export default function AboutSection() {
 
           <h2
             id="about-heading"
+            className="mt-3"
             style={{
               fontFamily: 'var(--font-sans)',
               fontWeight: 700,
@@ -91,7 +63,7 @@ export default function AboutSection() {
             Barras de diseño en madera natural
           </h2>
 
-          <ul className="flex flex-col gap-3 mt-2">
+          <ul className="flex flex-col gap-3 mt-6">
             {FEATURES.map((text) => (
               <li key={text} className="flex items-start gap-3">
                 <svg

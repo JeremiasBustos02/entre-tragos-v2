@@ -9,11 +9,11 @@ export default function CtaSection() {
   return (
     <section
       ref={ref}
-      className="w-full px-5 py-20 sm:px-8 sm:py-28 lg:px-12 noise-overlay"
-      style={{ backgroundColor: 'var(--color-bg-alt)' }}
+      className="w-full py-15 noise-overlay"
+      style={{ backgroundColor: 'var(--color-bg)' }}
     >
       <div
-        className="max-w-[1000px] mx-auto rounded-2xl overflow-hidden relative z-[2] glass"
+        className="overflow-hidden relative z-[2] glass"
         style={{
           opacity: visible ? 1 : 0,
           transform: visible ? 'translateY(0)' : 'translateY(24px)',
@@ -45,7 +45,7 @@ export default function CtaSection() {
           </div>
 
           {/* Text side */}
-          <div className="flex-1 flex flex-col items-center justify-center p-10 sm:p-14 lg:p-16 text-center">
+          <div className="flex-1 flex flex-col items-center justify-center p-10 sm:p-14 lg:p-16 text-center max-w-2xl mx-auto">
             <h2
               style={{
                 fontFamily: 'var(--font-sans)',
